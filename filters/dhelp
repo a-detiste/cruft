@@ -1,0 +1,5 @@
+/usr/share/doc/**/.dhelp
+/usr/share/doc/HTML
+/usr/share/doc/HTML/**
+/var/lib/dhelp
+/var/lib/dhelp/**

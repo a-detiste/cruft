@@ -1,0 +1,92 @@
+cruft
+=====
+
+Preliminary notes:
+------------------
+
+ * This is a pre release version! Be careful, and take its results
+   with a grain of salt.
+
+ * cruft does not make any assumptions about the things you may have in places
+   like /usr/local. You teach cruft of such locations in several ways
+   - read below.
+
+ * If you have any suggestions on how to improve cruft, or if you make a
+   /usr/lib/cruft/filters/* file for another package, please mail me the
+   results for inclusion in a future release, or even better, file them as a
+   bug against cruft.
+
+
+How it works, and what it does:
+
+cruft is a program to look over your system for anything that shouldn't
+be there, but is; or for anything that should be there, but isn't.
+
+Most of its work is associated to three lists of files:
+
+ * list of files ACTUALLY PRESENT on the system. This is produced by running
+   'find' on each mounted filesystem in turn, except for:
+    - filesystems of type nfs, proc, usbfs, devpts, tmpfs and sysfs
+    - directories (and their contents) specified by --ignore
+   This list is put into /var/spool/cruft/file_*
+    
+ * list of files which MUST be on the system. It is produced by running
+   'explain' scripts in /usr/lib/cruft/explain and /etc/cruft/explain. This
+   includes the list of files dpkg knows about, diversions, lost+found
+   directories and so on.
+   This list is put into /var/spool/cruft/expl_*
+ 
+ * list of files which MAY be on the system. It is defined by patterns in files
+   in /usr/lib/cruft/filters, /etc/cruft/filters and
+   /var/lib/dpkg/info/*.extrafiles. Example of files which may be on a system
+   are usually certain spool and cache files, created by package pre/post-inst
+   scripts or at runtime.
+
+After producing the list of present files, it is compared to the list of files
+which must be on the system. The files which were not present in the second
+list (were not 'explained'), are further filtered through the list of patterns
+defining files which may be present on a system. The remaining files are
+reported either as missing (on the MUST BE PRESENT and not on the ACTUALLY
+PRESENT list) or unexplained (on the ACTUALLY PRESENT list, but neither on the
+MUST nor MAY BE PRESENT lists).
+
+(In fact both the list of files actually present on the filesystem, and the
+list of files which must be on the filesystem are filtered through the list of
+patterns of files which may be on the filesystem, and the result is compared
+afterwards, but the effect is the sameas described above.)
+
+Thus, there are three ways to make cruft not report some files:
+
+ * use "--ignore" which makes cruft ignore whole directory trees by not
+   entering them at all, which speeds it up considerably. This is useful for
+   large directory trees which local administrator is not interested in, like
+   /home. An example:
+
+                computer:~# cruft -m root --ignore /usr/local
+ 
+ * create a filter file, which contains patterns of files which are not to be
+   reported. This is a little more flexible, but requires cruft to traverse the
+   directory tree, which takes some time. An example could be:
+
+                computer:~# echo '/usr/local/**' >/etc/cruft/filters/usr_local
+ 
+ * create an 'explanation' script which prints the names of all files which are
+   not to be reported. This is the most flexible way, since you can decide at
+   runtime which files should be there, and which not, however usually requires
+   cruft to traverse the directory tree twice. An example could be:
+
+                computer:~# cat >/etc/cruft/explain/usr_local
+                #!/bin/sh
+                find /usr/local
+                ^D
+                computer:~# chmod 755 /etc/cruft/explain/usr_local
+
+Note that when traversing the filesystems when producing the above lists, cruft
+does not follow symlinks. Also, for symlinks there is an additional mechanism,
+which identifies and reports broken symlinks separately.
+
+And that's about it.
+
+--
+Anthony Towns <ajt@debian.org>
+Marcin Owsiany <porridge@debian.org>

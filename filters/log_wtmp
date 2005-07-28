@@ -1,0 +1,5 @@
+/etc/wtmplock
+/var/log/wtmp
+/var/log/wtmp.*.gz
+/var/log/wtmp.0
+/var/log/wtmp.report

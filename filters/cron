@@ -1,0 +1,5 @@
+/var/log/btmp*
+/var/log/setuid.changes*
+/var/log/setuid.today
+/var/log/setuid.yesterday
+/var/spool/cron/crontabs/*

@@ -1,0 +1,5 @@
+/var/lib/dpkg/*
+/var/lib/dpkg/alternatives/*
+/var/lib/dpkg/info/*
+/var/lib/dpkg/methods/**
+/etc/dpkg/dpkg.cfg

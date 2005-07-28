@@ -1,0 +1,12 @@
+/etc/qmail/defaultdomain
+/etc/qmail/localiphost
+/etc/qmail/locals
+/etc/qmail/me
+/etc/qmail/plusdomain
+/etc/qmail/rcpthosts
+/etc/qmail/virtualdomains
+/var/qmail/alias/*
+/var/qmail/users/cdb
+/var/spool/qmail/info/**
+/var/spool/qmail/mess/**
+/var/spool/qmail/remote/**

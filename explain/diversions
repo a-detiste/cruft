@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+open(DIVERT, "/var/lib/dpkg/diversions" ) || die( "Couldn't open diversions info\n");
+
+$x = 0;
+while(<DIVERT>) {
+	if ($x % 3 == 1) {
+		chomp;
+		print $_."\n" if -e $_; # a diversion doesn't necessarily need to be active
+	}
+	$x++;
+}

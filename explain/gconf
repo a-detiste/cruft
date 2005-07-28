@@ -1,0 +1,9 @@
+#!/bin/sh
+
+egrep '<(applyto|key)>' /usr/share/gconf/schemas/* |
+ perl -n -e 'm{<\w+>(/[^/]+/[^/<]+)};print $1."\n"' | sort -u |
+ while read n
+ do
+   find /etc/gconf/gconf.xml.defaults$n
+ done
+

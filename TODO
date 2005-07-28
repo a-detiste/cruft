@@ -1,0 +1,10 @@
+ * add a check that symlinks and suchlike to excluded directories
+   don't get whined about (/dev/kcore -> /proc/kcore)
+ * handle .dpkg-{old,dist,new} files?
+ * add a cronjob?
+ * make a postinst that pre-ignores /usr/local, /home/ftp or similar?
+ * remove hard coded constants from .c files
+ * write a Makefile for crying out loud!!
+ * think up better names for this stuff?
+ * fix possible overflow in readlinks
+ * move /tmp handling to filters

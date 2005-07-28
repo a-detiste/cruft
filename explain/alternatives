@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+
+open( NEED, ">&=3" ) || die( "Couldn't open output for needed files!?!" );
+
+while( defined($packagefile = glob("/var/lib/dpkg/alternatives/*")) )
+{
+    $package = "$1" if $packagefile =~ m#^.*/([^/]*)$#;
+
+    open( FILE, $packagefile ) || die( "Couldn't open $packagefile\n" );
+    
+    $_ = <FILE>;  # auto 
+    $_ = $package;
+    
+    $cnt = 0;
+    do {
+	$alt = "/etc/alternatives/" . $_;
+	
+	$_ = <FILE>; chomp($_);
+	$altredir = $_;
+	
+	print $alt, "\n";
+	print $altredir, "\n";
+	
+	$cnt = $cnt + 1;
+	
+	$_ = <FILE>; chomp($_);
+    } while( $_ ne "" );	
+    
+    while( $main = <FILE> ) {
+	chomp($main);
+	unless ( $main eq "" ) {
+	    $pri = <FILE>; chomp($pri);
+	    for ( $i = 1; $i < $cnt; $i++ ) { 
+		$alt = <FILE>; chomp($alt);
+		print NEED $alt, "\n" unless ( $alt eq "" );
+	    }
+	}
+    }    
+}

@@ -1,0 +1,42 @@
+# Makefile for cruft
+
+CC     = @CC@
+CFLAGS = @CFLAGS@ -Wall -W -ansi -pedantic-errors
+
+INS = install
+
+DATADIRS = filters explain
+
+DESTDIR = `pwd`/debian/cruft
+
+PROGS1 = canonical filter_shell merge_diff readlinks
+PROGS2 = dash-search
+PROGS  = $(PROGS1) $(PROGS2)
+
+filter_shell dash-search: shellexp.o
+
+all : $(PROGS)
+
+install1 : $(PROGS1) extrafiles common.sh
+	$(INS) $^ $(DESTDIR)/usr/lib/cruft/
+
+install2 : $(PROGS2)
+	$(INS) $< $(DESTDIR)/usr/bin/$<
+
+installdirs : $(DATADIRS)
+	cp -af $^ $(DESTDIR)/usr/lib/cruft/
+
+install : install1 install2 installdirs cruft extrafiles
+	$(INS) cruft $(DESTDIR)/usr/sbin/cruft
+	$(INS) extrafiles $(DESTDIR)/usr/lib/cruft/filters/cruft
+
+clean : 
+	rm -f $(PROGS) *~ debian/*~
+
+distclean : clean
+	rm -f Makefile config.cache config.status config.log
+
+devclean : configclean
+	rm -f configure
+
+.PHONY : all clean configclean distclean install

@@ -1,0 +1,4 @@
+/var/log/msql/*
+/var/mail/msqld
+/var/run/msqld/control
+/var/run/msqld/msqld.pid

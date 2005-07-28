@@ -1,0 +1,19 @@
+Source: cruft
+Section: admin
+Priority: optional
+Maintainer: Anthony Towns <ajt@debian.org>
+Build-Depends: debhelper
+Standards-Version: 2.4.0.0
+
+Package: cruft
+Architecture: any
+Depends: ${shlibs:Depends}, file
+Description: Find any cruft built up on your system
+ cruft is a program to look over your system for anything that shouldn't
+ be there, but is; or for anything that should be there, but isn't.
+ .
+ It bases most of its results on dpkg's database, as well as a list of
+ `extra files' that can appear during the lifetime of various packages.
+ .
+ cruft is still in pre-release; your assistance in improving its accuracy
+ and performance is appreciated.
