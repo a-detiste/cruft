@@ -1,0 +1,19 @@
+#!/bin/sh
+# Read standard input and filter out files which match provided 'extrafiles' patterns
+
+LEFT=''
+if [ `ls -l /var/lib/dpkg/info/*.extrafiles 2>/dev/null | wc -l` -ge 1 ]; then
+	LEFT='/var/lib/dpkg/info/*.extrafiles'
+fi
+
+MIDDLE=''
+if [ `ls -l /etc/cruft/filters/* 2>/dev/null | wc -l` -ge 1 ]; then
+	MIDDLE='/etc/cruft/filters/*'
+fi
+
+RIGHT=''
+if [ `ls -l /usr/lib/cruft/filters/* 2>/dev/null | wc -l` -ge 1 ]; then
+	RIGHT='/usr/lib/cruft/filters/*'
+fi
+
+/usr/lib/cruft/filter_shell $LEFT $MIDDLE $RIGHT

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+FTPDIR=/home/ftp
+if grep '^ftp:' /etc/passwd >/dev/null 2>&1; then
+	FTPDIR=`awk -F: '$1 == "ftp" { print $6 }' /etc/passwd`
+fi
+
+. /usr/lib/cruft/common.sh
+
+if [ -e "$FTPDIR" ]; then
+	ignore=0
+	PRUNES=""
+	for IGNORE in $(get_ignores); do
+		if is_subdir "$IGNORE" "$FTPDIR"; then
+			ignore=1
+			break
+		elif is_subdir "$FTPDIR" "$IGNORE"; then
+			PRUNES="$(add_prune "$PRUNES" "$IGNORE")"
+		fi
+	done
+	PRUNES=$(finish_prunes "$PRUNES")
+	[ "$ignore" = 0 ] && find "$FTPDIR" $PRUNES
+fi

@@ -1,0 +1,20 @@
+.TH DASH-SEARCH 1
+.SH NAME
+dash-search \- match arguments against cruft filter patterns
+.SH SYNOPSIS
+.B dash-search [ file ] [ ... ]
+.SH "DESCRIPTION"
+.B dash-search
+Reads files in
+.B /usr/lib/cruft/filters
+and tries to match each command argument in turn against the patterns in those
+files. Any argument which matches is printed on standard output, prefixed with
+the name of the file which contained the pattern which it matched.
+.SH BUGS
+Uses constant-length 1000 byte buffers to hold filenames. Also uses recursive
+function calls, which are not very efficient.
+.SH "SEE ALSO"
+.BR cruft (8).
+.SH AUTHOR
+This manual page was written by Anthony Towns <ajt@debian.org>,
+for the Debian GNU/Linux system (but may be used by others).

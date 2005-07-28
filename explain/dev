@@ -1,0 +1,9 @@
+#!/bin/sh
+# If cruft is not entering /dev, then don't scan it here either
+if mount | awk '$3 == "/dev" {print $1}' | egrep -q '^(nfs|proc|usbfs|devpts|tmpfs|sysfs)$'
+then
+	exit 0
+else
+: #	find /dev
+# XXX maybe get a list from makedev?
+fi

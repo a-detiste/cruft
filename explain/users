@@ -1,0 +1,25 @@
+#!/bin/sh
+
+. /usr/lib/cruft/common.sh
+
+cd /home/
+for user in root `awk -F: '{ if ( 1000 <= $3 && $3 < 30000 ) print $1 }' /etc/passwd`; do
+	home=`grep "^$user:" /etc/passwd | cut -d: -f6`
+
+	if [ -d "$home" ]; then
+		ignore=0
+		PRUNES=""
+		for IGNORE in $(get_ignores); do
+			if is_subdir "$IGNORE" "$home"; then
+				ignore=1
+				break
+			elif is_subdir "$home" "$IGNORE"; then
+				PRUNES="$(add_prune "$PRUNES" "$IGNORE")"
+			fi
+		done
+		PRUNES=$(finish_prunes "$PRUNES")
+		[ "$ignore" = 0 ] && find "$home" $PRUNES -user $user
+	fi
+
+	[ -e /var/mail/$user ] && echo /var/mail/$user
+done

@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+open(DIVERT, "/var/lib/dpkg/diversions" ) || die( "Couldn't open diversions info\n");
+
+%diverted = ();
+$x = 0;
+while(<DIVERT>) {
+	$diverted{$_} = undef if ( $x % 3 == 0 );
+	$x++;
+}
+
+close DIVERT or die "Couldn't close diversions info\n";
+
+open(DPKG, "sort /var/lib/dpkg/info/*.list |") or die "Couldn't open dpkg info: $!\n";
+while($l=<DPKG>) {
+	print $l unless exists $diverted{$l};
+}
+close DPKG or die "Couldn't close dpkg info: $!\n";

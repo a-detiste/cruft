@@ -1,0 +1,220 @@
+cruft (0.9.6-0.7) experimental; urgency=medium
+
+  * Non-maintainer upload blessed by aj
+  * Remove shellexp.o in clean rule (Closes: #319490) Fixes an FTBFS, so
+    urgency=medium
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 25 Jul 2005 22:15:14 +0200
+
+cruft (0.9.6-0.6) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Rewritten the README file to clear up the general idea on how cruft works.
+  * Moved common code from dash-search and filter_shell to shellexp.c
+  * Added some comments to code in various files
+  * Added --ignore support to cruft, and made explain files obey that (using
+    functions stored in new files common.sh). This allows serious speed
+    improvements in certain situations. (Closes: #29187)
+  * Updated manpage (Closes: #308176)
+  * Added support for running in chroots, by setting DRIVES to / if it turns
+    out empty.
+  * Added afs to list of ignored filesystems (Closes: #233979)
+  * Use dh_installman instead of obsolete dh_installmanpages
+  * Removed obsolete dh_suidregister
+  * Removed junky postinst "warning" (Closes: #174877, #304440)
+  * Removed the "optimization" from dash-search which caused only the first
+    file containing matching pattern to be printed. Apparently the purpose of
+    dash-search is to find all occurences. Noted in manpage that the file name
+    is printed for each line.
+  * filters/*: /usr/{doc,man} updated to /usr/share/{doc,man}
+  * filters/base-files: added /srv, /media, /usr/local and its subdirs
+  * filters/libc6: added /etc/.pwd.lock
+  * explain/ca-certificates: new file
+  * explain/dev: fixed grep to be quiet
+  * explain/dpkg: use a hash to remember diversions instead of an array
+  * explain/diversions: only print a diversion target if it exists in
+    filesystem
+  * explain/gconf: new file: a kludgy way to list at least some of the gconf files
+  * explain/tmp: removed, since this was just a copy of explain/dev
+  * Removed a misplaced adduser filter file.
+  * Noted in changelog that previous upload Closes: #149736 (I know this is
+    slight changelog abuse, but I haven't yet learned everything about BTS
+    version supoprt)
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 20 Jul 2005 21:55:08 +0200
+
+cruft (0.9.6-0.5) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * cruft:
+    - Use tempfile to make temporary file, which makes -r create reportfile
+      "report" (Closes: #182796, #42969)
+    - Report broken symlinks themselves, rather than their inexistant
+      destinations (Closes: #149736)
+    - Ignore /dev/(fd|std(in|out|err)) links (Closes: #146021)
+    - Added --chroots which allows to completly broken symlinks in chosen dirs
+    - Do not traverse some special filesystems
+      (Closes: #272124, #291820, #110000)
+    - Improved command line error reporting a little (Closes: #51446)
+    - Set LC_COLLATE to C to avoid sorting differences causing double output
+      (Closes: #55022, #155431). This should also make sorts faster in non-C locale
+      environments.
+  * explain files fixes:
+     - dev: don't scan it if cruft itself doesn't
+     - dpkg, diversions: Treat diversions properly (Closes: #263472):
+       . dpkg: don't report files which were diverted to something else
+       . diversions: report diversion destinations
+     - home_ftp: fixed find command (Closes: #88274)
+     - init_d: fixed grep expression for new 'file' output syntax
+     - lost_found: added ext3 to list of filesystems
+     - users: Users are allowed not to have home dirs and mailboxes. So only
+       list mailboxes and homedirs which really exist.
+       (Closes: #265794, #50730) Also use /var/mail instead of deprecated
+       /var/spool/mail
+  * filter files:
+     - prime-net: new file: (Closes: #95799)
+     - debfoster: new file: (Closes: #100145)
+     - more new files and additions to existing ones (Closes: #157737):
+       adduser, apt, base-files, dpkg, ifupdown, krb5-config, libc6,
+       libhesiod0, libnet-perl, locales, lpr, modutils, netbase,
+       nfs-kernel-server, openssl, php4, popularity-contest, proftpd, tcpd
+  * Wrote a manpage for dash-search (Closes: #37735)
+  * dash-search: added a matched arguments cache array to speed things up just
+    a little bit
+  * debian/compat: set to 4
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 16 Jul 2005 21:24:02 +0300
+
+cruft (0.9.6-0.4) unstable; urgency=low
+
+  * Non-maintainer bugsquash upload
+  * Add file to Build-depends. (Closes: #35042)
+
+ -- Hwei Sheng Teoh <hsteoh@quickfur.yi.org>  Fri, 22 Nov 2002 22:58:01 -0500
+
+cruft (0.9.6-0.3) unstable; urgency=low
+
+  * Non-maintainer upload
+  * New postrm script which prevents cruft leaving cruft behind in
+    /var/spool/cruft. Fixes: #66731
+  * Fixed location of GPL reference in copyright file. (Lintian error)
+  * dash-search.1 dh_undocumented manpage. (Lintian error)
+
+ -- Paul Martin <pm@debian.org>  Sat, 17 Mar 2001 04:18:09 +0000
+
+cruft (0.9.6-0.2) unstable; urgency=low
+
+  * Hack around to get argument parsing to work. Thanks to Janne Veli Kujala
+    for the patch. (closes: Bug#58035)
+
+  * Maintainer NMU. :) This package really needs to be rewritten and
+    cleaned up. :(
+
+ -- Anthony Towns <aj@azure.humbug.org.au>  Sun, 20 Feb 2000 19:00:36 +1000
+
+cruft (0.9.6-0.1) unstable; urgency=low
+
+  * Non-maintainer bugsquash upload.
+  * Only call "make distclean" if there is a Makefile (closes: #51617)
+  * debian/rules: Applied patch from BTS to install all necessary files
+    (closes: #51448, #52094, #51653)
+
+ -- Richard Braakman <dark@xs4all.nl>  Sun, 19 Dec 1999 18:36:39 +0100
+
+cruft (0.9.6) unstable; urgency=low
+
+  * Added autoconf support and Makefile, thanks to Mitch Blevins.
+  * Add machine name in mail.
+  * Deal with spaces in argument handling. (Closes: Bug#50180)
+  * Only display boring junk in postinst when installing (not upgrading).
+
+ -- Anthony Towns <ajt@debian.org>  Sun, 28 Nov 1999 01:02:22 +1000
+
+cruft (0.9.5) frozen unstable; urgency=low
+
+  * Fix bashism in postinst (Closes #27541)
+  * No longer reports one letter file names as cruft (Closes #23773)
+  * Merge NMU's (Closes #23523)
+  * Made manpage match actual options. (Closes #21730)
+  * Don't report alternative targets as missing
+
+  * Added some extra information to /usr/doc/README (as requested in,
+    but not closing, #21987)
+
+  * Changed home_ftp explanation to check for an ftp user in
+    /etc/passwd, and to do nothing if no ftp directory was found (thanks
+    to David Frey for /etc/passwd bit) (Closes #24339)
+
+  * Fix bashism (avoid ash bug?) in cruft ([ ""$FOO = "" ] doesn't
+    work as expected) (Closes #28593)
+
+ -- Anthony Towns <ajt@debian.org>  Mon,  9 Nov 1998 14:35:00 +1000
+
+cruft (0.9.4.2) unstable; urgency=low
+
+  * merge_diff.c: Initialize need.n to 0.
+
+ -- Daniel Jacobowitz <dan@debian.org>  Thu, 10 Sep 1998 16:21:01 -0400
+
+cruft (0.9.4.1) unstable; urgency=low
+
+  * Have dash-search actually compile, rather than using the i386-specific
+    one left around from some prior build.
+  * Add '#include <string.h>' so it'll actually compile under egcs.
+
+ -- Michael Alan Dorman <mdorman@debian.org>  Sun, 14 June 1998 19:00:03 +1000
+
+cruft (0.9.4) unstable; urgency=low
+
+  * Fixes buggy upload of 0.9.3 (.changes and .deb weren't final 
+    release of 0.9.3)
+  * Handle more alternatives 
+
+ -- Anthony Towns <ajt@debian.org>  Wed, 15 Apr 1998 19:00:03 +1000
+
+cruft (0.9.3) unstable; urgency=low
+
+  * Moved cruft.extrafiles dpkg control file to /usr/lib/cruft/filters
+    in preparation of actually uploading to unstable.
+  * Added need_* and want_* files: for things that *have* to be there,
+    but aren't particularly provided by anthing. Used for dealing with
+    symlinks (need_symlink_dest), and alternatives (/usr/bin/vi, rather
+    than /etc/alternatives/vi, eg).
+  * Moved canonical into /usr/lib/cruft 
+  * Added checks for broken symlinks 
+  * Moved distributed filters from /etc/cruft/filters to 
+    /usr/lib/cruft/filters
+  * Added TODO file 
+
+ -- Anthony Towns <ajt@debian.org>  Sat, 11 Apr 1998 23:14:32 +1000
+
+cruft (0.9.2) unreleased; urgency=low
+
+  * Got rid of /etc/cruft/explain/etc_dir test 
+  * Added command line parsing
+  * Saved report in /var/spool/cruft/report 
+  * Added handling of diversions
+
+ -- Anthony Towns <ajt@debian.org>  Fri, 10 Apr 1998 23:12:52 +1000
+
+cruft (0.9.1) unreleased; urgency=low
+
+  * Tidied up canonical.c
+  * Changed filters to use shell patterns instead of scripts
+  * Output results to stdout rather than leave in /var/spool/cruft
+  * Sped up canonical substantially (about twice as fast)
+  * Tightened handling of /etc
+  * Added /var/cache
+
+ -- Anthony Towns <ajt@debian.org>  Mon,  6 Apr 1998 22:24:34 +1000
+
+cruft (0.9) unreleased; urgency=low
+
+  * Initial Release.
+
+ -- Anthony Towns <ajt@debian.org>  Sun,  5 Apr 1998 00:46:56 +1000
+
+Local variables:
+mode: debian-changelog
+add-log-mailing-address: "ajt@debian.org"
+End:

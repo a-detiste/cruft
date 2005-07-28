@@ -1,0 +1,1 @@
+./gath_alts | awk '/=====/ { LINE=$2; CMD="grep " $2 "$ alts_map"; FS=":"; while( CMD | getline ) { PROVIDOR=$1 }; FS=" " } /^\// {print "echo >>" PROVIDOR " " $0}' | sort | tee do_thingo

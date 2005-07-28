@@ -1,0 +1,12 @@
+#!/bin/sh
+
+mount | egrep ".* on .* type ext[23]" | awk '{ print $3"/lost+found" }' | sed 's://*:/:g' |
+while read dir; do
+	for ignore in $(get_ignores); do
+		if is_subdir "$ignore" "$dir" ; then
+			:
+		else
+			echo "$dir"
+		fi
+	done
+done

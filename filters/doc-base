@@ -1,0 +1,3 @@
+/var/lib/doc-base/info
+/var/lib/doc-base/info/*.list
+/var/lib/doc-base/info/*.status

@@ -1,0 +1,14 @@
+/etc/aliases
+/etc/hostname
+/etc/hosts
+/etc/inetd.conf
+/etc/mailname
+/etc/networks
+/etc/nntpserver
+/etc/ppp.down
+/etc/resolv.conf
+/etc/slip.hosts
+/etc/slip.login
+/etc/slip.logout
+/etc/slip.tty
+/var/spool/rwho/whod.*

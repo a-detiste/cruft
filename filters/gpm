@@ -1,0 +1,3 @@
+/etc/gmp.conf
+/var/run/gpmctl
+/var/run/gpmpid

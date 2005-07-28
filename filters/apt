@@ -1,0 +1,6 @@
+/var/cache/apt/archives/*
+/var/cache/apt/lock
+/var/cache/apt/pkgcache.bin
+/var/cache/apt/srcpkgcache.bin
+/var/state/apt/**
+/etc/apt/sources.list

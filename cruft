@@ -1,0 +1,196 @@
+#!/bin/sh
+
+#set -- `getopt hd:r:m:knN "$@"`
+#if [ $? != 0 ]; then
+#	exit 2
+#fi
+
+DRIVES=`mount | egrep -v " type ([an]fs|proc|usbfs|devpts|tmpfs|sysfs)" | cut -d\  -f3`
+[ -z "$DRIVES" ] && DRIVES=/
+REPORTFILE=/dev/stdout
+MAILTO=""
+CLEANUP=yes
+FILES=yes
+REPORT=yes
+CHROOTS=""
+IGNORES=""
+
+usage()
+{
+	echo "Usage: [-h] [-d DRIVES] [-r REPORTFILE] [-m ADDRESS] [-k | -n | -N]"
+}
+
+. /usr/lib/cruft/common.sh
+
+while [ $# != 0 ]; do
+	case "$1" in
+		-h)	usage; exit 0;;
+		-d)	DRIVES="$2"; shift;;
+		-r)	REPORTFILE="$2"; shift;;
+		-m)	MAILTO="$2"; shift;;
+		--chroots) CHROOTS="$2"; shift ;;
+		--ignore) IGNORES="$2"; shift ;;
+		-k)	CLEANUP=yes; FILES=no; REPORT=no;;
+		-n)	CLEANUP=no; FILES=yes; REPORT=no;;
+		-N)	CLEANUP=no; FILES=no; REPORT=yes;;
+		-*)	echo "$0: invalid option -- ${i#-}"; usage; exit 2;;
+		*)	echo "$0: invalid argument: ${i#-}"; usage; exit 2;;
+	esac
+	shift
+done
+
+cd /var/spool/cruft || { echo "Are you root?" ; exit 1; }
+
+# clean up from previous runs
+if [ "$CLEANUP" = "yes" ]; then
+	rm -f /var/spool/cruft/*
+fi
+
+set_ignores "$IGNORES"
+
+# set collation order to POSIX, to avoid differences between own programs' and
+# sort output
+export LC_COLLATE="C"
+
+if [ "$FILES" = yes ]; then
+	# official explanations
+	cd /usr/lib/cruft/explain
+	rm -f /var/spool/cruft/expl_*
+
+	for a in *; do 
+		[ -x "$a" ] && 
+			( ./$a | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
+			  /usr/lib/cruft/extrafiles |
+			  /usr/lib/cruft/canonical |
+			  sort | uniq > /var/spool/cruft/expl_$a
+			) 3>&1 | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
+			  /usr/lib/cruft/extrafiles |
+			  /usr/lib/cruft/canonical | 
+			  sort | uniq > /var/spool/cruft/need_$a
+	done
+
+	# local explanations
+	cd /etc/cruft/explain
+	for a in *; do
+		[ -x "$a" ] && 
+			( ./$a | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
+			  /usr/lib/cruft/extrafiles |
+			  /usr/lib/cruft/canonical | 
+			  sort | uniq > /var/spool/cruft/expl_$a
+			) 3>&1 | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
+			  /usr/lib/cruft/extrafiles |
+			  /usr/lib/cruft/canonical | 
+			  sort | uniq > /var/spool/cruft/need_$a
+	done
+
+	# files
+
+	cd /var/spool/cruft
+	rm -f /var/spool/cruft/file_*
+
+	rm -f need_link_dests; touch need_link_dests
+
+	for DRIVE in $DRIVES; do 
+		if [ "$DRIVE" = "/" ]; then
+			FILENAME=file_root
+		else
+			FILENAME=file_in_`echo "$DRIVE" | sed 's:^/::;s:/:-:g'`
+		fi
+
+		rm -f need_link_dests.tmp
+		PRUNE=""
+		skip=0
+		for IGNORE in $(get_ignores)
+		do
+			if is_subdir "$IGNORE" "$DRIVE"; then
+				# $DRIVE is a subdir of $IGNORE
+				# no need to scan the drive at all
+				skip=1
+			elif is_subdir "$DRIVE" "$IGNORE"; then
+				# $IGNORE is a subdir of $DRIVE
+				# add it to prune list
+				if [ -n "$PRUNE" ]; then
+					PRUNE="${PRUNE}-or -wholename $IGNORE -prune "
+				else
+					PRUNE="-wholename $IGNORE -prune "
+				fi
+			fi
+		done
+		if [ "$skip" = 1 ]; then
+			: > "$FILENAME"
+			: > need_link_dests.tmp
+		else
+			if [ -n "$PRUNE" ] ; then
+				PRUNE="( $PRUNE ) -or"
+			fi
+			find "$DRIVE" -xdev $PRUNE -print -type l \
+				-fprint need_link_dests.tmp |
+			/usr/lib/cruft/extrafiles | sort | uniq > "$FILENAME"
+		fi
+
+		cat need_link_dests.tmp >> need_link_dests
+	done
+	rm -f need_link_dests.tmp
+	touch broken_symlinks broken_symlinks.tmp
+	cat need_link_dests | while read link
+	do
+		if [ ! -e "$(echo "$link" | /usr/lib/cruft/readlinks)" ]; then
+			echo "$link" >> broken_symlinks.tmp
+		fi
+	done
+	for CHROOT in $CHROOTS
+	do
+		egrep -v "^$CHROOT/" broken_symlinks.tmp > broken_symlinks
+		mv broken_symlinks broken_symlinks.tmp
+	done
+	egrep -v "^/dev/(fd|stdin|stdout|stderr)$" broken_symlinks.tmp > broken_symlinks
+	rm broken_symlinks.tmp
+	rm need_link_dests
+fi
+
+if [ "$REPORT" = yes ]; then
+	# generate differences
+	rm -f /var/spool/cruft/miss_*
+	rm -f /var/spool/cruft/unex_*
+		
+	/usr/lib/cruft/merge_diff
+	mv broken_symlinks unex_in_broken_symlinks
+
+	# remove empty files
+	cd /var/spool/cruft
+	for a in *; do
+		if [ -e $a ] && ! [ -s $a ]; then rm $a; fi
+	done
+
+	# generate report
+	TEMPFILE="`tempfile`"
+	( echo -n 'cruft report: '; date
+	  echo
+	  for a in miss_*; do
+		if [ -e $a ]; then
+			echo ---- $a ---- | sed 's/miss_/missing: /'
+	 		cat $a | sed 's/^/        /'
+	  	fi
+	  done
+	  for a in want_*; do
+		if [ -e $a ]; then
+			echo ---- $a ---- | sed 's/want_/missing: /'
+	 		cat $a | sed 's/^/        /'
+	  	fi
+	  done
+	  for a in unex_root unex_in_*; do
+		if [ -e $a ]; then
+	 	    echo ---- $a ---- | 
+		     sed 's=unex_root=unexplained: /=;s=unex_in_=unexplained: ='
+		    cat $a | sed 's/^/        /'
+		fi
+  	  done
+	  echo
+	  echo end.
+	) > "$TEMPFILE"
+
+	cat "$TEMPFILE" > "$REPORTFILE"
+	[ "$MAILTO" = "" ] || 
+            cat "$TEMPFILE" | mail -s "[`hostname`] Cruft Report" $MAILTO
+	rm -f "$TEMPFILE"
+fi

@@ -1,0 +1,56 @@
+.TH CRUFT 8
+.SH NAME
+cruft \- Check the filesystem for cruft (missing and unexplained files)
+.SH SYNOPSIS
+.B cruft
+.I "[-h] [-d DRIVES] [--chroots CHROOTS] [--ignore IGNORES] [-r REPORTFILE] [-m ADDRESS] [-k | -n | -N]"
+.SH "DESCRIPTION"
+This manual page documents briefly the
+.BR cruft 
+command.
+Please see /usr/share/doc/cruft/README for more information.
+.PP
+.B cruft
+is a program that goes over the Debian packaging system's database, and
+compares the contents of that with the files actually on your system, and
+produces a summary of the differences.
+.SH OPTIONS
+A summary of options are included below.
+.TP
+.B \-h
+Show summary of options.
+.TP
+.B \-d DRIVES
+Search only the listed filesystems. (eg, "/ /usr /home")
+.TP
+.B \-\-chroots CHROOTS
+Ignore symlinks under these directories. Useful for whatever chroots are set up
+in the system.
+.TP
+.B \-\-ignore IGNORES
+Treat the directory trees in
+.B IGNORES
+as if they did not exist.
+.TP
+.B \-r REPORTFILE
+Output report to 
+.I REPORTFILE
+instead of stdout.
+.TP
+.B \-m ADDRESS
+Mail report to 
+.I ADDRESS.
+.TP
+.B \-k
+Cleanup spool directory
+.TP
+.B \-n
+Generate differences only, don't report.
+.TP
+.B \-N
+Generate report based on old differences.
+.SH "SEE ALSO"
+/usr/share/doc/cruft/README
+.SH AUTHOR
+This manual page was written by Anthony Towns <ajt@debian.org>,
+for the Debian GNU/Linux system (but may be used by others).

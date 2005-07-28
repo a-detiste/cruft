@@ -1,0 +1,2 @@
+/var/log/squid/*
+/var/spool/squid/**
