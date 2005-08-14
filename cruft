@@ -7,13 +7,15 @@
 
 DRIVES=`mount | egrep -v " type ([an]fs|proc|usbfs|devpts|tmpfs|sysfs)" | cut -d\  -f3`
 [ -z "$DRIVES" ] && DRIVES=/
-REPORTFILE=/dev/stdout
+# empty means stdout
+REPORTFILE=""
 MAILTO=""
 CLEANUP=yes
 FILES=yes
 REPORT=yes
 CHROOTS=""
 IGNORES=""
+STARTDIR="$(pwd)"
 
 usage()
 {
@@ -26,7 +28,12 @@ while [ $# != 0 ]; do
 	case "$1" in
 		-h)	usage; exit 0;;
 		-d)	DRIVES="$2"; shift;;
-		-r)	REPORTFILE="$2"; shift;;
+		-r)	REPORTFILE="$2"; shift
+			if [ -z "$STARTDIR" -o ! -d "$STARTDIR" ]; then
+				echo "Start directory \"$STARTDIR\" is not accessible." >&2
+				exit 1
+			fi
+			;;
 		-m)	MAILTO="$2"; shift;;
 		--chroots) CHROOTS="$2"; shift ;;
 		--ignore) IGNORES="$2"; shift ;;
@@ -189,7 +196,12 @@ if [ "$REPORT" = yes ]; then
 	  echo end.
 	) > "$TEMPFILE"
 
-	cat "$TEMPFILE" > "$REPORTFILE"
+	if [ -z "$REPORTFILE" ]; then
+		cat "$TEMPFILE"
+	else
+		cd "$STARTDIR"
+		cat "$TEMPFILE" > "$REPORTFILE"
+	fi
 	[ "$MAILTO" = "" ] || 
             cat "$TEMPFILE" | mail -s "[`hostname`] Cruft Report" $MAILTO
 	rm -f "$TEMPFILE"
