@@ -1,3 +1,15 @@
+cruft (0.9.6-0.8) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * cruft:
+    - do not use "/dev/stdout", rather cat to implied stdout. Also chdir to
+    original directory before catting to a report file.
+  * explain scripts:
+    - dpkg: use find|xargs|cat|sort instead of globbing (Closes: #284711)
+    - gconf: avoid warning if there are no gconf schema files
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun, 14 Aug 2005 17:10:41 +0200
+
 cruft (0.9.6-0.7) experimental; urgency=medium
 
   * Non-maintainer upload blessed by aj
