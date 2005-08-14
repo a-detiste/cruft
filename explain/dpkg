@@ -11,7 +11,7 @@ while(<DIVERT>) {
 
 close DIVERT or die "Couldn't close diversions info\n";
 
-open(DPKG, "sort /var/lib/dpkg/info/*.list |") or die "Couldn't open dpkg info: $!\n";
+open(DPKG, "find /var/lib/dpkg/info -type f -name '*.list' | xargs cat | sort |") or die "Couldn't open dpkg info: $!\n";
 while($l=<DPKG>) {
 	print $l unless exists $diverted{$l};
 }
