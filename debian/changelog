@@ -6,15 +6,18 @@ cruft (0.9.6-0.8) experimental; urgency=low
     original directory before catting to a report file.
   * explain scripts:
     - dpkg: use find|xargs|cat|sort instead of globbing (Closes: #284711)
+    - dpkg: count diversions and file occurences and print filenames correct
+      number of times
     - gconf: avoid warning if there are no gconf schema files
   * helper scripts: reimplemented as one Perl script
-  * filter files: automatically updated and added some
+  * filter files: both automatically and manually updated and added some
+    scripts
   * Makefile.in:
     - tweaked not to install .svn metadata
     - really modified to remove shellexp.o in clean rule (last time it must
       have been Makefile, not .in)
 
- -- Marcin Owsiany <porridge@debian.org>  Mon, 15 Aug 2005 15:40:12 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Tue, 16 Aug 2005 00:53:06 +0200
 
 cruft (0.9.6-0.7) experimental; urgency=medium
 
