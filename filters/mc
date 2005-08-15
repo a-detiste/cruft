@@ -2,3 +2,7 @@
 /usr/lib/mc/mc.ini
 /usr/lib/mc/mc.lib
 /usr/lib/mc/mc.menu
+/usr/bin/editor
+/usr/bin/view
+/usr/share/man/man1/editor.1.gz
+/usr/share/man/man1/view.1.gz
