@@ -9,15 +9,16 @@ cruft (0.9.6-0.8) experimental; urgency=low
     - dpkg: count diversions and file occurences and print filenames correct
       number of times
     - gconf: avoid warning if there are no gconf schema files
-  * helper scripts: reimplemented as one Perl script
+  * helper scripts: reimplemented as one Perl script, removed outdated updater
+    scripts. They don't contain old non-FHS paths now. (Closes: #126855)
   * filter files: both automatically and manually updated and added some
-    scripts
+    scripts (Closes: #133887, #133888)
   * Makefile.in:
     - tweaked not to install .svn metadata
     - really modified to remove shellexp.o in clean rule (last time it must
       have been Makefile, not .in)
 
- -- Marcin Owsiany <porridge@debian.org>  Tue, 16 Aug 2005 00:53:06 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Tue, 16 Aug 2005 01:09:08 +0200
 
 cruft (0.9.6-0.7) experimental; urgency=medium
 

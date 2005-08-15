@@ -1,0 +1,5 @@
+/var/spool/postfix/incoming/**
+/var/spool/postfix/active/**
+/var/spool/postfix/defer/**
+/var/spool/postfix/deferred/**
+/var/spool/postfix/bounce/**
