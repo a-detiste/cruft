@@ -1,1 +1,0 @@
-./gath_alts | grep ==== | sed "s/=*//g" | xargs dpkg -S | sort | uniq | tee alts_map

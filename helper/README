@@ -1,5 +1,10 @@
-These are some helper apps to make creating filters from
-an existing alternatives database automatic. They're very
-kludgy.
+This is a helper script to make creating filters from an existing alternatives
+database automatic. It began existence by rewriting aj's shell/perl/awk
+scripts.
 
---aj
+Note that this is only meant as a quick and dirty way to initialize the filter
+database. The plan is that when cruft becomes more usable, the filter files
+should move to each package, and be maintained there, since a package's file
+list changes over time.
+
+ -- porridge
