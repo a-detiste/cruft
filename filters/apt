@@ -2,5 +2,9 @@
 /var/cache/apt/lock
 /var/cache/apt/pkgcache.bin
 /var/cache/apt/srcpkgcache.bin
-/var/state/apt/**
+/var/lib/apt/cdroms.list
+/var/lib/apt/listchanges.db
+/var/lib/apt/lists/*
+/var/lib/apt/lists/partial/*
 /etc/apt/sources.list
+/etc/apt/trusted.gpg

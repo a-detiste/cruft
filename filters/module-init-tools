@@ -1,0 +1,9 @@
+/bin/lsmod.modutils
+/sbin/ksyms
+/sbin/kallsyms
+/usr/share/man/man8/ksyms.8.gz
+/usr/share/man/man8/kallsyms.8.gz
+/etc/modprobe.d/arch-aliases
+/sbin/lsmod.modutils
+/sbin/modprobe.modutils
+/sbin/rmmod.modutils
