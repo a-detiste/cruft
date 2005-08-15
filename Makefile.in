@@ -24,7 +24,10 @@ install2 : $(PROGS2)
 	$(INS) $< $(DESTDIR)/usr/bin/$<
 
 installdirs : $(DATADIRS)
-	cp -af $^ $(DESTDIR)/usr/lib/cruft/
+	set -e ; for d in $^ ; do \
+		mkdir $(DESTDIR)/usr/lib/cruft/$$d; \
+		find $$d -type f -maxdepth 1 | xargs -i cp '{}' $(DESTDIR)/usr/lib/cruft/$$d/; \
+	done
 
 install : install1 install2 installdirs cruft extrafiles
 	$(INS) cruft $(DESTDIR)/usr/sbin/cruft
