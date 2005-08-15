@@ -5,14 +5,19 @@ open(DIVERT, "/var/lib/dpkg/diversions" ) || die( "Couldn't open diversions info
 %diverted = ();
 $x = 0;
 while(<DIVERT>) {
-	$diverted{$_} = undef if ( $x % 3 == 0 );
+	chomp;
+	$diverted{$_}++ if ( $x % 3 == 0 );
 	$x++;
 }
 
 close DIVERT or die "Couldn't close diversions info\n";
 
-open(DPKG, "find /var/lib/dpkg/info -type f -name '*.list' | xargs cat | sort |") or die "Couldn't open dpkg info: $!\n";
+open(DPKG, "find /var/lib/dpkg/info -type f -name '*.list' | xargs cat | sort | uniq -c|") or die "Couldn't open dpkg info: $!\n";
+my $re = qr{^\s*(\d+)\s+(.*)$};
 while($l=<DPKG>) {
-	print $l unless exists $diverted{$l};
+	chomp $l;
+	$l =~ $re or warn "invalid input: \"$l\"";
+	my ($times, $file, $line) = ($1, $2, $2."\n");
+	print $line x ($times - $diverted{$file}) if $times > $diverted{$file};
 }
 close DPKG or die "Couldn't close dpkg info: $!\n";
