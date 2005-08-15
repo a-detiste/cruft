@@ -9,9 +9,12 @@ cruft (0.9.6-0.8) experimental; urgency=low
     - gconf: avoid warning if there are no gconf schema files
   * helper scripts: reimplemented as one Perl script
   * filter files: automatically updated and added some
-  * Makefile: tweaked not to install .svn metadata
+  * Makefile.in:
+    - tweaked not to install .svn metadata
+    - really modified to remove shellexp.o in clean rule (last time it must
+      have been Makefile, not .in)
 
- -- Marcin Owsiany <porridge@debian.org>  Mon, 15 Aug 2005 15:09:40 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 15 Aug 2005 15:40:12 +0200
 
 cruft (0.9.6-0.7) experimental; urgency=medium
 

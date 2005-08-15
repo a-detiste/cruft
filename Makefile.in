@@ -34,7 +34,7 @@ install : install1 install2 installdirs cruft extrafiles
 	$(INS) extrafiles $(DESTDIR)/usr/lib/cruft/filters/cruft
 
 clean : 
-	rm -f $(PROGS) *~ debian/*~
+	rm -f $(PROGS) shellexp.o *~ debian/*~
 
 distclean : clean
 	rm -f Makefile config.cache config.status config.log
