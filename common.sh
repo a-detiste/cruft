@@ -73,3 +73,28 @@ set_ignores()
 	echo "$@" > /var/spool/cruft/IGNORES
 }
 
+
+# This function checks if, and how the argument should be scanned, depending on
+# current DRIVES and IGNORES, and echoes a no-op or a find command suffixed
+# with appropriate options
+cruft_find()
+{
+	local arg="$1"
+	shift
+	if [ -n "$1" ]; then
+		echo "cruft_find expects only one argument" >&2
+	fi
+	
+	PRUNES=""
+	for IGNORE in $(get_ignores); do
+		if is_subdir "$IGNORE" "$FTPDIR"; then
+			echo ":" "$arg"
+			return
+		elif is_subdir "$FTPDIR" "$IGNORE"; then
+			PRUNES="$(add_prune "$PRUNES" "$IGNORE")"
+		fi
+	done
+	PRUNES=$(finish_prunes "$PRUNES")
+	echo find "$arg" $PRUNES
+}
+
