@@ -67,11 +67,14 @@ if [ "$FILES" = yes ]; then
 
 	for a in *; do 
 		[ -x "$a" ] && 
-			( ./$a | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
+			( ./$a |
+			  sed "s:/\.$:/:;s:/$::;s:^$:/:" |
+			  /usr/lib/cruft/filter_ignores |
 			  /usr/lib/cruft/extrafiles |
 			  /usr/lib/cruft/canonical |
 			  sort | uniq > /var/spool/cruft/expl_$a
 			) 3>&1 | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
+			  /usr/lib/cruft/filter_ignores |
 			  /usr/lib/cruft/extrafiles |
 			  /usr/lib/cruft/canonical | 
 			  sort | uniq > /var/spool/cruft/need_$a
@@ -82,10 +85,12 @@ if [ "$FILES" = yes ]; then
 	for a in *; do
 		[ -x "$a" ] && 
 			( ./$a | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
+			  /usr/lib/cruft/filter_ignores |
 			  /usr/lib/cruft/extrafiles |
 			  /usr/lib/cruft/canonical | 
 			  sort | uniq > /var/spool/cruft/expl_$a
 			) 3>&1 | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
+			  /usr/lib/cruft/filter_ignores |
 			  /usr/lib/cruft/extrafiles |
 			  /usr/lib/cruft/canonical | 
 			  sort | uniq > /var/spool/cruft/need_$a

@@ -5,9 +5,13 @@ cruft (0.9.6-0.8) experimental; urgency=low
     - do not use "/dev/stdout", rather cat to implied stdout. Also chdir to
       original directory before catting to a report file.
     - pass DRIVES information using a file in spool
+    - use filter_ignores
   * common.sh: new cruft_find function wrapping around "find", pass DRIVES
     information using a file in spool
   * cruft_find: added new perl script to implement the cruft_find function
+  * filter_ignores: added new perl script to filter filenames WRT setting of
+    DRIVES and IGNORES (Closes: #47513)
+  * common.pl: added new perl library with common perl code
   * explain scripts:
     - dpkg: use find|xargs|cat|sort instead of globbing (Closes: #284711)
     - dpkg: count diversions and file occurences and print filenames correct
@@ -24,9 +28,9 @@ cruft (0.9.6-0.8) experimental; urgency=low
     - tweaked not to install .svn metadata
     - really modified to remove shellexp.o in clean rule (last time it must
       have been Makefile, not .in)
-    - added cruft_find installation
+    - added cruft_find and common.pl installation
 
- -- Marcin Owsiany <porridge@debian.org>  Mon, 29 Aug 2005 22:18:41 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 29 Aug 2005 23:29:56 +0200
 
 cruft (0.9.6-0.7) experimental; urgency=medium
 

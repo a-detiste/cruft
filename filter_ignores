@@ -1,0 +1,12 @@
+#!/usr/bin/perl -w
+BEGIN{
+	require '/usr/lib/cruft/common.pl';
+	@I=ignores;@S=scan_fs;@NS=noscan_fs;
+	%M  = ( map {$_=> 1} @S);
+	%M  = ( %M, map {$_=>0} @NS );
+}
+chomp;
+$l=$_;
+next if grep { is_subdir($_,$l) } @I;
+$M{get_direct_fs($l,(@S,@NS))} ? print "$l\n" : next
+
