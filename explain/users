@@ -7,7 +7,7 @@ for user in root `awk -F: '{ if ( 1000 <= $3 && $3 < 30000 ) print $1 }' /etc/pa
 	home=`grep "^$user:" /etc/passwd | cut -d: -f6`
 
 	if [ -d "$home" ]; then
-		$(cruft_find "$home") -user $user
+		cruft_find "$home" -user $user
 	fi
 
 	[ -e /var/mail/$user ] && echo /var/mail/$user

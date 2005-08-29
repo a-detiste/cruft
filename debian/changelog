@@ -3,8 +3,11 @@ cruft (0.9.6-0.8) experimental; urgency=low
   * Non-maintainer upload blessed by aj
   * cruft:
     - do not use "/dev/stdout", rather cat to implied stdout. Also chdir to
-    original directory before catting to a report file.
-  * common.sh: new cruft_find function wrapping around "find"
+      original directory before catting to a report file.
+    - pass DRIVES information using a file in spool
+  * common.sh: new cruft_find function wrapping around "find", pass DRIVES
+    information using a file in spool
+  * cruft_find: added new perl script to implement the cruft_find function
   * explain scripts:
     - dpkg: use find|xargs|cat|sort instead of globbing (Closes: #284711)
     - dpkg: count diversions and file occurences and print filenames correct
@@ -12,6 +15,7 @@ cruft (0.9.6-0.8) experimental; urgency=low
     - gconf: avoid warning if there are no gconf schema files
     - lost_found: source common.sh before using its functions
     - home_ftp, users: use new common.sh cruft_find function
+    - dev: adjusted fs list
   * helper scripts: reimplemented as one Perl script, removed outdated updater
     scripts. They don't contain old non-FHS paths now. (Closes: #126855)
   * filter files: both automatically and manually updated and added some
@@ -20,8 +24,9 @@ cruft (0.9.6-0.8) experimental; urgency=low
     - tweaked not to install .svn metadata
     - really modified to remove shellexp.o in clean rule (last time it must
       have been Makefile, not .in)
+    - added cruft_find installation
 
- -- Marcin Owsiany <porridge@debian.org>  Sun, 21 Aug 2005 22:23:44 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 29 Aug 2005 22:18:41 +0200
 
 cruft (0.9.6-0.7) experimental; urgency=medium
 

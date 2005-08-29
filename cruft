@@ -5,7 +5,9 @@
 #	exit 2
 #fi
 
-DRIVES=`mount | egrep -v " type ([an]fs|proc|usbfs|devpts|tmpfs|sysfs)" | cut -d\  -f3`
+. /usr/lib/cruft/common.sh
+
+DRIVES=$(cruft_default_scan_fs)
 [ -z "$DRIVES" ] && DRIVES=/
 # empty means stdout
 REPORTFILE=""
@@ -21,8 +23,6 @@ usage()
 {
 	echo "Usage: [-h] [-d DRIVES] [-r REPORTFILE] [-m ADDRESS] [-k | -n | -N]"
 }
-
-. /usr/lib/cruft/common.sh
 
 while [ $# != 0 ]; do
 	case "$1" in
@@ -53,7 +53,8 @@ if [ "$CLEANUP" = "yes" ]; then
 	rm -f /var/spool/cruft/*
 fi
 
-set_ignores "$IGNORES"
+set_cruft_scan_fs $DRIVES
+set_ignores $IGNORES
 
 # set collation order to POSIX, to avoid differences between own programs' and
 # sort output

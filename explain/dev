@@ -1,6 +1,6 @@
 #!/bin/sh
 # If cruft is not entering /dev, then don't scan it here either
-if mount | awk '$3 == "/dev" {print $1}' | egrep -q '^(nfs|proc|usbfs|devpts|tmpfs|sysfs)$'
+if mount | awk '$3 == "/dev" {print $1}' | egrep -q '^(proc|(a|n|usb|tmp|sys)fs|devpts)$'
 then
 	exit 0
 else

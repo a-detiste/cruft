@@ -1,13 +1,51 @@
 
+# print default list of all mounted filesystems to scan
+cruft_default_scan_fs()
+{	
+	mount | egrep -v " type (proc|devpts|(a|n|usb|tmp|sys)fs)" | cut -d\  -f3
+}
+
+# set list of fs to scan, for other programs
+set_cruft_scan_fs()
+{
+	: > /var/spool/cruft/DRIVES
+	for x in "$@"; do echo $x >> /var/spool/cruft/DRIVES; done
+}
+
+# print all mounted filesystems
+cruft_all_fs()
+{	
+	mount | cut -d\  -f3
+}
+
+# print all mounted filesystems to scan. Obeys what set_scan_drives has set.
+cruft_scan_fs()
+{
+	cat /var/spool/cruft/DRIVES
+}
+
+# print all mounted filesystems not to scan. Obeys what set_scan_drives has set.
+cruft_noscan_fs()
+{	
+	for fs in $(cruft_all_fs); do
+		yes=0
+		for yesfs in $(get_cruft_scan_fs); do
+			if [ "$fs" = "$yesfs" ]; then yes=1; fi
+		done
+		[ "$yes" = "1" ] || echo "$fs"
+	done
+}
+
+# Checks whether a dir is a subdir of another
 # usage:
 # is_subdir potential_base potential_subdir
-#  0 = success ; if potential_subdir is a subdir of potential_base
+#  0 = success ; if potential_subdir is a subdir of potential_base or they are the same
 #  1 = failure ; otherwise
 is_subdir()
 {
 	dir="$1";shift
 	sub="$1";shift
-	# remove trailing slash
+	# remove trailing slash, unless the dir is root dir itself
 	[ / != "$dir" ] && dir="${dir%/}"
 	[ / != "$sub" ] && sub="${sub%/}"
 
@@ -70,31 +108,16 @@ get_ignores()
 
 set_ignores()
 {
-	echo "$@" > /var/spool/cruft/IGNORES
+	: > /var/spool/cruft/IGNORES
+	for x in "$@"; do echo $x >> /var/spool/cruft/IGNORES; done
 }
 
 
 # This function checks if, and how the argument should be scanned, depending on
-# current DRIVES and IGNORES, and echoes a no-op or a find command suffixed
-# with appropriate options
+# current DRIVES and IGNORES, and either does nothing or runs find command(s)
+# suffixed with appropriate options
 cruft_find()
 {
-	local arg="$1"
-	shift
-	if [ -n "$1" ]; then
-		echo "cruft_find expects only one argument" >&2
-	fi
-	
-	PRUNES=""
-	for IGNORE in $(get_ignores); do
-		if is_subdir "$IGNORE" "$FTPDIR"; then
-			echo ":" "$arg"
-			return
-		elif is_subdir "$FTPDIR" "$IGNORE"; then
-			PRUNES="$(add_prune "$PRUNES" "$IGNORE")"
-		fi
-	done
-	PRUNES=$(finish_prunes "$PRUNES")
-	echo find "$arg" $PRUNES
+	/usr/lib/cruft/cruft_find "$@"
 }
 

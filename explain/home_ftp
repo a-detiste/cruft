@@ -8,5 +8,5 @@ fi
 . /usr/lib/cruft/common.sh
 
 if [ -e "$FTPDIR" ]; then
-	$(cruft_find "$FTPDIR")
+	cruft_find "$FTPDIR"
 fi

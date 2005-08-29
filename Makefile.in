@@ -17,7 +17,7 @@ filter_shell dash-search: shellexp.o
 
 all : $(PROGS)
 
-install1 : $(PROGS1) extrafiles common.sh
+install1 : $(PROGS1) extrafiles common.sh cruft_find
 	$(INS) $^ $(DESTDIR)/usr/lib/cruft/
 
 install2 : $(PROGS2)
