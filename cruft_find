@@ -112,8 +112,8 @@ sub do_find($)
 	my @do_scan = scan_fs;
 	my @dont_scan = noscan_fs;
 	my @ignore = ignores;
-	use Data::Dumper 'Dumper';
-	warn Dumper({FS=>$FS,path=>$path,doscan=>\@do_scan,dont=>\@dont_scan,ignore=>\@ignore});
+#	use Data::Dumper 'Dumper';
+#	warn Dumper({FS=>$FS,path=>$path,doscan=>\@do_scan,dont=>\@dont_scan,ignore=>\@ignore});
 
 	# $path is below ignored subtree
 	return if grep { is_subdir($_, $path) } @ignore;
