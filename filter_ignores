@@ -1,6 +1,13 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl -wn
 BEGIN{
 	require '/usr/lib/cruft/common.pl';
+	sub is_subdir($$);
+	sub ignores;
+	sub scan_fs;
+	sub all_fs;
+	sub noscan_fs;
+	sub get_direct_fs($@);
+	sub prunes($@);
 	@I=ignores;@S=scan_fs;@NS=noscan_fs;
 	%M  = ( map {$_=> 1} @S);
 	%M  = ( %M, map {$_=>0} @NS );
