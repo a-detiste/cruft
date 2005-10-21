@@ -2,3 +2,4 @@
 /etc/modules
 /etc/modules.conf
 /etc/modutils/conf.i386
+/var/log/ksymoops

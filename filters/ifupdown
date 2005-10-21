@@ -4,3 +4,4 @@
 /etc/network/if-up.d
 /etc/network/ifstate
 /etc/network/interfaces
+/etc/network/run

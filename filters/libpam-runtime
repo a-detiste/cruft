@@ -1,0 +1,4 @@
+/etc/pam.d/common-account
+/etc/pam.d/common-auth
+/etc/pam.d/common-password
+/etc/pam.d/common-session

@@ -1,3 +1,4 @@
 /etc/timezone
+/etc/ld.so.hwcappkgs
 # lckpwdf()
 /etc/.pwd.lock

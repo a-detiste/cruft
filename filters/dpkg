@@ -2,4 +2,6 @@
 /var/lib/dpkg/alternatives/*
 /var/lib/dpkg/info/*
 /var/lib/dpkg/methods/**
+/var/log/dpkg.log
 /etc/dpkg/dpkg.cfg
+/usr/share/info/dir.old
