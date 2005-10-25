@@ -8,3 +8,4 @@
  * think up better names for this stuff?
  * fix possible overflow in readlinks
  * move /tmp handling to filters
+ * only run explain scripts for installed packages
