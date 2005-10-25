@@ -1,23 +1,71 @@
 #!/usr/bin/perl
 
+# read diversions information, and create a hash: diverted_file -> diverting_package
 open(DIVERT, "/var/lib/dpkg/diversions" ) || die( "Couldn't open diversions info\n");
 
-%diverted = ();
-$x = 0;
+my %diverted = ();
+my $x = 0;
+my $lastkey;
 while(<DIVERT>) {
 	chomp;
-	$diverted{$_}++ if ( $x % 3 == 0 );
+	if ( $x % 3 == 0 ){
+		$diverted{$_} = $x if ( $x % 3 == 0 );
+		$lastkey = $_;
+	}
+	$diverted{$lastkey} = $_ if ( $diverted{$lastkey} + 2 == $x );
 	$x++;
 }
 
 close DIVERT or die "Couldn't close diversions info\n";
 
-open(DPKG, "find /var/lib/dpkg/info -type f -name '*.list' | xargs cat | sort | uniq -c|") or die "Couldn't open dpkg info: $!\n";
-my $re = qr{^\s*(\d+)\s+(.*)$};
+# Decide, basing on the diverting package and the list of packages providing
+# the file, whether the file should be present in the system
+# If so, then print file. Otherwise, don't print anything.
+sub decide($$$)
+{
+	my $diverted = shift;
+	my $pkgs = shift;
+	my $line = shift;
+
+	if (not defined $diverted) {
+		# there is no diversion, so the file should be present
+		print $line;
+
+	} elsif (scalar @$pkgs > 1) {
+		# many packages provide it, and there is a diversion
+		# so the file should be present
+		print $line;
+
+	# just one package provides it, and there is a diversion
+	} elsif ($diverted eq $$pkgs[0]) {
+		# the file will be present only if it's provided by the
+		# same package which diverts it
+		print $line;
+	}
+}
+
+# Read the list of installed files in format:
+# /var/lib/dpkg/info/<PROVIDING_PACKAGE>.list:<FILENAME>
+# Look up the diversion hash created above, and print the names of files which
+# should be on the system.
+open(DPKG, "find /var/lib/dpkg/info -type f -name '*.list' | xargs grep -H . | sort -t: -k 2 |") or die "Couldn't open dpkg info: $!\n";
+my $re = qr{^/var/lib/dpkg/info/(\S+)\.list:(.*)$};
+my $lastfile = '';
+my @pkgs;
 while($l=<DPKG>) {
 	chomp $l;
 	$l =~ $re or warn "invalid input: \"$l\"";
-	my ($times, $file, $line) = ($1, $2, $2."\n");
-	print $line x ($times - $diverted{$file}) if $times > $diverted{$file};
+	my ($pkg, $file) = ($1, $2);
+	if ($file eq $lastfile) {
+		push @pkgs, $pkg;
+	} else {
+		# now all pkgs providing $file are in @pkgs
+		# and package diverting that file (if any) is in $diverted{$file}
+		decide($diverted{$lastfile}, \@pkgs, $lastfile."\n") if $lastfile;
+		$lastfile = $file;
+		@pkgs = ($pkg);
+	}
 }
+decide($diverted{$lastfile}, \@pkgs, $lastfile."\n");
 close DPKG or die "Couldn't close dpkg info: $!\n";
+

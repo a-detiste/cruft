@@ -13,6 +13,9 @@
 /etc/papersize
 /etc/adjtime
 /etc/profile
+# those two are created by debootstrap/d-i?
+/etc/hostname
+/etc/resolv.conf
 /var/backups/**
 /var/mail
 /var/opt
@@ -20,6 +23,10 @@
 /var/spool/mail
 /var/run/*.pid
 /var/run/random-seed
+/var/run/utmp
+/var/log/wtmp
+/var/log/wtmp.0
+/var/log/wtmp.*.gz
 /usr/local
 /usr/local/bin
 /usr/local/games

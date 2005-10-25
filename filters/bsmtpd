@@ -1,3 +1,0 @@
-/var/spool/bsmtp/bak/*
-/var/spool/bsmtp/out/*
-/var/log/bsmtp/*

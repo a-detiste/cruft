@@ -1,6 +1,0 @@
-/var/lib/prime-net/local.ini
-/var/lib/prime-net/prime.ini
-/var/lib/prime-net/results.txt
-/var/lib/prime-net/worktodo.ini
-/var/lib/prime-net/[pq]*
-/var/log/prime-net.log*

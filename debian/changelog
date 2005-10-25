@@ -1,11 +1,22 @@
 cruft (0.9.6-0.9) experimental; urgency=low
 
   * Fixed path in debian/extrafiles (Closes: #334091)
-  * New filter files: debconf login passwd libpam-runtime
-  * Updated filter files: ifupdown libc6 dhcp-client info modutils dpkg nvi
-    base-files man-db
+  * Filter files:
+    - new: debconf login passwd libpam-runtime netkit-inetd resolvconf
+    - updated: ifupdown libc6 dhcp-client info modutils dpkg nvi base-files
+      man-db sysklogd
+    - removed filter files not named after packages (timezones lastlog
+      log_wtmp run_utmp) and moved their contents to libc6, login, base-files
+    - removed files for packages nonexistant in sid: ae bsmtpd
+      distributed-net-pproxy dpkg-mountable fvwm2 guile1.2 ldso majordomo
+      msqld netstd prime-net psptools quake tcl7.6 tix41 tk4.2 wwwcount
+      xemacs20-bin
+  * explain/gconf: Run find conditionally if the path exists
+  * explain/dpkg: implemented better diversion detection logic
+  * extrafiles: only use filter files in /usr/lib/cruft/filters if their
+    packages seem installed (Closes: #335507)
 
- -- Marcin Owsiany <porridge@debian.org>  Fri, 21 Oct 2005 16:43:20 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Tue, 25 Oct 2005 13:17:19 +0200
 
 cruft (0.9.6-0.8) experimental; urgency=low
 
