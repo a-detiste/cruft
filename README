@@ -37,10 +37,11 @@ Most of its work is associated to three lists of files:
    This list is put into /var/spool/cruft/expl_*
  
  * list of files which MAY be on the system. It is defined by patterns in files
-   in /usr/lib/cruft/filters, /etc/cruft/filters and
-   /var/lib/dpkg/info/*.extrafiles. Example of files which may be on a system
-   are usually certain spool and cache files, created by package pre/post-inst
-   scripts or at runtime.
+    - in /usr/lib/cruft/filters (only files whose names match installed packages),
+    - /etc/cruft/filters (all files),
+    - /var/lib/dpkg/info/*.extrafiles (all files).
+   An example of files which MAY be on a system are usually certain spool and
+   cache files, created by package pre/post-inst scripts or at runtime.
 
 After producing the list of present files, it is compared to the list of files
 which must be on the system. The files which were not present in the second
@@ -53,7 +54,7 @@ MUST nor MAY BE PRESENT lists).
 (In fact both the list of files actually present on the filesystem, and the
 list of files which must be on the filesystem are filtered through the list of
 patterns of files which may be on the filesystem, and the result is compared
-afterwards, but the effect is the sameas described above.)
+afterwards, but the effect is the same as described above.)
 
 Thus, there are three ways to make cruft not report some files:
 
