@@ -4,6 +4,9 @@ find /usr/share/gconf/schemas -type f | xargs -r egrep '<(applyto|key)>' |
  perl -n -e 'm{<\w+>(/[^/]+/[^/<]+)};print $1."\n"' | sort -u |
  while read n
  do
-   find /etc/gconf/gconf.xml.defaults$n
+   p="/etc/gconf/gconf.xml.defaults$n"
+   if [ -e "$p" ]; then
+     find /etc/gconf/gconf.xml.defaults$n
+   fi
  done
 
