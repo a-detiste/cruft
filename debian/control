@@ -2,8 +2,8 @@ Source: cruft
 Section: admin
 Priority: optional
 Maintainer: Anthony Towns <ajt@debian.org>
-Build-Depends: debhelper
-Standards-Version: 2.4.0.0
+Build-Depends: debhelper (>> 4)
+Standards-Version: 3.6.2
 
 Package: cruft
 Architecture: any
