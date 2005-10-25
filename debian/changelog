@@ -1,5 +1,6 @@
 cruft (0.9.6-0.9) experimental; urgency=low
 
+  * Non-maintainer upload blessed by aj
   * Fixed path in debian/extrafiles (Closes: #334091)
   * Filter files:
     - new: debconf login passwd libpam-runtime netkit-inetd resolvconf
@@ -15,8 +16,19 @@ cruft (0.9.6-0.9) experimental; urgency=low
   * explain/dpkg: implemented better diversion detection logic
   * extrafiles: only use filter files in /usr/lib/cruft/filters if their
     packages seem installed (Closes: #335507)
+  * debian/control:
+    - added >> 4 to debhelper build-dep
+    - updated Standards-Version to 3.6.2
+  * debian/rules: Added policy-required CFLAGS stuff, and cross-compilation
+    helpers
+  * debian/copyright:
+    - fixed typo in path to common-licenses
+    - updated FSF address
+  * debian/changelog: removed obsolete emacs settings
+  * Makefile.in: install common.?? without +x
+  * README: noted the changes to extrafiles
 
- -- Marcin Owsiany <porridge@debian.org>  Tue, 25 Oct 2005 13:17:19 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Tue, 25 Oct 2005 18:09:36 +0200
 
 cruft (0.9.6-0.8) experimental; urgency=low
 
@@ -268,7 +280,3 @@ cruft (0.9) unreleased; urgency=low
 
  -- Anthony Towns <ajt@debian.org>  Sun,  5 Apr 1998 00:46:56 +1000
 
-Local variables:
-mode: debian-changelog
-add-log-mailing-address: "ajt@debian.org"
-End:
