@@ -17,8 +17,11 @@ filter_shell dash-search: shellexp.o
 
 all : $(PROGS)
 
-install1 : $(PROGS1) extrafiles common.sh common.pl cruft_find filter_ignores
+install1 : $(PROGS1) extrafiles cruft_find filter_ignores
 	$(INS) $^ $(DESTDIR)/usr/lib/cruft/
+
+install11 : common.sh common.pl
+	$(INS) -m 0644 $^ $(DESTDIR)/usr/lib/cruft/
 
 install2 : $(PROGS2)
 	$(INS) $< $(DESTDIR)/usr/bin/$<
@@ -29,7 +32,7 @@ installdirs : $(DATADIRS)
 		find $$d -maxdepth 1 -type f | xargs -i cp '{}' $(DESTDIR)/usr/lib/cruft/$$d/; \
 	done
 
-install : install1 install2 installdirs cruft extrafiles
+install : install1 install11 install2 installdirs cruft extrafiles
 	$(INS) cruft $(DESTDIR)/usr/sbin/cruft
 	$(INS) extrafiles $(DESTDIR)/usr/lib/cruft/filters/cruft
 
