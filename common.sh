@@ -86,9 +86,9 @@ add_prune()
 	ignore="$1"; shift
 	
 	if [ -n "$prunes" ]; then
-		echo "${prune} -or -wholename $ignore -prune"
+		echo "${prune} -or -path $ignore -prune"
 	else
-		echo "-wholename $ignore -prune"
+		echo "-path $ignore -prune"
 	fi
 }
 

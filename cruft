@@ -123,9 +123,9 @@ if [ "$FILES" = yes ]; then
 				# $IGNORE is a subdir of $DRIVE
 				# add it to prune list
 				if [ -n "$PRUNE" ]; then
-					PRUNE="${PRUNE}-or -wholename $IGNORE -prune "
+					PRUNE="${PRUNE}-or -path $IGNORE -prune "
 				else
-					PRUNE="-wholename $IGNORE -prune "
+					PRUNE="-path $IGNORE -prune "
 				fi
 			fi
 		done
