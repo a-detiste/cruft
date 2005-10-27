@@ -1,0 +1,3 @@
+/var/lib/aptitude/lock
+/var/lib/aptitude/pkgstates
+/var/log/aptitude*
