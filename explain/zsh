@@ -1,0 +1,3 @@
+#!/bin/bash
+if [ ! -e /usr/share/zsh ]; then exit 0; fi
+find /usr/share/zsh -type f -name \*.zwc
