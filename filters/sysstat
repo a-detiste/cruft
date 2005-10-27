@@ -1,2 +1,3 @@
+/etc/default/sysstat
 /usr/bin/sar
 /usr/share/man/man1/sar.1.gz

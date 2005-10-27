@@ -1,1 +1,3 @@
 /etc/default/rcS
+/var/lib/urandom/random-seed
+/var/log/dmesg

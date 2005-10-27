@@ -1,8 +1,12 @@
 /cdrom
+/cdrom/cdrom0
+/cdrom0
 /floppy
 /initrd
 /opt
 /media
+/media/cdrom
+/media/floppy
 /srv
 /proc
 /sys
@@ -13,20 +17,19 @@
 /etc/papersize
 /etc/adjtime
 /etc/profile
-# those two are created by debootstrap/d-i?
+/etc/inputrc
+# those three are created by debootstrap/d-i?
 /etc/hostname
 /etc/resolv.conf
+/etc/networks
 /var/backups/**
 /var/mail
 /var/opt
 /usr/share/info/dir
 /var/spool/mail
 /var/run/*.pid
-/var/run/random-seed
 /var/run/utmp
-/var/log/wtmp
-/var/log/wtmp.0
-/var/log/wtmp.*.gz
+/var/log/wtmp*
 /usr/local
 /usr/local/bin
 /usr/local/games

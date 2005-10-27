@@ -7,4 +7,6 @@
 /var/lib/apt/lists/*
 /var/lib/apt/lists/partial/*
 /etc/apt/sources.list
+/etc/apt/apt.conf
+/etc/apt/preferences
 /etc/apt/trusted.gpg

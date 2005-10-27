@@ -1,2 +1,3 @@
 /etc/environment
 /etc/locale.gen
+/var/lib/locale/locale-archive
