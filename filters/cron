@@ -3,3 +3,4 @@
 /var/log/setuid.today
 /var/log/setuid.yesterday
 /var/spool/cron/crontabs/*
+/var/run/crond.reboot

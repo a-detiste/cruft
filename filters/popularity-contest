@@ -1,1 +1,2 @@
 /etc/popularity-contest.conf
+/var/log/popularity-contest*

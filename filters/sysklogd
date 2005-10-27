@@ -10,6 +10,9 @@
 /var/log/mail.warn*
 /var/log/messages*
 /var/log/news
+/var/log/news/news.crit*
+/var/log/news/news.err*
+/var/log/news/news.notice*
 /var/log/news.crit*
 /var/log/news.err*
 /var/log/news.notice*

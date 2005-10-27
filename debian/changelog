@@ -2,8 +2,19 @@ cruft (0.9.6-0.9.sarge.0.2) stable; urgency=low
 
   * Filter files:
     - new: ncurses-base
+  * Merged changes from 0.9.6-0.10
+    - Non-maintainer upload blessed by aj
+    - Filter files:
+      + new: aptitude apt-listchanges ca-certificates console-common cvs dump
+        exim4-config fonty iptraf libblkid1 libsnmp-base lm-sensors logcheck
+        logrotate mime-support nagios-nrpe-server samba-common snmpd ucf
+      + updated: apt base-files cron findutils initscripts locales modutils
+        popularity-contest postfix resolvconf ssh sudo sysklogd sysstat
+    - Explain scripts:
+      + new: grub zsh
+      + fixed: lost_found works properly on no ignores
 
- -- Marcin Owsiany <porridge@debian.org>  Thu, 27 Oct 2005 13:43:02 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 27 Oct 2005 20:31:02 +0200
 
 cruft (0.9.6-0.9.sarge.0.1) stable; urgency=low
 
