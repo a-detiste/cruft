@@ -8,11 +8,11 @@ cruft (0.9.6-0.11) experimental; urgency=low
   * Filter files:
     - fixed: apt-listchanges (wrong path to config file), locales (wrong path
       to locale-archive)
-    - updated: netbase ucf
+    - updated: netbase ucf sysstat
     - new: aide clamav-daemon clamav-freshclam sgml-base xml-core exim4-base
       exim4-daemon-heavy
 
- -- Marcin Owsiany <porridge@debian.org>  Fri, 28 Oct 2005 12:42:32 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 28 Oct 2005 12:45:22 +0200
 
 cruft (0.9.6-0.10) experimental; urgency=low
 
