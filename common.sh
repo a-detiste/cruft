@@ -2,7 +2,7 @@
 # print default list of all mounted filesystems to scan
 cruft_default_scan_fs()
 {	
-	mount | egrep -v " type (proc|devpts|(a|n|usb|tmp|sys)fs)" | cut -d\  -f3
+	mount | egrep -v " type (proc|devpts|nfs[1234]?|ncp|coda|(a|smb|ci|ncp|usb|tmp|sys)fs)" | cut -d\  -f3
 }
 
 # set list of fs to scan, for other programs
