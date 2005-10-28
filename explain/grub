@@ -1,5 +1,7 @@
 #!/bin/bash
 d=/boot/grub
 if [ ! -d "$d" ]; then d=/boot/boot/grub; fi
-if [ ! -f "$d" ]; then exit 0; fi
+if [ ! -d "$d" ]; then exit 0; fi
+if [ "$d" = "/boot/boot/grub" ]; then echo /boot/boot; fi
+echo $d
 find $d -type f -name stage1 -or -name stage2 -or -name \*_stage1_5 -or -name device.map -or -name menu.lst\*

@@ -1,3 +1,24 @@
+cruft (0.9.6-0.9.sarge.0.3) stable; urgency=low
+
+  * Merged changes from 0.9.6-0.11
+    - Non-maintainer upload blessed by aj
+    - common.sh: local-scope function variables
+    - Explain scripts:
+      + fixed executable permission: grub zsh
+      + fixed error: grub (echo grub directory)
+      + new: screen apt-listchanges cvs2svn
+    - Filter files:
+      + fixed: apt-listchanges (wrong path to config file), locales (wrong path
+        to locale-archive)
+      + updated: netbase ucf sysstat exim4-config apt-listchanges (moved pyc
+        to explain script)
+      + new: aide clamav-daemon clamav-freshclam sgml-base xml-core exim4-base
+        exim4-daemon-heavy stunnel4 debsums libapr0
+    - Extended the list of remote filesystems in common.sh and explain/dev
+      (partially stolen from netbase).
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 28 Oct 2005 18:49:37 +0200
+
 cruft (0.9.6-0.9.sarge.0.2) stable; urgency=low
 
   * Filter files:
