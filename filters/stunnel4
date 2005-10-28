@@ -1,3 +1,4 @@
 /var/log/stunnel4
 /var/log/stunnel4/stunnel.log*
 /var/run/stunnel4
+/var/run/stunnel4/stunnel.pid
