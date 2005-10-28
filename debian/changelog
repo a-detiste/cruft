@@ -5,17 +5,18 @@ cruft (0.9.6-0.11) experimental; urgency=low
   * Explain scripts:
     - fixed executable permission: grub zsh
     - grub: fixed error in script
-    - screen: new script
+    - new: screen apt-listchanges
   * Filter files:
     - fixed: apt-listchanges (wrong path to config file), locales (wrong path
       to locale-archive)
-    - updated: netbase ucf sysstat exim4-config
+    - updated: netbase ucf sysstat exim4-config apt-listchanges (moved pyc
+      to explain script)
     - new: aide clamav-daemon clamav-freshclam sgml-base xml-core exim4-base
       exim4-daemon-heavy stunnel4 debsums libapr0
   * Extended the list of remote filesystems in common.sh and explain/dev
     (partially stolen from netbase).
 
- -- Marcin Owsiany <porridge@debian.org>  Fri, 28 Oct 2005 14:43:18 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 28 Oct 2005 15:04:30 +0200
 
 cruft (0.9.6-0.10) experimental; urgency=low
 
