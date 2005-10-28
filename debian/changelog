@@ -4,7 +4,8 @@ cruft (0.9.6-0.11) experimental; urgency=low
   * common.sh: local-scope function variables
   * Explain scripts:
     - fixed executable permission: grub zsh
-    - grub fixed error in script
+    - grub: fixed error in script
+    - screen: new script
   * Filter files:
     - fixed: apt-listchanges (wrong path to config file), locales (wrong path
       to locale-archive)
@@ -12,7 +13,7 @@ cruft (0.9.6-0.11) experimental; urgency=low
     - new: aide clamav-daemon clamav-freshclam sgml-base xml-core exim4-base
       exim4-daemon-heavy stunnel4
 
- -- Marcin Owsiany <porridge@debian.org>  Fri, 28 Oct 2005 12:49:15 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 28 Oct 2005 13:17:05 +0200
 
 cruft (0.9.6-0.10) experimental; urgency=low
 
