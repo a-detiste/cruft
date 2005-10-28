@@ -1,3 +1,4 @@
+/etc/clamav/clamd.conf
 /var/log/clamav/clamav.log*
 /var/run/clamav/clamd.ctl
 /var/run/clamav/clamd.pid
