@@ -28,7 +28,7 @@ cruft_scan_fs()
 cruft_noscan_fs()
 {	
 	for fs in $(cruft_all_fs); do
-		yes=0
+		local yes=0
 		for yesfs in $(get_cruft_scan_fs); do
 			if [ "$fs" = "$yesfs" ]; then yes=1; fi
 		done
@@ -43,8 +43,8 @@ cruft_noscan_fs()
 #  1 = failure ; otherwise
 is_subdir()
 {
-	dir="$1";shift
-	sub="$1";shift
+	local dir="$1";shift
+	local sub="$1";shift
 	# remove trailing slash, unless the dir is root dir itself
 	[ / != "$dir" ] && dir="${dir%/}"
 	[ / != "$sub" ] && sub="${sub%/}"
@@ -59,7 +59,7 @@ is_subdir()
 	[ / = "$sub" ] && return 1
 
 	# try to remove $dir from beginning of $sub
-	trail="${sub##$dir}"
+	local trail="${sub##$dir}"
 
 	if [ "$sub" = "$trail" ] ; then
 		# since stripping did not succeed (no change)
@@ -82,8 +82,8 @@ is_subdir()
 
 add_prune()
 {
-	prunes="$1"; shift
-	ignore="$1"; shift
+	local prunes="$1"; shift
+	local ignore="$1"; shift
 	
 	if [ -n "$prunes" ]; then
 		echo "${prune} -or -wholename $ignore -prune"
