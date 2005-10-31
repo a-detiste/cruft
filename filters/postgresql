@@ -1,0 +1,3 @@
+/var/lib/postgres
+# this should probably be more sophisticated
+/var/lib/postgres/**
