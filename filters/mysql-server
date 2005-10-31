@@ -7,3 +7,5 @@
 /var/log/mysql/mysql-bin.*
 /var/log/mysql/mysql.log*
 /var/log/mysql/mysql.err*
+/var/run/mysqld/mysqld.pid
+/var/run/mysqld/mysqld.sock
