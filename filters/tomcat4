@@ -3,3 +3,4 @@
 /var/lib/tomcat4/conf/tomcat-users.xml
 /var/lib/tomcat4/temp/tomcat4.pid
 /var/lib/tomcat4/webapps/*/WEB-INF/web.xml
+/var/log/tomcat4/catalina.out*
