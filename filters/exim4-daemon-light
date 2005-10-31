@@ -1,0 +1,6 @@
+/var/run/exim4
+/var/run/exim4/exim.pid
+/var/log/exim4
+/var/log/exim4/mainlog*
+/var/log/exim4/paniclog*
+/var/log/exim4/rejectlog*
