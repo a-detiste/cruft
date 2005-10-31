@@ -3,10 +3,11 @@ cruft (0.9.6-0.12) experimental; urgency=low
   * Non-maintainer upload blessed by aj
   * Explain scripts:
     - apt-listchanges cvs2svn: only echo files if they exist
+    - reportbug: new script
   * Filter files:
     - updated: base-files
 
- -- Marcin Owsiany <porridge@debian.org>  Sat, 29 Oct 2005 16:42:29 +0200
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 31 Oct 2005 12:31:39 +0100
 
 cruft (0.9.6-0.11) experimental; urgency=low
 
