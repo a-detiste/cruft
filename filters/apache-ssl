@@ -8,3 +8,4 @@
 /var/log/apache-ssl/error.log*
 /var/log/apache-ssl/ssl.log*
 /var/run/apache-ssl.pid
+/var/run/gcache_port
