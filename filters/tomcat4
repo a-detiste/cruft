@@ -1,0 +1,5 @@
+/var/lib/tomcat4/conf/catalina.policy
+/var/lib/tomcat4/conf/jk2.properties
+/var/lib/tomcat4/conf/tomcat-users.xml
+/var/lib/tomcat4/temp/tomcat4.pid
+/var/lib/tomcat4/webapps/*/WEB-INF/web.xml
