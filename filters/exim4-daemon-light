@@ -1,5 +1,3 @@
-/var/spool/exim4/scan
-/var/spool/exim4/scan/**
 /var/run/exim4
 /var/run/exim4/exim.pid
 /var/log/exim4

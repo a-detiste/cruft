@@ -1,0 +1,7 @@
+/var/lib/postgres
+# this should probably be more sophisticated
+/var/lib/postgres/**
+/var/log/postgresql
+/var/log/postgresql/postgres.log*
+/var/run/postgresql/.s.PGSQL.5432
+/var/run/postgresql/.s.PGSQL.5432.lock

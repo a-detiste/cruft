@@ -1,3 +1,7 @@
+# dhelp 0.5.20
+/etc/dhelp
+/etc/dhelp/www-browser-console
+/etc/dhelp/www-browser-x
 /usr/share/doc/**/.dhelp
 /usr/share/doc/HTML
 /usr/share/doc/HTML/**

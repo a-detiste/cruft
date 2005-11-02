@@ -1,1 +1,2 @@
-/etc/ppp/connect-errors
+# ppp 2.4.3-20050321+2
+/var/log/ppp-connect-errors*

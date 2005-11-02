@@ -2,4 +2,4 @@
 p='apt-listchanges'
 f="/var/lib/dpkg/info/$p.list"
 if [ ! -e "$f" ]; then exit 0; fi
-cat "$f" | awk '$0~/\.py$/ {print $0"c\n" $0"o"}'
+cat "$f" | awk '$0~/\.py$/ {print $0"c\n" $0"o"}' | while read o; do if [ -e "$o" ]; then echo "$o"; fi; done

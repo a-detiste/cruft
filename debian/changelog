@@ -1,3 +1,25 @@
+cruft (0.9.6-0.9.sarge.0.4) stable; urgency=low
+
+  * Merged changes from 0.9.6-0.11
+    - Non-maintainer upload blessed by aj
+    - Many thanks to Jeremy Bygott, who provided most of the patches for many
+      changes in this release
+    - Explain scripts:
+      + apt-listchanges cvs2svn: only echo files if they exist
+      + reportbug: new script
+    - Filter files:
+      + updated: base-files exim4-daemon-heavy apache debsums dhelp ppp
+      + new: mysql-server postgresql tomcat4 syslog-ng apache-ssl
+        exim4-daemon-light chkrootkit hotplug lg-base libpango1.0-common
+        octave2.0 xfstt xscreensaver
+      + removed: pgp-i ppp-pam suidmanager wenglish
+      + renamed: expect5.24 -> expect, nethack -> nethack-common, wu-ftpd-academ
+        -> wu-ftpd, xntp3 -> ntp, filters/dhcpd -> filters/dhcp (also fixed a
+        path), xbase -> xfree86-common (updated a config file path), xemacs ->
+        xemacs21 (updated+fixed a path)
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed,  2 Nov 2005 17:26:28 +0100
+
 cruft (0.9.6-0.9.sarge.0.3) stable; urgency=low
 
   * Merged changes from 0.9.6-0.11

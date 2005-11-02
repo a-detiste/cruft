@@ -1,0 +1,11 @@
+/etc/apache-ssl/access.conf
+/etc/apache-ssl/conf
+/etc/apache-ssl/cron.conf
+/etc/apache-ssl/httpd.conf
+/etc/apache-ssl/mime.types
+/etc/apache-ssl/srm.conf
+/var/log/apache-ssl/access.log*
+/var/log/apache-ssl/error.log*
+/var/log/apache-ssl/ssl.log*
+/var/run/apache-ssl.pid
+/var/run/gcache_port

@@ -4,5 +4,7 @@
 /etc/apache/httpd.conf
 /etc/apache/mime.types
 /etc/apache/srm.conf
-/var/log/apache/*
-/var/run/accept.lock.*
+/var/log/apache/access.log
+/var/log/apache/error.log
+/var/log/apache/ssl.log
+/var/run/apache.pid
