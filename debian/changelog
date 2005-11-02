@@ -7,9 +7,9 @@ cruft (0.9.6-0.12) experimental; urgency=low
   * Filter files:
     - updated: base-files exim4-daemon-heavy apache
     - new: mysql-server postgresql tomcat4 syslog-ng apache-ssl
-      exim4-daemon-light chkrootkit
+      exim4-daemon-light chkrootkit hotplug
 
- -- Marcin Owsiany <porridge@debian.org>  Wed,  2 Nov 2005 16:23:44 +0100
+ -- Marcin Owsiany <porridge@debian.org>  Wed,  2 Nov 2005 16:25:34 +0100
 
 cruft (0.9.6-0.11) experimental; urgency=low
 
