@@ -1,3 +1,10 @@
+# xml-core 0.09
+/etc/xml
+/etc/xml/catalog
+/etc/xml/catalog.old
+/etc/xml/xml-core.xml
+/etc/xml/xml-core.xml.old
+/etc/sgml/xml-core.cat
 /var/lib/xml-core
 /var/lib/xml-core/catalog
 /var/lib/xml-core/xml-core

@@ -1,0 +1,4 @@
+# pbuilder 0.123
+/var/cache/pbuilder/aptcache/*.deb
+/var/cache/pbuilder/build
+/var/cache/pbuilder/result/*

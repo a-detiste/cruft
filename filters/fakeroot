@@ -1,3 +1,6 @@
+# fakeroot 1.2.10
 /usr/bin/fakeroot
 /usr/share/man/man1/faked.1.gz
 /usr/share/man/man1/fakeroot.1.gz
+# looks like the SONAME causes ldconfig to create this link
+/usr/lib/libfakeroot.so.0

@@ -4,6 +4,7 @@
 /etc/apache-ssl/httpd.conf
 /etc/apache-ssl/mime.types
 /etc/apache-ssl/srm.conf
+/etc/apache-ssl/modules.conf
 /var/log/apache-ssl/access.log*
 /var/log/apache-ssl/error.log*
 /var/log/apache-ssl/ssl.log*

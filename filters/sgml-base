@@ -1,1 +1,5 @@
+# sgml-base 1.26
+/etc/sgml
+/etc/sgml/catalog
+/etc/sgml/catalog.old
 /var/lib/sgml-base

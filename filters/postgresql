@@ -1,3 +1,5 @@
+/etc/postgresql/postgresql.conf
+/etc/postgresql/postmaster.conf
 /var/lib/postgres
 # this should probably be more sophisticated
 /var/lib/postgres/**
