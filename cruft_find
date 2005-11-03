@@ -48,7 +48,9 @@ sub do_find($)
 	elsif (grep { $_ eq $FS } @do_scan) {
 		# and there are no dont-scan FS under $path
 		if (not grep { is_subdir($path, $_) } @dont_scan) {
-			system("find $path ".prunes($path, @ignore).' '.join(' ', @params));
+			my $cmd = "find $path ".prunes($path, @ignore).' '.join(' ', @params);
+			print STDERR "Running [$cmd]\n" if exists $ENV{'CRUFT_DEBUG'};
+			system($cmd);
 		} else {
 		# TODO: and there are dont-scan FS under $path
 		# foreach (NI under $path) find NI -xdev

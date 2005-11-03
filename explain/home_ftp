@@ -1,11 +1,12 @@
 #!/bin/sh
 
+. /usr/lib/cruft/common.sh
+cruft_debug
+
 FTPDIR=/home/ftp
 if grep '^ftp:' /etc/passwd >/dev/null 2>&1; then
 	FTPDIR=`awk -F: '$1 == "ftp" { print $6 }' /etc/passwd`
 fi
-
-. /usr/lib/cruft/common.sh
 
 if [ -e "$FTPDIR" ]; then
 	cruft_find "$FTPDIR"

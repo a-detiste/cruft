@@ -6,8 +6,11 @@ cruft (0.9.6-0.13) experimental; urgency=low
       libcommons-validator-java libncurses5 pbuilder phpmyadmin
     - updated: apache apache-ssl base-files fakeroot mysql-server postgresql
       sgml-base squid tomcat4 xml-core
+  * cruft_find cruft common.sh explain/users explain/home_ftp
+    explain/lost_found: added conditional debugging support
+  * common.sh, common.pl: properly escape parens on find invocation
 
- -- Marcin Owsiany <porridge@debian.org>  Wed,  2 Nov 2005 21:17:33 +0100
+ -- Marcin Owsiany <porridge@debian.org>  Thu,  3 Nov 2005 11:59:04 +0100
 
 cruft (0.9.6-0.12) experimental; urgency=low
 

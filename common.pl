@@ -90,7 +90,7 @@ sub prunes($@)
 	foreach my $prune (@_) {
 		push @prunes, "-wholename $prune -prune" if is_subdir($path, $prune);
 	}
-	return "( ".join(" -or ", @prunes)." ) -or" if @prunes;
+	return "\\( ".join(" -or ", @prunes)." \\) -or" if @prunes;
 	return '';
 }
 

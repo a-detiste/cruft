@@ -1,4 +1,11 @@
 
+cruft_debug()
+{
+	if [ -n "$CRUFT_DEBUG" ]; then
+		set -x
+	fi
+}
+
 # print default list of all mounted filesystems to scan
 cruft_default_scan_fs()
 {	
@@ -95,7 +102,7 @@ add_prune()
 finish_prunes()
 {
 	if [ -n "$1" ] ; then
-		echo "( $1 ) -or"
+		echo "\\( $1 \\) -or"
 	else
 		echo
 	fi

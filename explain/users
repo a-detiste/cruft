@@ -1,6 +1,7 @@
 #!/bin/sh
 
 . /usr/lib/cruft/common.sh
+cruft_debug
 
 cd /home/
 for user in root `awk -F: '{ if ( 1000 <= $3 && $3 < 30000 ) print $1 }' /etc/passwd`; do
