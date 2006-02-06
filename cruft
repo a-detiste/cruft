@@ -158,7 +158,11 @@ if [ "$FILES" = yes ]; then
 		egrep -v "^$CHROOT/" broken_symlinks.tmp > broken_symlinks
 		mv broken_symlinks broken_symlinks.tmp
 	done
-	egrep -v "^/dev/(fd|stdin|stdout|stderr)$" broken_symlinks.tmp > broken_symlinks
+	# TODO this COULD be done more flexibly, by piping it through
+	# filter_shell operating on some special broken-symlinks-which-are-ok
+	# files, but with a handful of cases I don't think it's worth the
+	# effort so far.
+	egrep -v "^/dev/(fd|stdin|stdout|stderr)|/etc/nologin$" broken_symlinks.tmp > broken_symlinks
 	rm broken_symlinks.tmp
 	rm need_link_dests
 fi
