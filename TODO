@@ -1,11 +1,46 @@
+A bit of history and a general roadmap for cruft development:
+-------------------------------------------------------------
+
+Cruft was written by Anthony Towns back in twentieth century. Mainly because of
+lack of consensus on how to specify ignore patterns and how to integrate it
+with dpkg, the development has stalled for several years.
+
+Currently, it is being cleaned up by Marcin Owsiany, and is in nearly usable
+shape (i.e. it does not report false-positives on a fresh current sid base
+installation).
+
+The long-term plan is to:
+ - keep squashing bugs (the code is still messy and hard to understand and
+   maintain)
+ - keep acquiring filter and explain scripts for more packages, at least until
+   cruft output is no longer erroneus on a typical desktop and server
+   installation (the scripts/filters should still be maintained in cruft
+   package).
+ - when the previous step is reached, there should be enough material to decide
+   on how it be implemented (I still think the current code is just a prototype)
+ - when there is established policy on the filter and explain scripts, they
+   should gradually be moved into their respectice packages, and be maintained
+   there (as close to the code they describe as possible).
+ - when the filter/explain files are widely adopted, they could be made Debian
+   policy
+
+Short-term TODO items:
+----------------------
+
+Checks:
  * add a check that symlinks and suchlike to excluded directories
    don't get whined about (/dev/kcore -> /proc/kcore)
  * handle .dpkg-{old,dist,new} files?
- * add a cronjob?
- * make a postinst that pre-ignores /usr/local, /home/ftp or similar?
+ * think over /tmp, /var/tmp, /usr/local, /home/ftp or similar directories
+   whose contents depend on local policy
+ * only run explain scripts for installed packages (similarily as for filters).
+   Make sure all their names match some packages' names
+
+Code quality:
  * remove hard coded constants from .c files
- * write a Makefile for crying out loud!!
- * think up better names for this stuff?
  * fix possible overflow in readlinks
- * move /tmp handling to filters
- * only run explain scripts for installed packages
+ * think up better names for this stuff?
+
+Other features:
+ * add a cronjob?
+

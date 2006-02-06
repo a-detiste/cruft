@@ -1,16 +1,22 @@
-cruft (0.9.6-0.13) experimental; urgency=low
+cruft (0.9.6-0.13) unstable; urgency=low
 
   * Non-maintainer upload blessed by aj
   * Filter files:
     - new: apache-common apt-show-versions devscripts
-      libcommons-validator-java libncurses5 pbuilder phpmyadmin
-    - updated: apache apache-ssl base-files fakeroot mysql-server postgresql
-      sgml-base squid tomcat4 xml-core
+      libcommons-validator-java libncurses5 pbuilder phpmyadmin msttcorefonts
+      gnome-themes initscripts fontconfig scrollkeeper desktop-file-utils
+      shared-mime-info hddtemp
+    - updated: apache apache-ssl base-files fakeroot initscripts mysql-server
+      postgresql sgml-base squid tomcat4 xml-core
   * cruft_find cruft common.sh explain/users explain/home_ftp
     explain/lost_found: added conditional debugging support
   * common.sh, common.pl: properly escape parens on find invocation
+  * debian/rules: properly install the filter file to avoid setting +x
+  * shellexptest.c: new tiny utility to test shellexp
+  * Explain scripts:
+    - new: linda rubber
 
- -- Marcin Owsiany <porridge@debian.org>  Thu,  3 Nov 2005 11:59:04 +0100
+ -- Marcin Owsiany <porridge@debian.org>  Mon,  6 Feb 2006 18:07:18 +0100
 
 cruft (0.9.6-0.12) experimental; urgency=low
 

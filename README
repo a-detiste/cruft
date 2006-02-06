@@ -8,25 +8,27 @@ Preliminary notes:
    with a grain of salt.
 
  * cruft does not make any assumptions about the things you may have in places
-   like /usr/local. You teach cruft of such locations in several ways
+   like /usr/local. You can teach cruft of such locations in several ways
    - read below.
 
  * If you have any suggestions on how to improve cruft, or if you make a
    /usr/lib/cruft/filters/* file for another package, please mail me the
    results for inclusion in a future release, or even better, file them as a
-   bug against cruft.
-
+   bug against cruft. A rough roadmap for cruft development can be found in
+   TODO.
 
 How it works, and what it does:
+-------------------------------
 
-cruft is a program to look over your system for anything that shouldn't
-be there, but is; or for anything that should be there, but isn't.
+cruft is a program to look over your system for anything that shouldn't be
+there, but is; or for anything that should be there, but isn't.
 
 Most of its work is associated to three lists of files:
 
  * list of files ACTUALLY PRESENT on the system. This is produced by running
    'find' on each mounted filesystem in turn, except for:
-    - filesystems of type nfs, proc, usbfs, devpts, tmpfs and sysfs
+    - filesystems of type such as nfs, proc, etc -- the full expression is in
+      cruft_default_scan_fs() in common.sh
     - directories (and their contents) specified by --ignore
    This list is put into /var/spool/cruft/file_*
     
