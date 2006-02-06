@@ -1,0 +1,26 @@
+# shared-mime-info 0.16-3
+# some mysterious files..
+/usr/share/mime/globs
+/usr/share/mime/magic
+/usr/share/mime/XMLnamespaces
+/usr/share/mime/subclasses
+/usr/share/mime/aliases
+# mime types: */*
+/usr/share/mime/application
+/usr/share/mime/application/*.xml
+/usr/share/mime/audio
+/usr/share/mime/audio/*.xml
+/usr/share/mime/image
+/usr/share/mime/image/*.xml
+/usr/share/mime/inode
+/usr/share/mime/inode/*.xml
+/usr/share/mime/message
+/usr/share/mime/message/*.xml
+/usr/share/mime/model
+/usr/share/mime/model/*.xml
+/usr/share/mime/multipart
+/usr/share/mime/multipart/*.xml
+/usr/share/mime/text
+/usr/share/mime/text/*.xml
+/usr/share/mime/video
+/usr/share/mime/video/*.xml
