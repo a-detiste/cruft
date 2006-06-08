@@ -21,7 +21,10 @@ A summary of options are included below.
 Show summary of options.
 .TP
 .B \-d DRIVES
-Search only the listed filesystems. (eg, "/ /usr /home")
+Search only the listed filesystems.
+.B DRIVES
+should be an absolute path, or a quoted, space-separated list of multiple
+absolute paths (eg, "/ /usr /home"). Multiple \-d options are allowed as well.
 .TP
 .B \-\-chroots CHROOTS
 Ignore symlinks under these directories. Useful for whatever chroots are set up
@@ -31,6 +34,9 @@ in the system.
 Treat the directory trees in
 .B IGNORES
 as if they did not exist.
+.B IGNORES
+should be an absolute path, or a quoted, space-separated list of multiple
+absolute paths. Multiple \-\-ignore options are allowed as well.
 .TP
 .B \-r REPORTFILE
 Output report to 

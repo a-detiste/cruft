@@ -29,7 +29,7 @@ usage()
 while [ $# != 0 ]; do
 	case "$1" in
 		-h)	usage; exit 0;;
-		-d)	DRIVES="$2"; shift;;
+		-d)	DRIVES="$DRIVES $2"; shift;;
 		-r)	REPORTFILE="$2"; shift
 			if [ -z "$STARTDIR" -o ! -d "$STARTDIR" ]; then
 				echo "Start directory \"$STARTDIR\" is not accessible." >&2
@@ -38,7 +38,7 @@ while [ $# != 0 ]; do
 			;;
 		-m)	MAILTO="$2"; shift;;
 		--chroots) CHROOTS="$2"; shift ;;
-		--ignore) IGNORES="$2"; shift ;;
+		--ignore) IGNORES="$IGNORES $2"; shift ;;
 		-k)	CLEANUP=yes; FILES=no; REPORT=no;;
 		-n)	CLEANUP=no; FILES=yes; REPORT=no;;
 		-N)	CLEANUP=no; FILES=no; REPORT=yes;;
