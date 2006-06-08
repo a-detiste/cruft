@@ -2,7 +2,6 @@
 /etc/dhelp
 /etc/dhelp/www-browser-console
 /etc/dhelp/www-browser-x
-/usr/share/doc/**/.dhelp
 /usr/share/doc/HTML
 /usr/share/doc/HTML/**
 /var/lib/dhelp
