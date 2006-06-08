@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 p='reportbug'
 f="/var/lib/dpkg/info/$p.list"
 if [ ! -e "$f" ]; then exit 0; fi
