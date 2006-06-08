@@ -1,3 +1,20 @@
+cruft (0.9.6-0.14) unstable; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Moved handling of .dhelp files from filter to modified explain script
+    provided by Kevin Ryde (Closes: #371871) 
+  * Changed interpreter of some bash explain scripts to sh, thanks to Joerg
+    Sommer, who pointed out checkbashisms  (Closes: #367029)
+  * Changed processing of -d and --ignore to allow multiple occurences, and
+    documented it in the manpage (Closes: #371872)
+  * Explain scripts:
+    - new: doc-base
+    - modified: apt-listchanges cvs2svn grub linda reportbug rubber zsh
+  * Filter files:
+    - modified: dhelp
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu,  8 Jun 2006 20:52:33 +0100
+
 cruft (0.9.6-0.13) unstable; urgency=low
 
   * Non-maintainer upload blessed by aj
