@@ -1,3 +1,12 @@
+cruft (0.9.6-0.15) unstable; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Explain scripts:
+    - modified: doc-base (do not complain when doc-base isn't installed)
+    (Closes: #373684)
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 15 Jun 2006 08:29:09 +0100
+
 cruft (0.9.6-0.14) unstable; urgency=low
 
   * Non-maintainer upload blessed by aj
