@@ -3,7 +3,11 @@ A bit of history and a general roadmap for cruft development:
 
 Cruft was written by Anthony Towns back in twentieth century. Mainly because of
 lack of consensus on how to specify ignore patterns and how to integrate it
-with dpkg, the development has stalled for several years.
+with dpkg, the development has stalled for several years. See the following
+threads for more details:
+ http://lists.debian.org/debian-policy/1998/04/msg00032.html
+ http://lists.debian.org/debian-devel/2001/09/msg00647.html
+ http://lists.debian.org/debian-devel/2004/02/msg01915.html
 
 Currently, it is being cleaned up by Marcin Owsiany, and is in nearly usable
 shape (i.e. it does not report false-positives on a fresh current sid base

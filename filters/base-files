@@ -20,6 +20,7 @@
 /etc/adjtime
 /etc/profile
 /etc/inputrc
+/etc/nsswitch.conf
 # those three are created by debootstrap/d-i?
 /etc/hostname
 /etc/resolv.conf
@@ -34,6 +35,7 @@
 /var/log/wtmp*
 /usr/local
 /usr/local/bin
+/usr/local/etc
 /usr/local/games
 /usr/local/include
 /usr/local/lib

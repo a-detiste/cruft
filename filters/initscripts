@@ -1,4 +1,5 @@
 /etc/default/rcS
+/etc/rc.local
 /var/lib/urandom/random-seed
 /var/log/dmesg
 # nologin is a symlink to a file which may be created in /var...
@@ -7,3 +8,4 @@
 /var/run/motd
 /var/log/fsck/checkfs
 /var/log/fsck/checkroot
+/var/log/boot
