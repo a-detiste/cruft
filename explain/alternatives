@@ -2,38 +2,62 @@
 
 open( NEED, ">&=3" ) || die( "Couldn't open output for needed files!?!" );
 
-while( defined($packagefile = glob("/var/lib/dpkg/alternatives/*")) )
+while( defined($alternative_file = glob("/var/lib/dpkg/alternatives/*")) )
 {
-    $package = "$1" if $packagefile =~ m#^.*/([^/]*)$#;
+    $name = "$1" if $alternative_file =~ m#^.*/([^/]*)$#;
 
-    open( FILE, $packagefile ) || die( "Couldn't open $packagefile\n" );
+    open( FILE, $alternative_file ) || die( "Couldn't open $alternative_file\n" );
     
-    $_ = <FILE>;  # auto 
-    $_ = $package;
+    my $mode = <FILE>;
+    my $winner_name = readlink '/etc/alternatives/'.$name or die "Unable to read symlink $name";
     
-    $cnt = 0;
-    do {
-	$alt = "/etc/alternatives/" . $_;
-	
+    # 
+    # parse the first stanza: the names of the symlinks
+    #
+    # @link holds pairs: name of the file in alternatives dir; path of the alternative
+    # e.g.: editor, /usr/bin/editor
+    #       editor.1.gz, /usr/share/man/man1/editor.1.gz
+    #       ...
+    # entry number 0 is the master, the rest are slaves
+    my @link;
+    $link[0][0] = $name;
+    $_ = <FILE>; chomp($_);
+    $link[0][1] = $_;
+
+    my $num_files = 1;
+    while (1) {
 	$_ = <FILE>; chomp($_);
-	$altredir = $_;
-	
-	print $alt, "\n";
-	print $altredir, "\n";
-	
-	$cnt = $cnt + 1;
-	
+	last unless $_;
+	$link[$num_files][0] = $_;
+
 	$_ = <FILE>; chomp($_);
-    } while( $_ ne "" );	
+	$link[$num_files][1] = $_;
+
+	$num_files++;
+    }
     
-    while( $main = <FILE> ) {
-	chomp($main);
-	unless ( $main eq "" ) {
-	    $pri = <FILE>; chomp($pri);
-	    for ( $i = 1; $i < $cnt; $i++ ) { 
-		$alt = <FILE>; chomp($alt);
-		print NEED $alt, "\n" unless ( $alt eq "" );
-	    }
+    # 
+    # parse the stanzas with files provided by packages
+    #
+    my %alternative;
+    my $winner = undef;
+    ALT: while( $master = <FILE> ) {
+	chomp($master);
+	last ALT if $master eq "";
+	die "internal error: duplicate master [$master] in alternatives file $name" if exists $alternative{$master};
+	my $pri = <FILE>; chomp($pri);
+	my $this = $alternative{$master} = { prio => $pri, files => [ $master ] };
+	$winner = $this if $master eq $winner_name;
+	
+	SLAVE: for ( $i = 1; $i < $num_files; $i++ ) {
+		$slave = <FILE>; chomp($slave);
+		$alternative{$master}->{files}->[$i] = $slave;
 	}
-    }    
+    }
+    warn("No alternative declares a file pointed to by master link [$name]: [${winner_name}]"), next unless defined $winner;
+
+    # list the symlinks for files the winning alternative provides
+    for ($i = 0; $i < $num_files; $i++) {
+    	print NEED '/etc/alternatives/', $link[$i][0], "\n", $link[$i][1], "\n" if $winner->{files}->[$i];
+    }
 }

@@ -5,8 +5,10 @@ cruft (0.9.6-0.16) unstable; urgency=low
   * Filter files:
     - new: openbsd-inetd
     - modified: base-files initscripts libc6
+  * explain/alternatives: modified not to list ALL symlinks, just the ones
+    which should be there
 
- -- Marcin Owsiany <porridge@debian.org>  Tue, 19 Sep 2006 21:03:08 +0100
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 17 Jan 2007 20:47:27 +0000
 
 cruft (0.9.6-0.15) unstable; urgency=low
 
