@@ -9,6 +9,10 @@
 #define TRUE (1)
 #define FALSE (0)
 
+#define EXP (0)
+#define FIL (1)
+#define NEE (2)
+
 typedef struct fn_stream {
     FILE* file;
     char  line[1000];
@@ -129,67 +133,67 @@ int main(void) {
 	int least_expl = find_least( &expl );
 	int least_file = find_least( &file );
 	int least_need = find_least( &need );
-	int x[3];
+	int has[3];
 	int y;
 
 	if ( least_expl < 0 && least_file < 0 && least_need < 0 ) break;
 
-	x[0] = least_expl >= 0;
-	x[1] = least_file >= 0;
-	x[2] = least_need >= 0;
+	has[EXP] = least_expl >= 0;
+	has[FIL] = least_file >= 0;
+	has[NEE] = least_need >= 0;
 
-	if ( x[0] && x[1] ) {
+	if ( has[EXP] && has[FIL] ) {
 	    y = strcmp( expl.s[least_expl]->line, file.s[least_file]->line );
 	    if ( y < 0 ) {
-		x[1] = FALSE;
-		if ( x[2] ) {
+		has[FIL] = FALSE;
+		if ( has[NEE] ) {
 		    y = strcmp( expl.s[least_expl]->line, 
 				need.s[least_need]->line );
 		    if ( y < 0 ) {
-			x[2] = FALSE;
+			has[NEE] = FALSE;
 		    } else if ( y > 0 ) {
-			x[0] = FALSE;
+			has[EXP] = FALSE;
 		    }
 		}   
 	    } else if ( y > 0 ) {
-		x[0] = FALSE;
-		if ( x[2] ) {
+		has[EXP] = FALSE;
+		if ( has[NEE] ) {
 		    y = strcmp( file.s[least_file]->line, 
 				need.s[least_need]->line );
 		    if ( y < 0 ) {
-			x[2] = FALSE;
+			has[NEE] = FALSE;
 		    } else if ( y > 0 ) {
-			x[1] = FALSE;
+			has[FIL] = FALSE;
 		    }
 		}
 	    } else {
-		if ( x[2] ) {
+		if ( has[NEE] ) {
 		    y = strcmp( expl.s[least_expl]->line, 
 				need.s[least_need]->line );
 		    if ( y < 0 ) {
-			x[2] = FALSE;
+			has[NEE] = FALSE;
 		    } else if ( y > 0 ) {
-			x[0] = FALSE;
-			x[1] = FALSE;
+			has[EXP] = FALSE;
+			has[FIL] = FALSE;
 		    }
 		}
 	    }
 	}
 
-	assert(x[0] || x[1] || x[2]);
+	assert(has[EXP] || has[FIL] || has[NEE]);
 
-	assert( !x[0] || least_expl >= 0 );
-	assert( !x[1] || least_file >= 0 );
-	assert( !x[2] || least_need >= 0 );
+	assert( !has[EXP] || least_expl >= 0 );
+	assert( !has[FIL] || least_file >= 0 );
+	assert( !has[NEE] || least_need >= 0 );
 
 
 #if 0
 fprintf( stderr, "%c%c%c %s (%s %s %s)\n", 
-	 x[0] ? '*' : '-',
-	 x[1] ? '*' : '-',
-	 x[2] ? '*' : '-',
-	 x[0] ? expl.s[least_expl]->line : 
-	     x[1] ? file.s[least_file]->line :
+	 has[EXP] ? '*' : '-',
+	 has[FIL] ? '*' : '-',
+	 has[NEE] ? '*' : '-',
+	 has[EXP] ? expl.s[least_expl]->line : 
+	     has[FIL] ? file.s[least_file]->line :
                  need.s[least_need]->line,
 	 least_expl >= 0 ? expl.s[least_expl]->line : "(eof)",
 	 least_file >= 0 ? file.s[least_file]->line : "(eof)",
@@ -197,21 +201,21 @@ fprintf( stderr, "%c%c%c %s (%s %s %s)\n",
 	 );
 #endif
 
-	if ( x[0] && !x[1] ) { /* explained, but not there */
+	if ( has[EXP] && !has[FIL] ) { /* explained, but not there */
 	    fprintf( miss[least_expl], "%s\n", expl.s[least_expl]->line );
 	}
 	
-	if ( x[1] && !x[0] ) { /* there, but not explained */
+	if ( has[FIL] && !has[EXP] ) { /* there, but not explained */
 	    fprintf( unex[least_file], "%s\n", file.s[least_file]->line ); 
 	}
 
-	if ( x[2] && !x[1] ) { /* needed but not there */
+	if ( has[NEE] && !has[FIL] ) { /* needed but not there */
 	    fprintf( want[least_need], "%s\n", need.s[least_need]->line ); 
 	}
 
-	if ( x[0] ) next_line( expl.s[least_expl] );
-	if ( x[1] ) next_line( file.s[least_file] );
-	if ( x[2] ) next_line( need.s[least_need] );
+	if ( has[EXP] ) next_line( expl.s[least_expl] );
+	if ( has[FIL] ) next_line( file.s[least_file] );
+	if ( has[NEE] ) next_line( need.s[least_need] );
 
     }
 
