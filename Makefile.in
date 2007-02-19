@@ -17,6 +17,8 @@ filter_shell dash-search: shellexp.o
 
 all : $(PROGS)
 
+merge_diff: merge_diff.o merge_diff_funcs.o
+
 install1 : $(PROGS1) extrafiles cruft_find filter_ignores
 	$(INS) $^ $(DESTDIR)/usr/lib/cruft/
 
@@ -37,7 +39,7 @@ install : install1 install11 install2 installdirs cruft extrafiles
 	$(INS) extrafiles $(DESTDIR)/usr/lib/cruft/filters/cruft
 
 clean : 
-	rm -f $(PROGS) shellexp.o *~ debian/*~ shellexptest.o shellexptest
+	rm -f $(PROGS) merge_diff.o merge_diff_funcs.o shellexp.o *~ debian/*~ shellexptest.o shellexptest
 
 shellexptest: shellexptest.o shellexp.o
 
