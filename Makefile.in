@@ -39,9 +39,11 @@ install : install1 install11 install2 installdirs cruft extrafiles
 	$(INS) extrafiles $(DESTDIR)/usr/lib/cruft/filters/cruft
 
 clean : 
-	rm -f $(PROGS) merge_diff.o merge_diff_funcs.o shellexp.o *~ debian/*~ shellexptest.o shellexptest
+	rm -f $(PROGS) merge_diff.o merge_diff_funcs.o shellexp.o *~ debian/*~ \
+	 shellexptest.o shellexptest merge_diff_test.o merge_diff_test
 
 shellexptest: shellexptest.o shellexp.o
+merge_diff_test: merge_diff_funcs.o merge_diff_test.o
 
 distclean : clean
 	rm -f Makefile config.cache config.status config.log
