@@ -1,0 +1,12 @@
+cruft (0.9.6-0.18) unstable; urgency=low
+
+  * Filters and explain scripts are now only used if a package with the same
+    name is present on the system. Rename your files to UPPER_CASE if you want
+    them to be used every time.
+
+  * Directories /etc/cruft/filters and /usr/lib/cruft/filters are deprecated.
+    Please move your custom filter files to /etc/cruft/filters-unex.
+ 
+  * See the README file for more information.
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 22 Mar 2007 19:36:30 +0000

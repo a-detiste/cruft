@@ -36,12 +36,15 @@ int main(int argc, char **argv) {
 		/* printf( "shellexp( \"%s\", \"%s\" )\n", argv[i], buffer );*/
 		if ( shellexp( argv[i], buffer ) ) {
 		    strcpy( filename, pde->d_name );
-		    printf( "%s: %s\n", filename, argv[i] ); 
+		    if (printf("%s: %s\n", filename, argv[i]) < 0)
+		    	return EXIT_FAILURE; 
 		}
 	    }
 	}
 	fclose(f);
     }
     closedir( dpkg_info );
-    return 0;
+    if (fclose(stdout) != 0)
+    	return EXIT_FAILURE;
+    return EXIT_SUCCESS;
 }

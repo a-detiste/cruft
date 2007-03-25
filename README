@@ -12,10 +12,8 @@ Preliminary notes:
    - read below.
 
  * If you have any suggestions on how to improve cruft, or if you make a
-   /usr/lib/cruft/filters/* file for another package, please mail me the
-   results for inclusion in a future release, or even better, file them as a
-   bug against cruft. A rough roadmap for cruft development can be found in
-   TODO.
+   /usr/lib/cruft/filters/* file for another package, please file them as a bug
+   against cruft. A rough roadmap for cruft development can be found in TODO.
 
 How it works, and what it does:
 -------------------------------
@@ -23,7 +21,10 @@ How it works, and what it does:
 cruft is a program to look over your system for anything that shouldn't be
 there, but is; or for anything that should be there, but isn't.
 
-Most of its work is associated to three lists of files:
+Here is a brief description of how it achieves this. See also the image
+"design.png" in this directory.
+
+First, cruft produces the following four lists of files:
 
  * list of files ACTUALLY PRESENT on the system. This is produced by running
    'find' on each mounted filesystem in turn, except for:
@@ -31,34 +32,92 @@ Most of its work is associated to three lists of files:
       cruft_default_scan_fs() in common.sh
     - directories (and their contents) specified by --ignore
    This list is put into /var/spool/cruft/file_*
-    
- * list of files which MUST be on the system. It is produced by running
-   'explain' scripts in /usr/lib/cruft/explain and /etc/cruft/explain. This
-   includes the list of files dpkg knows about, diversions, lost+found
-   directories and so on.
-   This list is put into /var/spool/cruft/expl_*
+
+ * list of files which MUST be on the system.
+   This for example includes the list of files dpkg knows about, diversions,
+   lost+found directories and so on.
+   This list (as are the following two) is produced by running so called
+   'explain' scripts, located in /usr/lib/cruft/explain and /etc/cruft/explain.
+   See below on how the explain scripts to run are selected.
+   This list is taken from the explain scripts' standard output and put into
+   /var/spool/cruft/expl_*
+
+ * list of files which MAY be on the system.
+   If a file is on this list, it means that it is OK for it to be present, but
+   it is not a problem if the file is missing, either.
+   This list is taken from the explain scripts' output to file descriptor 3,
+   and put into /var/spool/cruft/mayx_*
+
+ * list of files which MUST NOT be on the system.
+   This list is taken from the explain scripts' output to file descriptor 4,
+   and put into /var/spool/cruft/msnt_*
+
+After producing the lists, the first one is compared to each of the three other
+ones using a modified mergesort algorithm. This produces three new lists of
+files:
+
+ * files which are on the system, but they are not mentioned by neither the
+   "MAY" nor the "MUST" list
+   It is placed into /var/spool/cruft/unex_*
  
- * list of files which MAY be on the system. It is defined by patterns in files
-    - in /usr/lib/cruft/filters (only files whose names match installed packages),
-    - /etc/cruft/filters (all files),
-    - /var/lib/dpkg/info/*.extrafiles (all files).
-   An example of files which MAY be on a system are usually certain spool and
-   cache files, created by package pre/post-inst scripts or at runtime.
+ * files which are in the "MUST" list but are not in the "actually present"
+   list. It is placed into /var/spool/cruft/miss_*
+ 
+ * files which are in the "MUST NOT" list, and are in the "actually present"
+   list. It is placed into /var/spool/cruft/frbn_*
 
-After producing the list of present files, it is compared to the list of files
-which must be on the system. The files which were not present in the second
-list (were not 'explained'), are further filtered through the list of patterns
-defining files which may be present on a system. The remaining files are
-reported either as missing (on the MUST BE PRESENT and not on the ACTUALLY
-PRESENT list) or unexplained (on the ACTUALLY PRESENT list, but neither on the
-MUST nor MAY BE PRESENT lists).
+Before reporting, each of the three lists is first filtered through the
+patterns specified in the filter files for that type of list. See below for how
+the filter files are selected.
 
-(In fact both the list of files actually present on the filesystem, and the
-list of files which must be on the filesystem are filtered through the list of
-patterns of files which may be on the filesystem, and the result is compared
-afterwards, but the effect is the same as described above.)
 
-Thus, there are three ways to make cruft not report some files:
+Selecting explain scripts to run
+--------------------------------
+
+Explain scripts are located in two directories:
+ * /usr/lib/cruft/explain - where cruft installs its explain scripts
+ * /etc/cruft/explain - meant for local explain scripts created by the
+   administrator
+
+Any file in /etc/cruft/explain overrides a file in /usr/lib/cruft/explain with
+the same name. So if you want to override /usr/lib/cruft/explain/foo, just
+create an executable file called /etc/cruft/explain/foo.
+
+Also, any explain script will be run only if any of the following is true:
+ - a package with the same name as the file is not completly purged (that
+   means, a .list, .postrm or .prerm file for this package exists in
+   /var/lib/dpkg/info)
+ - the name of the file contains no lower-case characters. Thus, the way to
+   have a script run regardless of any package being installed, just name it in
+   UPPER_CASE
+
+
+Selecting filter files
+----------------------
+
+For filtering the list of files of a certain TYPE (any of: frbn miss unex), the
+following filter files will be selected:
+
+ - /etc/cruft/filters-TYPE/*
+ - /etc/cruft/filters/*
+ - /var/lib/dpkg/info/*.extrafiles
+ - /usr/lib/cruft/filters-TYPE/*
+ - /usr/lib/cruft/filters/*
+
+However, if a filter file called "foo" (or "foo.extrafiles") exists in any of
+the above location, only the first one in this list will be considered.
+Moreover, the same CASE-type naming convention applies as with explain scripts
+(that is, a filter file which has any lower case letters will only be run if a
+package with the same name is present in the system).
+
+Please note that /etc/cruft/filters/ and /usr/lib/cruft/filters/ are
+deprecated, and support for these directories will be removed at some point.
+
+
+How to make cruft not report some file
+--------------------------------------
+
+There are several ways to do this:
 
  * use "--ignore" which makes cruft ignore whole directory trees by not
    entering them at all, which speeds it up considerably. This is useful for
@@ -66,23 +125,24 @@ Thus, there are three ways to make cruft not report some files:
    /home. An example:
 
                 computer:~# cruft -m root --ignore /usr/local
- 
+
  * create a filter file, which contains patterns of files which are not to be
    reported. This is a little more flexible, but requires cruft to traverse the
    directory tree, which takes some time. An example could be:
 
-                computer:~# echo '/usr/local/**' >/etc/cruft/filters/usr_local
+                computer:~# echo '/usr/local/**' > /etc/cruft/filters-unex/USR_LOCAL
  
- * create an 'explanation' script which prints the names of all files which are
-   not to be reported. This is the most flexible way, since you can decide at
-   runtime which files should be there, and which not, however usually requires
-   cruft to traverse the directory tree twice. An example could be:
+ * create an 'explanation' script which prints to FD3 the names of all files
+   which are not to be reported. This is the most flexible way, since you can
+   decide at runtime which files should be there, and which not, however
+   usually requires cruft to traverse the directory tree twice. An example
+   could be:
 
-                computer:~# cat >/etc/cruft/explain/usr_local
+                computer:~# cat >/etc/cruft/explain/USR_LOCAL
                 #!/bin/sh
-                find /usr/local
+                find /usr/local >&3
                 ^D
-                computer:~# chmod 755 /etc/cruft/explain/usr_local
+                computer:~# chmod 755 /etc/cruft/explain/USR_LOCAL
 
 Note that when traversing the filesystems when producing the above lists, cruft
 does not follow symlinks. Also, for symlinks there is an additional mechanism,

@@ -29,18 +29,18 @@ sub decide($$$)
 
 	if (not defined $diverted) {
 		# there is no diversion, so the file should be present
-		print $line;
+		print $line or die $!;
 
 	} elsif (scalar @$pkgs > 1) {
 		# many packages provide it, and there is a diversion
 		# so the file should be present
-		print $line;
+		print $line or die $!;
 
 	# just one package provides it, and there is a diversion
 	} elsif ($diverted eq $$pkgs[0]) {
 		# the file will be present only if it's provided by the
 		# same package which diverts it
-		print $line;
+		print $line or die $!;
 	}
 }
 
@@ -68,4 +68,4 @@ while($l=<DPKG>) {
 }
 decide($diverted{$lastfile}, \@pkgs, $lastfile."\n");
 close DPKG or die "Couldn't close dpkg info: $!\n";
-
+close STDOUT or die $!;

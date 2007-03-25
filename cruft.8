@@ -8,55 +8,69 @@ cruft \- Check the filesystem for cruft (missing and unexplained files)
 This manual page documents briefly the
 .BR cruft 
 command.
-Please see /usr/share/doc/cruft/README for more information.
+Please see /usr/share/doc/cruft/README.gz for more information.
 .PP
 .B cruft
 is a program that goes over the Debian packaging system's database, and
 compares the contents of that with the files actually on your system, and
 produces a summary of the differences.
 .SH OPTIONS
-A summary of options are included below.
+The following options are recognized:
 .TP
 .B \-h
-Show summary of options.
+Show a summary of options and exit.
 .TP
-.B \-d DRIVES
+.B \-d \fIDRIVES
 Search only the listed filesystems.
-.B DRIVES
+.I DRIVES
 should be an absolute path, or a quoted, space-separated list of multiple
-absolute paths (eg, "/ /usr /home"). Multiple \-d options are allowed as well.
+absolute paths (eg, "/ /usr /home"). Multiple \-d options are allowed as well. If not specified,
+.BR cruft
+attempts to autodetect which filesystems to scan.
 .TP
-.B \-\-chroots CHROOTS
-Ignore symlinks under these directories. Useful for whatever chroots are set up
-in the system.
+.B \-\-chroots \fICHROOTS
+Do not perform validity checks on symlinks under these directories. Useful for
+whatever chroots are set up in the system.
 .TP
-.B \-\-ignore IGNORES
+.B \-\-ignore \fIIGNORES
 Treat the directory trees in
-.B IGNORES
+.I IGNORES
 as if they did not exist.
-.B IGNORES
+.I IGNORES
 should be an absolute path, or a quoted, space-separated list of multiple
 absolute paths. Multiple \-\-ignore options are allowed as well.
 .TP
-.B \-r REPORTFILE
+.B \-r \fIREPORTFILE
 Output report to 
 .I REPORTFILE
-instead of stdout.
+instead of standard output.
 .TP
-.B \-m ADDRESS
+.B \-m \fIADDRESS
 Mail report to 
 .I ADDRESS.
 .TP
 .B \-k
-Cleanup spool directory
+Only cleanup the spool directory.
 .TP
 .B \-n
-Generate differences only, don't report.
+Generate input files for reporting, but do not generate a report.
 .TP
 .B \-N
-Generate report based on old differences.
+Only generate a report, based on old input files.
+.PP
+With none of
+.B \-k
+.B \-n
+or
+.B \-N
+cruft performs all actions, that is cleans up old files, generates new input
+files and produces a report.
+.SH "ENVIRONMENT VARIABLES"
+It is possible to get some debugging information from cruft by setting the variable
+.B CRUFT_DEBUG
+to 1. If you need more detailed information on what cruft is doing, set it to 2.
 .SH "SEE ALSO"
-/usr/share/doc/cruft/README
+/usr/share/doc/cruft/README.gz
 .SH AUTHOR
 This manual page was written by Anthony Towns <ajt@debian.org>,
 for the Debian GNU/Linux system (but may be used by others).

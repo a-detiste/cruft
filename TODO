@@ -9,19 +9,20 @@ threads for more details:
  http://lists.debian.org/debian-devel/2001/09/msg00647.html
  http://lists.debian.org/debian-devel/2004/02/msg01915.html
 
-Currently, it is being cleaned up by Marcin Owsiany, and is in nearly usable
-shape (i.e. it does not report false-positives on a fresh current sid base
-installation).
+Since mid-2005, it is being cleaned up and enhanced by Marcin Owsiany, and is
+in nearly usable shape (i.e. it does not report false-positives on a fresh
+current sid base installation).
 
 The long-term plan is to:
- - keep squashing bugs (the code is still messy and hard to understand and
-   maintain)
+ - keep squashing bugs (some parts of the code are still messy and hard to
+   understand and maintain)
  - keep acquiring filter and explain scripts for more packages, at least until
    cruft output is no longer erroneus on a typical desktop and server
    installation (the scripts/filters should still be maintained in cruft
    package).
  - when the previous step is reached, there should be enough material to decide
-   on how it be implemented (I still think the current code is just a prototype)
+   on how exactly it should be implemented (I still think the current code is
+   just a prototype)
  - when there is established policy on the filter and explain scripts, they
    should gradually be moved into their respectice packages, and be maintained
    there (as close to the code they describe as possible).
@@ -31,14 +32,18 @@ The long-term plan is to:
 Short-term TODO items:
 ----------------------
 
+Policy:
+ * There are three possible sources for file information: cruft package,
+   another package, system administrator. Need to invent a policy which would
+   allow seamless upgrades, so that old files do not override newly updated
+   ones.
+
 Checks:
  * add a check that symlinks and suchlike to excluded directories
    don't get whined about (/dev/kcore -> /proc/kcore)
  * handle .dpkg-{old,dist,new} files?
  * think over /tmp, /var/tmp, /usr/local, /home/ftp or similar directories
    whose contents depend on local policy
- * only run explain scripts for installed packages (similarily as for filters).
-   Make sure all their names match some packages' names
 
 Code quality:
  * remove hard coded constants from .c files

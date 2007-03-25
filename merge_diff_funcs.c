@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <stdlib.h>
 #include <string.h>
 #include "river.h"
 
@@ -37,7 +38,7 @@ static void debug_current_state(int *smallest, river *rivers)
 	}
 	cruft_debug(" %s (", line);
 	for (idx = 0; idx < NUM_RIVERS; idx++) {
-		cruft_debug("%s ", river_least_line(&rivers[idx]));
+		cruft_debug("%s%s", river_least_line(&rivers[idx]), idx == NUM_RIVERS - 1 ? "" : " ");
 	}
 	cruft_debug(")\n");
 }
@@ -82,13 +83,14 @@ static void pick_smallest_rivers(int *smallest, river *rivers)
 int merge_diff(char *spool_dir_name)
 {
 	river rivers[NUM_RIVERS] = {
-		{ "explain", 0, -1, { NULL }, { NULL }, "expl_", "miss" },
-		{ "file",    0, -1, { NULL }, { NULL }, "file_", "unex" },
-		{ "need",    0, -1, { NULL }, { NULL }, "need_", "want" }
+		{ "file",           0, -1, { NULL }, { NULL }, "file_", "unex" },
+		{ "may exist",      0, -1, { NULL }, { NULL }, "mayx_", "whte" },
+		{ "must exist",     0, -1, { NULL }, { NULL }, "must_", "miss" },
+		{ "must not exist", 0, -1, { NULL }, { NULL }, "msnt_", "frbn" }
 	};
 
 	if (! rivers_open_files(spool_dir_name, rivers))
-		return 1;
+		return EXIT_FAILURE;
 	
 	cruft_debug(DEBUG_HEADER);
 
@@ -103,27 +105,34 @@ int merge_diff(char *spool_dir_name)
 
 		debug_current_state(smallest, rivers);
 
-		/* explained, but not there */
-		if (smallest[EXPL_IDX] && ! smallest[FILE_IDX])
-			if (! river_output_line(&rivers[EXPL_IDX]))
-				return 0;
+		/* must be, but isn't */
+		if (smallest[MUST_IDX] && ! smallest[FILE_IDX])
+			if (! river_output_line(&rivers[MUST_IDX]))
+				return EXIT_FAILURE;
 		
-		/* there, but not explained */
-		if (smallest[FILE_IDX] && ! smallest[EXPL_IDX])
+		/* is, but not explained by must nor may */
+		if (smallest[FILE_IDX] && (! smallest[MUST_IDX] && ! smallest[MAYX_IDX]))
 			if (! river_output_line(&rivers[FILE_IDX]))
-				return 0;
+				return EXIT_FAILURE;
 	
-		/* needed but not there */
-		if (smallest[NEED_IDX] && ! smallest[FILE_IDX])
-			if (! river_output_line(&rivers[NEED_IDX]))
-				return 0;
+		/* must not be, but is */
+		if (smallest[MSNT_IDX] && smallest[FILE_IDX])
+			if (! river_output_line(&rivers[MSNT_IDX]))
+				return EXIT_FAILURE;
+
+		if (smallest[MSNT_IDX]) {
+			if (smallest[MAYX_IDX])
+				fprintf(stderr, "Explain script (may and musn't) conflict: [%s]\n", river_least_line(&rivers[MSNT_IDX]));
+			if (smallest[MUST_IDX])
+				fprintf(stderr, "Explain script (must and musn't) conflict: [%s]\n", river_least_line(&rivers[MSNT_IDX]));
+		}
 	
 		scroll_smallest(smallest, rivers);
 	}
 	
 	if (! rivers_close(rivers))
-		return 1;
+		return EXIT_FAILURE;
 
-	return 0;
+	return EXIT_SUCCESS;
 }
 

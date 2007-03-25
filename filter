@@ -1,0 +1,10 @@
+#!/bin/sh
+# Read standard input and filter out files which match filter patterns listed
+# in the file given as the first argument
+set -e
+. /usr/lib/cruft/common.sh
+cruft_debug 2
+
+list="$1"
+/usr/lib/cruft/filter_shell $(cat $list)
+

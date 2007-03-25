@@ -1,3 +1,24 @@
+cruft (0.9.6-0.18) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Significant changes aiming to fix some design issues:
+    - merge_diff: refactored to make the code less cryptic, and added a new
+      stream of data from the explain scripts
+    - cruft:
+      . moved filtering to after the merge_diff stage
+      . only use filters/explain scripts which have a matching package in the
+        system OR have UPPER_CASE name (closes: Bug#373708), also only use a
+        filter/script once, making it possible to do overrides cleanly
+        (closes: Bug#410800)
+      . introduced multiple filter directories, making it possible to silence
+        any complaints from cruft (closes: Bug#383364)
+  * many programs: lots of changes to detect potential output (but not only)
+    failures, for example due to filesystem being full. (closes: Bug#411860)
+  * Added a design.png diagram
+  * Many cleanups and minor enhancements to programs and documentation
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun, 25 Mar 2007 16:23:50 +0100
+
 cruft (0.9.6-0.17) unstable; urgency=low
 
   * Non-maintainer upload blessed by aj
