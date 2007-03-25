@@ -10,20 +10,20 @@
 
 int shellexp(char*, char*);
 
-int main(int argc, char **argv) {
+int dash_search(char *dir, int argc, char **argv) {
     char filename[1000];
     char buffer[1000];
     int i;
     DIR* dpkg_info;
     struct dirent* pde;
 
-    dpkg_info = opendir("/usr/lib/cruft/filters/" );
+    dpkg_info = opendir(dir);
     if ( dpkg_info == NULL ) {
-	perror( "/usr/lib/cruft/filters" );
+	perror(dir);
 	exit(EXIT_FAILURE);
     }
 
-    chdir("/usr/lib/cruft/filters");
+    chdir(dir);
     while( (pde = readdir( dpkg_info )) ) {
 	FILE* f;
 	f = fopen( pde->d_name, "r" );
@@ -36,7 +36,7 @@ int main(int argc, char **argv) {
 		/* printf( "shellexp( \"%s\", \"%s\" )\n", argv[i], buffer );*/
 		if ( shellexp( argv[i], buffer ) ) {
 		    strcpy( filename, pde->d_name );
-		    if (printf("%s: %s\n", filename, argv[i]) < 0)
+		    if (printf("%s/%s: %s\n", dir, filename, argv[i]) < 0)
 		    	return EXIT_FAILURE; 
 		}
 	    }
@@ -48,3 +48,20 @@ int main(int argc, char **argv) {
     	return EXIT_FAILURE;
     return EXIT_SUCCESS;
 }
+
+int main(int argc, char **argv)
+{
+	int ret;
+
+	if (( ret = dash_search("/usr/lib/cruft/filters-broken_symlinks", argc, argv)) != EXIT_SUCCESS)
+		return ret;
+	if (( ret = dash_search("/usr/lib/cruft/filters-frbn", argc, argv)) != EXIT_SUCCESS)
+		return ret;
+	if (( ret = dash_search("/usr/lib/cruft/filters-miss", argc, argv)) != EXIT_SUCCESS)
+		return ret;
+	if (( ret = dash_search("/usr/lib/cruft/filters-unex", argc, argv)) != EXIT_SUCCESS)
+		return ret;
+	
+	return ret;
+}
+
