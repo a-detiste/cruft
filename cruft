@@ -4,8 +4,6 @@ set -e
 
 cruft_debug 2
 
-DRIVES=$(cruft_default_scan_fs)
-[ -z "$DRIVES" ] && DRIVES=/
 # empty means stdout
 REPORTFILE=""
 MAILTO=""
@@ -15,6 +13,8 @@ REPORT=yes
 CHROOTS=""
 IGNORES=""
 STARTDIR="$(pwd)"
+# first, read the paths from command line
+DRIVES=""
 
 usage()
 {
@@ -53,6 +53,12 @@ while [ $# != 0 ]; do
 done
 
 cd /var/spool/cruft || { echo "Are you root?" ; exit 1; }
+
+# now set the default, if none were specified
+if [ -z "$DRIVES" ] ; then
+	default_drives=$(cruft_default_scan_fs)
+	DRIVES=${default_drives:-/}
+fi
 
 # clean up from previous runs
 if [ "$CLEANUP" = "yes" ]; then

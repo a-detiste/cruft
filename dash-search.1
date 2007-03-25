@@ -5,8 +5,12 @@ dash-search \- match arguments against cruft filter patterns
 .B dash-search [ file ] [ ... ]
 .SH "DESCRIPTION"
 .B dash-search
-Reads files in
-.B /usr/lib/cruft/filters
+Reads files in directories
+.B /usr/lib/cruft/filters-broken_symlinks
+.B /usr/lib/cruft/filters-frbn
+.B /usr/lib/cruft/filters-miss
+and
+.B /usr/lib/cruft/filters-unex
 and tries to match each command argument in turn against the patterns in those
 files. Any argument which matches is printed on standard output, prefixed with
 the name of the file which contained the pattern which it matched.
