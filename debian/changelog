@@ -27,8 +27,10 @@ cruft (0.9.6-0.17) unstable; urgency=low
   * Filter files:
     - new: x11-common (closes: Bug#410738)
     - removed: xfree86-common
+  * cruft: fixed the way DRIVES was set from command line, to actually
+    override the default, not just add to it (closes: Bug#411861)
 
- -- Marcin Owsiany <porridge@debian.org>  Sun, 18 Feb 2007 11:18:07 +0000
+ -- Marcin Owsiany <porridge@debian.org>  Sat,  3 Mar 2007 22:21:09 +0000
 
 cruft (0.9.6-0.16) unstable; urgency=low
 
