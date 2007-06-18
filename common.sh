@@ -2,7 +2,7 @@
 cruft_debug()
 {
 	local min_level=${1:-1}
-	if [ "$CRUFT_DEBUG" -ge $min_level ]; then
+	if [ -n "$CRUFT_DEBUG" ] && [ "$CRUFT_DEBUG" -ge $min_level ]; then
 		set -x
 	fi
 }
