@@ -19,8 +19,8 @@ cruft (0.9.7) experimental; urgency=low
   * Added a design.png diagram
   * Many cleanups and minor enhancements to programs and documentation
   * filter files changes submitted by Jeremy Bygott (closes: Bug#411602)
-    - changed: cron checksecurity emacs21-common bsdgames emacsen-common nvi
-      pdmenu ppp vim vim-gnome dpkg
+    - changed: cron checksecurity emacs21-common base-files bsdgames
+      emacsen-common nvi pdmenu ppp vim vim-gnome dpkg logrotate
     - new: tcl8.3 tcl8.4 emacs21
     - removed: tcl8.0 emacs20
   * Acknowledging bugs closed in NMUs (closes: Bug#51448, #51617, #52094,
@@ -32,7 +32,7 @@ cruft (0.9.7) experimental; urgency=low
     Bug#134310, #149736, #304440, #371871, #371872, #66731, #319490, #411860,
     Bug#373708, #410738, #410800, #411861, #346058, #383364, #157737)
 
- -- Marcin Owsiany <porridge@debian.org>  Fri, 22 Jun 2007 20:48:03 +0100
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 22 Jun 2007 21:08:44 +0100
 
 cruft (0.9.6-0.17) unstable; urgency=low
 
