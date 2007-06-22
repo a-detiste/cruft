@@ -1,6 +1,8 @@
-cruft (0.9.6-0.18) experimental; urgency=low
+cruft (0.9.7) experimental; urgency=low
 
-  * Non-maintainer upload blessed by aj
+  * The "DebConf 7" release - includes 0.9.6-0.18 (experimental)
+  * Taking over the package with aj's permission
+    - finally got rid of that ugly version appendix
   * Significant changes aiming to fix some design issues:
     - merge_diff: refactored to make the code less cryptic, and added a new
       stream of data from the explain scripts
@@ -16,8 +18,16 @@ cruft (0.9.6-0.18) experimental; urgency=low
     failures, for example due to filesystem being full. (closes: Bug#411860)
   * Added a design.png diagram
   * Many cleanups and minor enhancements to programs and documentation
+  * Acknowledging bugs closed in NMUs (closes: Bug#51448, #51617, #52094,
+    Bug#182796, #335507, #35042, #37735, #42969, #47513, #50730, #51446,
+    Bug#51653, #55022, #88274, #95799, #100145, #110000, #146021, #149616,
+    Bug#155431, #263472, #265794, #272124, #284711, #291820, #334091,
+    Bug#367029, #373633, #373684, #59714, #102809, #126855, #174877, 
+    Bug#233979, #308176, #349558, #29187, #65169, #94942, #133887, #133888,
+    Bug#134310, #149736, #304440, #371871, #371872, #66731, #319490, #411860,
+    Bug#373708, #410738, #410800, #411861, #346058, #383364, #157737)
 
- -- Marcin Owsiany <porridge@debian.org>  Sun, 25 Mar 2007 16:23:50 +0100
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 22 Jun 2007 19:44:45 +0100
 
 cruft (0.9.6-0.17) unstable; urgency=low
 
