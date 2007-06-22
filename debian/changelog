@@ -3,6 +3,10 @@ cruft (0.9.7) experimental; urgency=low
   * The "DebConf 7" release - includes 0.9.6-0.18 (experimental)
   * Taking over the package with aj's permission
     - finally got rid of that ugly version appendix
+  * Bumped standards-version to 3.7.2.2
+  * Bumped debhelper compat and version dep to 5
+  * Added lintian and linda overrides for the non-standard spool directory
+    permissions
   * Significant changes aiming to fix some design issues:
     - merge_diff: refactored to make the code less cryptic, and added a new
       stream of data from the explain scripts
@@ -32,7 +36,7 @@ cruft (0.9.7) experimental; urgency=low
     Bug#134310, #149736, #304440, #371871, #371872, #66731, #319490, #411860,
     Bug#373708, #410738, #410800, #411861, #346058, #383364, #157737)
 
- -- Marcin Owsiany <porridge@debian.org>  Fri, 22 Jun 2007 21:08:44 +0100
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 22 Jun 2007 21:42:58 +0100
 
 cruft (0.9.6-0.17) unstable; urgency=low
 

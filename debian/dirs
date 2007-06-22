@@ -5,3 +5,5 @@ var/spool/cruft
 etc/cruft
 etc/cruft/explain
 etc/cruft/filters
+usr/share/lintian/overrides
+usr/share/linda/overrides

@@ -1,0 +1,1 @@
+cruft binary: non-standard-dir-perm var/spool/cruft/ 0700 != 0755
