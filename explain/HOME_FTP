@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -e
 . /usr/lib/cruft/common.sh
 cruft_debug
 

@@ -1,0 +1,28 @@
+#!/bin/bash
+# Read lists of symlinks found on the filesystems and produce files with lists
+# of broken ones.
+
+set -e
+. /usr/lib/cruft/common.sh
+cruft_debug 3
+
+cd /var/spool/cruft
+
+for f in type_symlink_*
+do
+	debug " - Processing ${f}"
+	suffix=${f/type_symlink_/}
+	cat "${f}" | while read link
+	do
+		if [ ! -e "$(echo "$link" | /usr/lib/cruft/readlinks)" ]; then
+			echo "$link" >> "broken_symlinks_${suffix}.tmp"
+		fi
+	done
+	for chroot in "$@"
+	do
+		egrep -v "^$chroot/" "broken_symlinks_${suffix}.tmp" > "broken_symlinks_${suffix}"
+		mv "broken_symlinks_${suffix}" "broken_symlinks_${suffix}.tmp"
+	done
+	mv "broken_symlinks_${suffix}.tmp" "broken_symlinks_${suffix}"
+done
+

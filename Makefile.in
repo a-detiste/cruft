@@ -5,7 +5,7 @@ CFLAGS = @CFLAGS@ -Wall -W -ansi -pedantic-errors
 
 INS = install
 
-DATADIRS = filters explain
+DATADIRS = explain filters-broken_symlinks filters-frbn filters-miss filters-unex
 
 DESTDIR = `pwd`/debian/cruft
 
@@ -13,11 +13,9 @@ PROGS1 = canonical filter_shell merge_diff readlinks
 PROGS2 = dash-search
 PROGS  = $(PROGS1) $(PROGS2)
 
-filter_shell dash-search: shellexp.o
-
 all : $(PROGS)
 
-install1 : $(PROGS1) extrafiles cruft_find filter_ignores
+install1 : $(PROGS1) filter filters_list cruft_find filter_ignores check_type_symlink
 	$(INS) $^ $(DESTDIR)/usr/lib/cruft/
 
 install11 : common.sh common.pl
@@ -32,14 +30,19 @@ installdirs : $(DATADIRS)
 		find $$d -maxdepth 1 -type f | xargs -i cp '{}' $(DESTDIR)/usr/lib/cruft/$$d/; \
 	done
 
-install : install1 install11 install2 installdirs cruft extrafiles
+install : install1 install11 install2 installdirs cruft
 	$(INS) cruft $(DESTDIR)/usr/sbin/cruft
-	$(INS) extrafiles $(DESTDIR)/usr/lib/cruft/filters/cruft
 
 clean : 
-	rm -f $(PROGS) shellexp.o *~ debian/*~ shellexptest.o shellexptest
+	rm -f $(PROGS) merge_diff.o merge_diff_funcs.o shellexp.o *~ debian/*~ \
+	 shellexptest.o shellexptest merge_diff_test.o merge_diff_test \
+	 merge_diff_common.o river.o fn_stream.o
 
 shellexptest: shellexptest.o shellexp.o
+filter_shell dash-search: shellexp.o
+merge_diff_test: merge_diff_test.o merge_diff_funcs.o merge_diff_common.o river.o fn_stream.o
+merge_diff:      merge_diff.o      merge_diff_funcs.o merge_diff_common.o river.o fn_stream.o
+merge_diff_funcs.o merge_diff_test.o merge_diff_common.o river.o fn_stream.o merge_diff.o: merge_diff_common.h
 
 distclean : clean
 	rm -f Makefile config.cache config.status config.log

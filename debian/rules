@@ -57,10 +57,10 @@ binary-arch: build
 	# Add here commands to install the files into debian/cruft
 	$(MAKE) install
 ## XXX
-	install -m 0644 -o root -g root debian/extrafiles debian/cruft/usr/lib/cruft/filters/cruft
+	install -m 0644 -o root -g root debian/extrafiles debian/cruft/usr/lib/cruft/filters-unex/cruft
 ## XXX
 
-	dh_installdocs README TODO
+	dh_installdocs README TODO design.png
 #	dh_installexamples
 #	dh_installmenu
 #	dh_installinit

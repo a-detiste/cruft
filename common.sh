@@ -1,9 +1,17 @@
 
 cruft_debug()
 {
-	if [ -n "$CRUFT_DEBUG" ]; then
+	local min_level=${1:-1}
+	if [ -n "$CRUFT_DEBUG" ] && [ "$CRUFT_DEBUG" -ge $min_level ]; then
+		PS4='$(date +\>[%Y-%m-%d\ %H:%M:%S.%N])'" [$min_level] "
 		set -x
 	fi
+}
+
+debug()
+{
+	if [ -z "$CRUFT_DEBUG" ] ; then return ; fi
+	echo "$(date +">[%Y-%m-%d %H:%M:%S.%N] [0]")" "$@" >&2
 }
 
 # print default list of all mounted filesystems to scan
@@ -102,10 +110,30 @@ add_prune()
 finish_prunes()
 {
 	if [ -n "$1" ] ; then
-		echo "\\( $1 \\) -or"
+		echo "( $1 ) -or"
 	else
 		echo
 	fi
+}
+
+get_prunes_for()
+{
+	local drive="$1"
+	local prune=""
+	for ignore in $(get_ignores)
+	do
+		if is_subdir "$ignore" "$drive"; then
+			# $DRIVE is a subdir of $IGNORE
+			# no need to scan the drive at all
+			echo skip
+			return
+		elif is_subdir "$drive" "$ignore"; then
+			# $IGNORE is a subdir of $DRIVE
+			# add it to prune list
+			prune=$(add_prune "${prune}" "${ignore}")
+		fi
+	done
+	finish_prunes "${prune}"
 }
 
 get_ignores()
@@ -126,5 +154,37 @@ set_ignores()
 cruft_find()
 {
 	/usr/lib/cruft/cruft_find "$@"
+}
+
+fixup_slashes()
+{
+	sed 's:/\.$:/:;s:/$::;s:^$:/:'
+}
+
+package_installed()
+{
+	local pkg="$1"
+	[ -f "/var/lib/dpkg/info/${pkg}.list" ] ||
+	[ -f "/var/lib/dpkg/info/${pkg}.prerm" ] ||
+	[ -f "/var/lib/dpkg/info/${pkg}.postrm" ]
+}
+
+# return 0 if file with that name is to be processed
+# return 1 if it is to be skipped
+process_package()
+{
+	local name="$1"
+	# Check if it is a package name
+	if [ "${name}" = "$(echo ${name} | tr '[:lower:]' '[:upper:]')" ] ; then
+		# All UPPER_CASE, this is an exception, do not require a
+		# package to be installed, process the file unconditionally
+		return 0
+	elif package_installed "${name}" ; then
+		# process a file whose matching package is not completly purged
+		return 0
+	else
+		debug "   skipping ${name} - package not installed"
+		return 1
+	fi
 }
 

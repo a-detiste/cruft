@@ -8,12 +8,18 @@ BEGIN{
 	sub noscan_fs;
 	sub get_direct_fs($@);
 	sub prunes($@);
+	sub debug($);
 	@I=ignores;@S=scan_fs;@NS=noscan_fs;
 	%M  = ( map {$_=> 1} @S);
 	%M  = ( %M, map {$_=>0} @NS );
 }
+
 chomp;
 $l=$_;
 next if grep { is_subdir($_,$l) } @I;
-$M{get_direct_fs($l,(@S,@NS))} ? print "$l\n" : next
+print "$l\n" or die $! if $M{get_direct_fs($l,(@S,@NS))};
+
+END {
+	close STDOUT or die $!;
+}
 

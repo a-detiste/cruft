@@ -19,12 +19,23 @@ sub all_fs;
 sub noscan_fs;
 sub get_direct_fs($@);
 sub prunes($@);
+sub debug($);
+
+sub run_find
+{
+	my $path = shift;
+	my $ignore_ref = shift;
+	my $params_ref = shift;
+	my $extra = shift || '';
+	my $cmd = "find $path $extra ".prunes($path, @$ignore_ref).' '.join(' ', @$params_ref);
+	debug "Running [$cmd]";
+	system($cmd) == 0 or die "[$cmd] failed: $?\n";
+}
 
 sub do_find($)
 {
 	my $path = shift;
-	my $FS = get_direct_fs($path, all_fs);
-	warn "FS not found for \"$path\"" and return unless $FS;
+	my $FS = get_direct_fs($path, all_fs) or die "FS not found for \"$path\"";
 	my @do_scan = scan_fs;
 	my @dont_scan = noscan_fs;
 	my @ignore = ignores;
@@ -35,26 +46,24 @@ sub do_find($)
 	return if grep { is_subdir($_, $path) } @ignore;
 	# $path is in non-scan FS
 	if (grep { $_ eq $FS } @dont_scan) {
+		my @do_under_path = grep { is_subdir($path, $_) } @do_scan;
 		# and contains no do-scan FS
-		if (grep { is_subdir($path, $_) } @do_scan) {
+		if (not scalar @do_under_path) {
 			return;
 		} else {
-		# TODO: and contains some do-scan FS
-		# foreach (NI under $path) find $NI -xdev
-			;
+		# and contains some do-scan FS
+			run_find($_, \@ignore, \@params, '-xdev') for @do_under_path;
 		}
 	}
 	# $path is in do-scan FS
 	elsif (grep { $_ eq $FS } @do_scan) {
+		my @dont_under_path = grep { is_subdir($path, $_) } @dont_scan;
 		# and there are no dont-scan FS under $path
-		if (not grep { is_subdir($path, $_) } @dont_scan) {
-			my $cmd = "find $path ".prunes($path, @ignore).' '.join(' ', @params);
-			print STDERR "Running [$cmd]\n" if exists $ENV{'CRUFT_DEBUG'};
-			system($cmd);
+		if (not scalar @dont_under_path) {
+			run_find($path, \@ignore, \@params);
 		} else {
-		# TODO: and there are dont-scan FS under $path
-		# foreach (NI under $path) find NI -xdev
-			;
+		# and there are dont-scan FS under $path
+			run_find($path, \@ignore, \@params, '-xdev') for @dont_under_path;
 		}
 	} else { die "Internal error: [$path][@do_scan][@dont_scan][@ignore]\n"; }
 	

@@ -1,13 +1,8 @@
 #!/bin/sh
-
-#set -- `getopt hd:r:m:knN "$@"`
-#if [ $? != 0 ]; then
-#	exit 2
-#fi
-
+set -e
 . /usr/lib/cruft/common.sh
 
-cruft_debug
+cruft_debug 2
 
 # empty means stdout
 REPORTFILE=""
@@ -23,7 +18,16 @@ DRIVES=""
 
 usage()
 {
-	echo "Usage: [-h] [-d DRIVES] [-r REPORTFILE] [-m ADDRESS] [-k | -n | -N]"
+	echo "Usage:"
+	echo "  cruft -h            Shows this message and exits."
+	echo "  cruft -k            Only cleans the spool directory."
+	echo "  cruft -n [OPTIONS]  Generates input files for reporting, but does not"
+	echo "                      generate a report."
+	echo "  cruft -N [OPTIONS]  Only generates a report."
+	echo "  cruft [OPTIONS]     Performs a run and generates a report."
+	echo
+	echo "Options: [-r REPORTFILE] [-m ADDRESS]"
+	echo "         [-d DRIVES] [--chroots CHROOTS] [--ignore IGNORES]"
 }
 
 while [ $# != 0 ]; do
@@ -69,48 +73,55 @@ set_ignores $IGNORES
 export LC_COLLATE="C"
 
 if [ "$FILES" = yes ]; then
-	# official explanations
-	cd /usr/lib/cruft/explain
-	rm -f /var/spool/cruft/expl_*
+	# delete old explain output files
+	rm -f /var/spool/cruft/must_*
+	rm -f /var/spool/cruft/mayx_*
+	rm -f /var/spool/cruft/msnt_*
 
-	for a in *; do 
-		[ -x "$a" ] && 
-			( ./$a |
-			  sed "s:/\.$:/:;s:/$::;s:^$:/:" |
-			  /usr/lib/cruft/filter_ignores |
-			  /usr/lib/cruft/extrafiles |
-			  /usr/lib/cruft/canonical |
-			  sort | uniq > /var/spool/cruft/expl_$a
-			) 3>&1 | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
-			  /usr/lib/cruft/filter_ignores |
-			  /usr/lib/cruft/extrafiles |
-			  /usr/lib/cruft/canonical | 
-			  sort | uniq > /var/spool/cruft/need_$a
+	debug "*** Running explain scripts"
+	# run explain scripts
+	(
+		cd /usr/lib/cruft/explain && ls * 2>/dev/null
+		cd /etc/cruft/explain     && ls * 2>/dev/null
+	) | sort -u |
+	while read f ; do
+		process_package "${f}" || continue
+		# File in /etc overrides the one in /usr
+		if [ -e "/etc/cruft/explain/${f}" ] ; then
+			script="/etc/cruft/explain/${f}"
+		elif [ -e "/usr/lib/cruft/explain/${f}" ] ; then
+			script="/usr/lib/cruft/explain/${f}"
+		else
+			script="/can/not/find/${f}"
+		fi
+		debug " - Running ${script}"
+		# FD1 -> must exist
+		# FD3 -> may exist
+		# FD4 -> must not exist
+		# FD2 -> stderr
+		( ( ${script} |
+			fixup_slashes |
+			/usr/lib/cruft/filter_ignores |
+			/usr/lib/cruft/canonical |
+			sort -u > /var/spool/cruft/must_${f}
+		) 3>&1 | fixup_slashes |
+			/usr/lib/cruft/filter_ignores |
+			/usr/lib/cruft/canonical |
+			sort -u > /var/spool/cruft/mayx_${f}
+		) 4>&1 | fixup_slashes |
+			/usr/lib/cruft/filter_ignores |
+			/usr/lib/cruft/canonical |
+			sort -u > /var/spool/cruft/msnt_${f}
 	done
 
-	# local explanations
-	cd /etc/cruft/explain
-	for a in *; do
-		[ -x "$a" ] && 
-			( ./$a | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
-			  /usr/lib/cruft/filter_ignores |
-			  /usr/lib/cruft/extrafiles |
-			  /usr/lib/cruft/canonical | 
-			  sort | uniq > /var/spool/cruft/expl_$a
-			) 3>&1 | sed "s:/\.$:/:;s:/$::;s:^$:/:" |
-			  /usr/lib/cruft/filter_ignores |
-			  /usr/lib/cruft/extrafiles |
-			  /usr/lib/cruft/canonical | 
-			  sort | uniq > /var/spool/cruft/need_$a
-	done
+	# delete old find output
 
-	# files
-
-	cd /var/spool/cruft
 	rm -f /var/spool/cruft/file_*
+	rm -f /var/spool/cruft/type_*
 
-	rm -f need_link_dests; touch need_link_dests
+	# run find on the filesystems
 
+	debug "*** Running find commands"
 	for DRIVE in $DRIVES; do 
 		if [ "$DRIVE" = "/" ]; then
 			FILENAME=file_root
@@ -118,75 +129,57 @@ if [ "$FILES" = yes ]; then
 			FILENAME=file_in_`echo "$DRIVE" | sed 's:^/::;s:/:-:g'`
 		fi
 
-		rm -f need_link_dests.tmp
-		PRUNE=""
-		skip=0
-		for IGNORE in $(get_ignores)
-		do
-			if is_subdir "$IGNORE" "$DRIVE"; then
-				# $DRIVE is a subdir of $IGNORE
-				# no need to scan the drive at all
-				skip=1
-			elif is_subdir "$DRIVE" "$IGNORE"; then
-				# $IGNORE is a subdir of $DRIVE
-				# add it to prune list
-				if [ -n "$PRUNE" ]; then
-					PRUNE="${PRUNE}-or -wholename $IGNORE -prune "
-				else
-					PRUNE="-wholename $IGNORE -prune "
-				fi
-			fi
-		done
-		if [ "$skip" = 1 ]; then
-			: > "$FILENAME"
-			: > need_link_dests.tmp
+		PRUNE=$(get_prunes_for "$DRIVE")
+		if [ "$PRUNE" = skip ]; then
+			debug " - Skipping [${DRIVE}]"
+			: > "${FILENAME}"
+			: > "${FILENAME/file/type_symlink}"
 		else
-			if [ -n "$PRUNE" ] ; then
-				PRUNE="( $PRUNE ) -or"
-			fi
-			find "$DRIVE" -xdev $PRUNE -print -type l \
-				-fprint need_link_dests.tmp |
-			/usr/lib/cruft/extrafiles | sort | uniq > "$FILENAME"
+			debug " - Running find on [${DRIVE}]"
+			find "$DRIVE" -xdev $PRUNE -print \
+				-type l -fprint "${FILENAME/file/type_symlink}" \
+				| sort -u > "$FILENAME"
 		fi
+	done
 
-		cat need_link_dests.tmp >> need_link_dests
-	done
-	rm -f need_link_dests.tmp
-	touch broken_symlinks broken_symlinks.tmp
-	cat need_link_dests | while read link
-	do
-		if [ ! -e "$(echo "$link" | /usr/lib/cruft/readlinks)" ]; then
-			echo "$link" >> broken_symlinks.tmp
-		fi
-	done
-	for CHROOT in $CHROOTS
-	do
-		egrep -v "^$CHROOT/" broken_symlinks.tmp > broken_symlinks
-		mv broken_symlinks broken_symlinks.tmp
-	done
-	# TODO this COULD be done more flexibly, by piping it through
-	# filter_shell operating on some special broken-symlinks-which-are-ok
-	# files, but with a handful of cases I don't think it's worth the
-	# effort so far.
-	egrep -v "^/dev/(fd|stdin|stdout|stderr)|/etc/nologin$" broken_symlinks.tmp > broken_symlinks
-	rm broken_symlinks.tmp
-	rm need_link_dests
+	# objects of particular type
+	# - delete old output lists
+	rm -f /var/spool/cruft/broken_symlinks_*
+	# - generate new ones
+	debug "*** Checking symlinks"
+	/usr/lib/cruft/check_type_symlink $CHROOTS
 fi
 
 if [ "$REPORT" = yes ]; then
-	# generate differences
+	# delete old target files
+	rm -f /var/spool/cruft/frbn_*
 	rm -f /var/spool/cruft/miss_*
 	rm -f /var/spool/cruft/unex_*
+	rm -f /var/spool/cruft/whte_*
+	rm -f /var/spool/cruft/filter_list_*
 		
+	# generate differences
+	debug "*** Calculating differences"
 	/usr/lib/cruft/merge_diff
-	mv broken_symlinks unex_in_broken_symlinks
 
-	# remove empty files
 	cd /var/spool/cruft
-	for a in *; do
-		if [ -e $a ] && ! [ -s $a ]; then rm $a; fi
+
+	debug "*** Filtering results"
+	# filter the results
+	for type in frbn miss unex broken_symlinks
+	do
+		debug " - Filtering type [${type}]"
+		/usr/lib/cruft/filters_list "${type}" > "filter_list_${type}"
+		find . -maxdepth 1 -mindepth 1 -type f -name "${type}_*" | while read f ; do
+			/usr/lib/cruft/filter "filter_list_${type}" < "${f}" > "${f}.tmp"
+			mv "${f}.tmp" "${f}"
+		done
 	done
 
+	# remove empty files
+	find . -maxdepth 1 -mindepth 1 -type f -size 0 | xargs rm -r
+
+	debug "*** Generating report"
 	# generate report
 	TEMPFILE="`tempfile`"
 	( echo -n 'cruft report: '; date
@@ -197,16 +190,23 @@ if [ "$REPORT" = yes ]; then
 	 		cat $a | sed 's/^/        /'
 	  	fi
 	  done
-	  for a in want_*; do
+	  for a in frbn_*; do
 		if [ -e $a ]; then
 			echo ---- $a ---- | sed 's/want_/missing: /'
 	 		cat $a | sed 's/^/        /'
 	  	fi
 	  done
-	  for a in unex_root unex_in_*; do
+	  for a in unex_*; do
 		if [ -e $a ]; then
 	 	    echo ---- $a ---- | 
 		     sed 's=unex_root=unexplained: /=;s=unex_in_=unexplained: ='
+		    cat $a | sed 's/^/        /'
+		fi
+  	  done
+	  for a in broken_symlinks_*; do
+		if [ -e $a ]; then
+	 	    echo ---- $a ---- | 
+		     sed 's=broken_symlinks_root=broken symlinks: /=;s=broken_symlinks_in_=broken symlinks: ='
 		    cat $a | sed 's/^/        /'
 		fi
   	  done
@@ -224,3 +224,4 @@ if [ "$REPORT" = yes ]; then
             cat "$TEMPFILE" | mail -s "[`hostname`] Cruft Report" $MAILTO
 	rm -f "$TEMPFILE"
 fi
+

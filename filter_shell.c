@@ -73,8 +73,11 @@ int main(int argc, char **argv) {
 	    match = shellexp( buffer, strings[i] );
 	}
 	if ( !match ) {
-	    printf( "%s\n", buffer );
+	    if (printf("%s\n", buffer) < 0)
+	    	return EXIT_FAILURE;
 	} 
     }
-    return 0;
+    if (fclose(stdout) != 0)
+    	return EXIT_FAILURE;
+    return EXIT_SUCCESS;
 }

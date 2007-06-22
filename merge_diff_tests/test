@@ -1,0 +1,21 @@
+#!/bin/bash
+set -e
+[ -f ../Makefile ] || ( cd .. && ./configure )
+make -C .. merge_diff_test  CFLAGS="-g -O0 -Wall -W -ansi -pedantic-errors"
+set +e
+for subdir in [0-9][0-9]
+do
+	echo "ENTERING ${subdir}"
+	cd ${subdir}
+	outs="$(cd output && echo *)"
+	rm -f ${outs}
+	cp input/* .
+	#gdb ../../merge_diff_test
+	../../merge_diff_test .
+	for out in $outs
+	do
+		diff -u output/${out} ${out}
+	done
+	cd ..
+done
+

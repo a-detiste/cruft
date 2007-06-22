@@ -1,5 +1,6 @@
 #!/bin/sh
-test -d /usr/share/gconf/schemas || exit 0
+set -e
+test -d /usr/share/gconf/schemas || exit 1
 find /usr/share/gconf/schemas -type f | xargs -r egrep '<(applyto|key)>' |
  perl -n -e 'm{<\w+>(/[^/]+/[^/<]+)};print $1."\n"' | sort -u |
  while read n

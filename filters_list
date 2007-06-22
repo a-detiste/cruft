@@ -1,0 +1,40 @@
+#!/bin/sh
+# Print on standard output the list of files which contain filter patterns for
+# the type given as the first argument
+set -e
+. /usr/lib/cruft/common.sh
+cruft_debug 2
+
+type="$1"
+
+get_all_filter_basenames()
+{
+	# the trick with cat is to detect "disk full" conditions but not fail on directory empty
+	(
+	if cd /var/lib/dpkg/info             2>/dev/null ; then ls *.extrafiles 2>/dev/null | sed 's,\.extrafiles$,,' ; fi
+	if cd /etc/cruft/filters             2>/dev/null ; then ls * 2>/dev/null | cat ; fi
+	if cd /usr/lib/cruft/filters         2>/dev/null ; then ls * 2>/dev/null | cat ; fi
+	if [ -n "${type}" ] ; then
+	if cd /etc/cruft/filters-${type}     2>/dev/null ; then ls * 2>/dev/null | cat ; fi
+	if cd /usr/lib/cruft/filters-${type} 2>/dev/null ; then ls * 2>/dev/null | cat ; fi
+	fi
+	) | sort -u
+}
+
+for f in $(get_all_filter_basenames) ; do
+	process_package "${f}" || continue
+	if [ -n "${type}" -a -e "/etc/cruft/filters-${type}/${f}" ] ; then
+		echo "/etc/cruft/filters-${type}/${f}"
+	elif [ -e "/etc/cruft/filters/${f}" ] ; then
+		echo "${LIST}/etc/cruft/filters/${f}"
+	elif [ -e "/var/lib/dpkg/info/${f}.extrafiles" ] ; then
+		echo "${LIST}/var/lib/dpkg/info/${f}.extrafiles"
+	elif [ -n "${type}" -a -e "/usr/lib/cruft/filters-${type}/${f}"  ] ; then
+		echo "${LIST}/usr/lib/cruft/filters-${type}/${f}"
+	elif [ -e "/usr/lib/cruft/filters/${f}" ] ; then
+		echo "${LIST}/usr/lib/cruft/filters/${f}"
+	else
+		echo "Cannot find filter file [${f}] for some strange reason" >&2
+	fi
+done
+

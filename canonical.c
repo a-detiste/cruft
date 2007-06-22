@@ -70,7 +70,7 @@ int main(void) {
 	    {
 		sz_buffs *= 2;
 	    } else {
-		break;
+		return EXIT_FAILURE;
 	    }
 	    pch = buffer + strlen(buffer) - 1;
 	    if ( fgets(pch+1, sz_buffs/2+1, stdin) == NULL ) break;
@@ -80,7 +80,8 @@ int main(void) {
 
 	if ( buffer[0] != '/' ) {
 		/* don't even try working with relative paths */
-		printf("%s\n", buffer );
+		if (printf("%s\n", buffer) < 0)
+			return EXIT_FAILURE;
 		continue;
 	}
 
@@ -107,7 +108,7 @@ int main(void) {
 		    {
 			sz_buffs *= 2;
 		    } else {
-			break;
+			return EXIT_FAILURE;
 		    }
 		}
 	    } else {
@@ -125,7 +126,8 @@ int main(void) {
 	}	
 
         /* Finally print the canonical path */
-	printf( "%s%s\n", cwd, basename );
+	if (printf("%s%s\n", cwd, basename) < 0)
+		return EXIT_FAILURE;
     }
 
     free(cwd); 
@@ -133,5 +135,8 @@ int main(void) {
     free(basename);
     free(last);
     
-    return 0;
+    if (fclose(stdout) != 0)
+    	return EXIT_FAILURE;
+
+    return EXIT_SUCCESS;
 }

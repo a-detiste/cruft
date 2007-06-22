@@ -1,7 +1,8 @@
 Source: cruft
 Section: admin
 Priority: optional
-Maintainer: Anthony Towns <ajt@debian.org>
+Maintainer: Marcin Owsiany <porridge@debian.org>
+Uploaders: Anthony Towns <ajt@debian.org>
 Build-Depends: debhelper (>> 4)
 Standards-Version: 3.6.2
 

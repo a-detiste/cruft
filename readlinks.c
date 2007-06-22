@@ -71,7 +71,8 @@ int main(void) {
 	    ;
 
         if ( buffer[0] != '/' ) { /* don't even try relative paths */
-	    printf( "%s\n", buffer );
+	    if (printf("%s\n", buffer) < 0)
+		return EXIT_FAILURE;
 	    continue;
         }
 
@@ -142,8 +143,11 @@ int main(void) {
 		pch[1] = '/'; pch[2] = '\0';
 	    }
 	}
-	printf( "%s%s\n", cwd, basename );
+	if (printf("%s%s\n", cwd, basename) < 0)
+		return EXIT_FAILURE;
     }
+    if (fclose(stdout) != 0)
+    	return EXIT_FAILURE;
 
     free(cwd);
     free(buffer);
