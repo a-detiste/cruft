@@ -1,4 +1,14 @@
-/var/lib/dpkg/*
+/var/lib/dpkg/available
+/var/lib/dpkg/available-old
+/var/lib/dpkg/cmethopt
+/var/lib/dpkg/diversions
+/var/lib/dpkg/diversions-old
+/var/lib/dpkg/lock
+/var/lib/dpkg/methlock
+/var/lib/dpkg/statoverride
+/var/lib/dpkg/statoverride-old
+/var/lib/dpkg/status
+/var/lib/dpkg/status-old
 /var/lib/dpkg/alternatives/*
 /var/lib/dpkg/info/*
 /var/lib/dpkg/methods/**

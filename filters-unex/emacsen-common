@@ -1,2 +1,4 @@
-/usr/share/emacs20/site-lisp/**/*.elc
+# emacsen-common 1.4.17
 /var/lib/emacsen-common/installed-flavors
+/usr/local/share/emacs
+/usr/local/share/emacs/site-lisp

@@ -1,1 +1,4 @@
-/var/lib/pdmenu/pdmenurc_auto
+#pdmenu 1.2.89 (etch)
+/var/lib/pdmenu/pdmenurc
+/var/lib/pdmenu/pdmenurc.vc
+/var/lib/pdmenu/pdmenurc.x11
