@@ -1,0 +1,4 @@
+# emacs21-common 21.4a+1-3
+/usr/share/emacs21/site-lisp/**/*.elc
+/usr/local/share/emacs/21.4
+/usr/local/share/emacs/21.4/site-lisp
