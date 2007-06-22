@@ -32,7 +32,8 @@
 /var/spool/mail
 /var/run/*.pid
 /var/run/utmp
-/var/log/wtmp*
+/var/log/wtmp
+/var/log/btmp
 /usr/local
 /usr/local/bin
 /usr/local/etc
