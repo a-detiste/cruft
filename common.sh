@@ -3,6 +3,7 @@ cruft_debug()
 {
 	local min_level=${1:-1}
 	if [ -n "$CRUFT_DEBUG" ] && [ "$CRUFT_DEBUG" -ge $min_level ]; then
+		PS4='$(date +\>[%Y-%m-%d\ %H:%M:%S.%N])'" [$min_level] "
 		set -x
 	fi
 }
@@ -10,7 +11,7 @@ cruft_debug()
 debug()
 {
 	if [ -z "$CRUFT_DEBUG" ] ; then return ; fi
-	echo "$@" >&2
+	echo "$(date +">[%Y-%m-%d %H:%M:%S.%N] [0]")" "$@" >&2
 }
 
 # print default list of all mounted filesystems to scan

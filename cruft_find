@@ -19,6 +19,7 @@ sub all_fs;
 sub noscan_fs;
 sub get_direct_fs($@);
 sub prunes($@);
+sub debug($);
 
 sub run_find
 {
@@ -27,7 +28,7 @@ sub run_find
 	my $params_ref = shift;
 	my $extra = shift || '';
 	my $cmd = "find $path $extra ".prunes($path, @$ignore_ref).' '.join(' ', @$params_ref);
-	print STDERR "Running [$cmd]\n" if exists $ENV{'CRUFT_DEBUG'};
+	debug "Running [$cmd]";
 	system($cmd) == 0 or die "[$cmd] failed: $?\n";
 }
 

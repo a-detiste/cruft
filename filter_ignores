@@ -8,6 +8,7 @@ BEGIN{
 	sub noscan_fs;
 	sub get_direct_fs($@);
 	sub prunes($@);
+	sub debug($);
 	@I=ignores;@S=scan_fs;@NS=noscan_fs;
 	%M  = ( map {$_=> 1} @S);
 	%M  = ( %M, map {$_=>0} @NS );

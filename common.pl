@@ -1,6 +1,8 @@
 use strict;
 use warnings;
 
+use POSIX qw(strftime);
+
 # is_subdir potential_base potential_subdir
 # 1 = success ; if potential_subdir is a subdir of potential_base or they are
 # the same
@@ -92,6 +94,12 @@ sub prunes($@)
 	}
 	return "\\( ".join(" -or ", @prunes)." \\) -or" if @prunes;
 	return '';
+}
+
+sub debug($)
+{
+	# XXX this needs to be fixed to show nanosecods, to be consistent with shell date calls
+	printf STDERR ">[%s] [0] %s\n", strftime('%Y-%m-%d %H:%M:%S.?????????', localtime), $_[0] if defined $ENV{'CRUFT_DEBUG'} and $ENV{'CRUFT_DEBUG'} ne '';
 }
 
 1;
