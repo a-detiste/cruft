@@ -1,3 +1,4 @@
-/etc/environment
+# locales 2.3.6.ds1-13 (etch)
+/etc/default/locale
 /etc/locale.gen
 /usr/lib/locale/locale-archive

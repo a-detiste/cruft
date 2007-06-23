@@ -1,3 +1,15 @@
+cruft (0.9.8) unstable; urgency=low
+
+  * Filter files:
+    - added: ipolish alsa-base apt-listbugs cryptsetup cups-pdf cupsys
+      cupsys-client dcc-common ddclient gdm gs-common pcmciautils sun-java5-bin
+      wpolish xserver-xorg x-ttcidfont-conf
+    - modified: apache-common apt cvs fontconfig hddtemp iamerican ibritish
+      locales x11-common
+  * Explain script modified: grub
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 23 Jun 2007 21:32:23 +0100
+
 cruft (0.9.7) experimental; urgency=low
 
   * The "DebConf 7" release - includes 0.9.6-0.18 (experimental)

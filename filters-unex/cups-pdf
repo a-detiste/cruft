@@ -1,0 +1,3 @@
+# cups-pdf 2.4.2-3 (etch)
+/var/log/cups/cups-pdf_log
+/var/log/cups/cups-pdf_log.*
