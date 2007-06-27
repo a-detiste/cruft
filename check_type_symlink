@@ -21,7 +21,8 @@ do
 	done
 	for chroot in "$@"
 	do
-		egrep -v "^$chroot/" "broken_symlinks_${suffix}.tmp" > "broken_symlinks_${suffix}"
+		# using cat is a trick to fail only on filesystem write errors
+		egrep -v "^$chroot/" "broken_symlinks_${suffix}.tmp" | cat > "broken_symlinks_${suffix}"
 		mv "broken_symlinks_${suffix}" "broken_symlinks_${suffix}.tmp"
 	done
 	mv "broken_symlinks_${suffix}.tmp" "broken_symlinks_${suffix}"
