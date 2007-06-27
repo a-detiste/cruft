@@ -12,6 +12,7 @@ for f in type_symlink_*
 do
 	debug " - Processing ${f}"
 	suffix=${f/type_symlink_/}
+	touch "broken_symlinks_${suffix}.tmp"
 	cat "${f}" | while read link
 	do
 		if [ ! -e "$(echo "$link" | /usr/lib/cruft/readlinks)" ]; then
