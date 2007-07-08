@@ -133,11 +133,11 @@ if [ "$FILES" = yes ]; then
 		if [ "$PRUNE" = skip ]; then
 			debug " - Skipping [${DRIVE}]"
 			: > "${FILENAME}"
-			: > "${FILENAME/file/type_symlink}"
+			: > "type_symlink${FILENAME#file}"
 		else
 			debug " - Running find on [${DRIVE}]"
 			find "$DRIVE" -xdev $PRUNE -print \
-				-type l -fprint "${FILENAME/file/type_symlink}" \
+				-type l -fprint "type_symlink${FILENAME#file}" \
 				| sort -u > "$FILENAME"
 		fi
 	done

@@ -1,3 +1,9 @@
+cruft (0.9.10) unstable; urgency=low
+
+  * Fixed two bashisms in cruft (closes: Bug#432207)
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun,  8 Jul 2007 15:33:14 +0100
+
 cruft (0.9.9) unstable; urgency=low
 
   * check_type_symlink: fixed a failure when there are no broken symlinks on a
