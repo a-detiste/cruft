@@ -81,18 +81,19 @@ if [ "$FILES" = yes ]; then
 	debug "*** Running explain scripts"
 	# run explain scripts
 	(
-		cd /usr/lib/cruft/explain && ls * 2>/dev/null
-		cd /etc/cruft/explain     && ls * 2>/dev/null
+		cd /usr/lib/cruft/explain && ls -1 2>/dev/null
+		cd /etc/cruft/explain     && ls -1 2>/dev/null
 	) | sort -u |
 	while read f ; do
 		process_package "${f}" || continue
 		# File in /etc overrides the one in /usr
-		if [ -e "/etc/cruft/explain/${f}" ] ; then
+		if [ -x "/etc/cruft/explain/${f}" -a ! -d "/etc/cruft/explain/${f}" ] ; then
 			script="/etc/cruft/explain/${f}"
-		elif [ -e "/usr/lib/cruft/explain/${f}" ] ; then
+		elif [ -x "/usr/lib/cruft/explain/${f}" -a ! -d "/usr/lib/cruft/explain/${f}" ] ; then
 			script="/usr/lib/cruft/explain/${f}"
 		else
-			script="/can/not/find/${f}"
+			debug " - Skipping [${f}] - probably a directory"
+			continue
 		fi
 		debug " - Running ${script}"
 		# FD1 -> must exist
