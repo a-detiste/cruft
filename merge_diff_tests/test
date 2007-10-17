@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 [ -f ../Makefile ] || ( cd .. && ./configure )
-make -C .. merge_diff_test  CFLAGS="-g -O0 -Wall -W -ansi -pedantic-errors"
+[ -x ../merge_diff_test ] || make -C .. merge_diff_test  CFLAGS="-g -O0 -Wall -W -ansi -pedantic-errors"
 set +e
 for subdir in [0-9][0-9]
 do
