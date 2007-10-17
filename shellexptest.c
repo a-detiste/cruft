@@ -11,7 +11,12 @@ void usage()
 
 int main(int argc, char **argv)
 {
+	int ret = 0;
 	if (argc != 3)
 		usage();
-	exit(shellexp(argv[2], argv[1]));
+	ret = shellexp(argv[2], argv[1]);
+	if (ret == -1)
+		exit(2);
+	else
+		exit(ret);
 }
