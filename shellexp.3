@@ -1,0 +1,116 @@
+.\" Please adjust this date whenever revising the manpage.
+.TH SHELLEXP 1 "October 17, 2007"
+.SH NAME
+shellexp \- match string against a cruft filter pattern
+.SH SYNOPSIS
+.nf
+.BI "extern int shellexp(const char *" string ", const char *" pattern );
+.fi
+.SH DESCRIPTION
+The
+.BR shellexp ()
+function is similar to
+.BR fnmatch (3),
+but works with cruft patterns instead of standard
+.BR glob (7)
+patterns.
+The function returns a true value if
+.I string
+matches the cruft pattern
+.IR pattern ,
+and a false value (0) otherwise. Returns -1 in case of pattern syntax error.
+
+.PP
+Cruft patterns are similar to
+.BR glob (7)
+patterns, but are not fully compatible. The following special characters are
+supported:
+
+.TP
+.B ? (a question mark)
+matches exacly one character of
+.I string
+other than a slash.
+
+.TP
+.B *
+matches zero or more characters of
+.I string
+other than a slash.
+
+.TP
+.B /** or /**/
+matches zero or more path components in
+.IR string .
+Please note that you can only use
+.B **
+when directly following a slash, and furthermore, only when either directly
+preceding a slash or at the very end of
+.IR pattern .
+A
+.B **
+followed by anything other than a slash makes
+.I pattern
+invalid. A
+.B **
+following anything else than a slash reduces it to having the same effect as
+.BR * .
+
+.TP
+.BI [ character-class ]
+Matches any character between the brackets exactly once. Named character
+classes are NOT supported. If the first character of the class is
+.B !
+or
+.BR ^ ,
+then the meaning is inverted (matches any character NOT listed between the
+brackets).  If you want to specify a literal closing bracket in the class, then
+specify it as the first (or second, if you want to negate) character after the
+opening bracket.  Also, simple ASCII-order ranges are supported using a dash
+character (see examples section).
+
+.PP
+Any other character matches itself.
+
+.SH EXAMPLES
+.TP
+.B /a/b*/*c
+matches
+.BR /a/b/xyz.c ,
+as well as
+.BR /a/bcd/.c ,
+but not
+.BR /a/b/c/d.c .
+
+.TP
+.B /a/**/*.c
+matches all of the following:
+.BR /a/a.c ,
+.BR /a/b/a.c ,
+.BR /a/b/c/a.c
+and
+.BR /a/b/c/d/a.c .
+
+.TP
+.B /a/[0-9][^0-9]*
+matches
+.BR /a/1abc ,
+but not
+.BR /a/12bc .
+
+.SH BUGS
+Uses constant-length 1000 byte buffers to hold filenames. Also uses recursive
+function calls, which are not very efficient. Does not validate the pattern
+before matching, so any pattern errors (unbalanced brackets or misplaced
+.BR ** )
+are only reported when and if the matching algorithm reaches them.
+
+.SH "SEE ALSO"
+.BR fnmatch (3),
+.BR glob (3),
+.BR cruft (8)
+and
+.BR dash-search (1).
+.SH AUTHOR
+This manual page was written by Marcin Owsiany <porridge@debian.org>,
+for the Debian GNU/Linux system (but may be used by others).
