@@ -30,6 +30,11 @@ build-stamp:
 		--build=$(DEB_BUILD_GNU_TYPE)
 	$(MAKE)
 
+# launch some tests
+	$(MAKE) shellexptest merge_diff_test
+	./test-shellexp
+	cd merge_diff_tests && ./test
+
 	touch build-stamp
 
 clean:
