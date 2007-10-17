@@ -25,25 +25,34 @@ int shellexp( char* string, char* pattern ) {
     case '/':
 	if ( pattern[1] == '*' && pattern[2] == '*' ) {
 	    char* pch = string;
-	    if ( *pch != '/' ) return FALSE;                
-	    if ( pattern[3] == '\0' ) return TRUE;
-	    if ( pattern[3] != '/' ) {
+	    if ( pattern[3] != '/' && pattern[3] != '\0' ) {
 		fprintf( stderr, "Bad expression.\n" );
 		return -1;
 	    }
+	    if ( *pch != '/' ) return FALSE;                
+	    if ( pattern[3] == '\0' ) return TRUE;
 	    while ( *pch != '\0' ) {
 		if ( *pch == '/' ) {
-		    if ( shellexp( pch, pattern + 3 ) ) return TRUE;
+		    int ret = shellexp( pch, pattern + 3 );
+		    if ( ret == TRUE || ret == -1 )
+		    	return ret;
 		}
 		pch++;
 	    }
 	    return FALSE;
-	}
-	return string[0] == '/' && shellexp( string+1, pattern+1 );
+	} else if ( string[0] == '/' ) {
+		return shellexp( string+1, pattern+1 );
+	} else
+		return FALSE;
     case '*':
 	if ( string[0] == '/' ) return shellexp( string, pattern+1 );
-	return shellexp( string, pattern+1 ) || 
-	    (string[0] != '\0' ? shellexp( string + 1, pattern ) : FALSE );
+	{
+		int ret = shellexp( string, pattern+1 );
+		if (ret == FALSE)
+			return string[0] != '\0' ? shellexp( string + 1, pattern ) : FALSE;
+		else
+			return ret;
+	}
     case '[': 
 	if ( string[0] == '\0' ) return FALSE;
 	{
@@ -77,10 +86,16 @@ int shellexp( char* string, char* pattern ) {
 		return -1;
 	    }
 	    
-	    return (not ? !okay : okay) && shellexp( string + 1, pattern + 1 );
+	    if (! (not ? !okay : okay))
+	    	return FALSE;
+	    else
+	    	return shellexp( string + 1, pattern + 1 );
 	}
     default:
-	return pattern[0] == string[0] && shellexp( string + 1, pattern + 1 );
+    	if (pattern[0] != string[0])
+		return FALSE;
+	else
+		return shellexp( string + 1, pattern + 1 );
     }
 }
 
