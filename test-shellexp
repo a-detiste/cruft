@@ -1,0 +1,78 @@
+#!/bin/sh
+exit=0
+
+# base (universal) test function
+tu()
+{
+	./shellexptest "$1" "$2" 2>/dev/null
+	if [ $? -ne $3 ] ; then
+		echo UNEXPECTED $4: "$1" "$2"
+		exit=1
+	fi
+}
+
+# test - error
+te() { tu "$1" "$2" 2 "LACK OF ERROR"; }
+# test - yes
+ty() { tu "$1" "$2" 1 "FAILURE"; }
+# test - no
+tn() { tu "$1" "$2" 0 "SUCCESS"; }
+
+tn '/one/**/end' '/oneend'
+ty '/one/**/end' '/one/end'
+ty '/one/**/end' '/one/two/end'
+ty '/one/**/end' '/one/two/three/end'
+ty '/one/**/end' '/one/two/three/four/end'
+
+ty '/one?two' '/oneatwo'
+tn '/one?two' '/one/two'
+tn '/one?two' '/onetwo'
+tn '/one?'    '/one'
+
+#
+# A "**" after non-slash is the same as "*"
+#  - at the end
+for pat in '/one/a*' '/one/a**' ; do
+ty $pat '/one/a'
+ty $pat '/one/ab'
+ty $pat '/one/abc'
+tn $pat '/one/a/'
+tn $pat '/one/a/b'
+tn $pat '/one/a/bc'
+done
+#  - before a "/"
+for pat in '/one/a*/' '/one/a**/' ; do
+ty $pat '/one/a/'
+ty $pat '/one/ab/'
+ty $pat '/one/abc/'
+tn $pat '/one/a/b'
+tn $pat '/one/a/bc'
+done
+#  - before  "/something"
+for pat in '/one/a*/e' '/one/a**/e' ; do
+ty $pat '/one/a/e'
+ty $pat '/one/ab/e'
+ty $pat '/one/abc/e'
+tn $pat '/one/a/b/e'
+tn $pat '/one/a/bc/e'
+done
+
+te '/one/**a' '/one/whatever'
+
+ty '/[abc]' '/a'
+tn '/[abc]' '/d'
+
+# The following are mentioned in the manpage
+ty '/a/b*/*c' '/a/b/xyz.c'
+ty '/a/b*/*c' '/a/bcd/.c'
+tn '/a/b*/*c' '/a/b/c/d.c'
+
+ty '/a/**/*.c' '/a/a.c'
+ty '/a/**/*.c' '/a/b/a.c'
+ty '/a/**/*.c' '/a/b/c/a.c'
+ty '/a/**/*.c' '/a/b/c/d/a.c'
+
+ty '/a/[0-9][^0-9]*' '/a/1abc'
+tn '/a/[0-9][^0-9]*' '/a/12bc'
+
+exit $exit
