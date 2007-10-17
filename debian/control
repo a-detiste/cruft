@@ -3,7 +3,7 @@ Section: admin
 Priority: optional
 Maintainer: Marcin Owsiany <porridge@debian.org>
 Uploaders: Anthony Towns <ajt@debian.org>
-Build-Depends: debhelper (>> 5)
+Build-Depends: debhelper (>> 5), pngcrush, dia | dia-gnome
 Standards-Version: 3.7.2.2
 
 Package: cruft

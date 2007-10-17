@@ -3,8 +3,10 @@ cruft (0.9.10) unstable; urgency=low
   * Fixed two bashisms in cruft (closes: Bug#432207)
   * Skip directories among explain scripts gracefully (closes: Bug#432788)
   * Added a shellexp(3) manpage (closes: Bug#375788)
+  * Generate the PNG from the dia file and shrink it using pngcrush at build
+    time, instead of embedding it in the source package (closes: Bug#439926)
 
- -- Marcin Owsiany <porridge@debian.org>  Wed, 17 Oct 2007 12:56:01 +0100
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 17 Oct 2007 12:57:50 +0100
 
 cruft (0.9.9) unstable; urgency=low
 

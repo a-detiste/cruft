@@ -13,7 +13,7 @@ PROGS1 = canonical filter_shell merge_diff readlinks
 PROGS2 = dash-search
 PROGS  = $(PROGS1) $(PROGS2)
 
-all : $(PROGS)
+all : $(PROGS) design.png
 
 install1 : $(PROGS1) filter filters_list cruft_find filter_ignores check_type_symlink
 	$(INS) $^ $(DESTDIR)/usr/lib/cruft/
@@ -44,8 +44,13 @@ merge_diff_test: merge_diff_test.o merge_diff_funcs.o merge_diff_common.o river.
 merge_diff:      merge_diff.o      merge_diff_funcs.o merge_diff_common.o river.o fn_stream.o
 merge_diff_funcs.o merge_diff_test.o merge_diff_common.o river.o fn_stream.o merge_diff.o: merge_diff_common.h
 
+design.png: design.dia
+	dia --size 800x740 --export tmp-$@ $<
+	pngcrush -q -c 0 tmp-$@ $@
+	rm tmp-$@
+
 distclean : clean
-	rm -f Makefile config.cache config.status config.log
+	rm -f Makefile config.cache config.status config.log design.png
 
 devclean : configclean
 	rm -f configure
