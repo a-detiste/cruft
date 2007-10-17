@@ -67,8 +67,9 @@ files:
    list. It is placed into /var/spool/cruft/frbn_*
 
 Before reporting, each of the three lists is first filtered through the
-patterns specified in the filter files for that type of list. See below for how
-the filter files are selected.
+patterns specified in the filter files for that type of list. The syntax and
+semantics of the cruft patterns used in the filter files are documented in the
+shellexp(3) manual page. See below for how the filter files are selected.
 
 
 Selecting explain scripts to run
