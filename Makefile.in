@@ -45,7 +45,7 @@ merge_diff:      merge_diff.o      merge_diff_funcs.o merge_diff_common.o river.
 merge_diff_funcs.o merge_diff_test.o merge_diff_common.o river.o fn_stream.o merge_diff.o: merge_diff_common.h
 
 design.png: design.dia
-	dia --size 800x740 --export tmp-$@ $<
+	unset DISPLAY ; dia --size 800x740 --export tmp-$@ $<
 	pngcrush -q -c 0 tmp-$@ $@
 	rm tmp-$@
 

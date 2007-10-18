@@ -1,3 +1,10 @@
+cruft (0.9.11) unstable; urgency=low
+
+  * Unset DISPLAY when launching dia, so it's less likely to fail if the
+    variable is set incorrectly at build time.
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 18 Oct 2007 10:22:51 +0100
+
 cruft (0.9.10) unstable; urgency=low
 
   * Fixed two bashisms in cruft (closes: Bug#432207)
