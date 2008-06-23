@@ -50,7 +50,7 @@ Mail report to
 .I ADDRESS.
 .TP
 .B \-k
-Only cleanup the spool directory.
+Only cleanup cruft's spool directory.
 .TP
 .B \-n
 Generate input files for reporting, but do not generate a report.
@@ -63,8 +63,10 @@ With none of
 .B \-n
 or
 .B \-N
-cruft performs all actions, that is cleans up old files, generates new input
-files and produces a report.
+cruft performs all the above three actions, that is
+cleans its own spool directory, generates new input
+files and produces a report. Please note that cruft never
+deletes any files outside its own spool directory.
 .SH "ENVIRONMENT VARIABLES"
 It is possible to get some debugging information from cruft by setting the variable
 .B CRUFT_DEBUG
