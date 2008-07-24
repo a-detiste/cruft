@@ -12,6 +12,8 @@
 /var/lib/dpkg/alternatives/*
 /var/lib/dpkg/info/*
 /var/lib/dpkg/methods/**
+/var/lib/dpkg/triggers
+/var/lib/dpkg/triggers/*
 /var/log/dpkg.log
 /etc/dpkg/dpkg.cfg
 /usr/share/info/dir.old

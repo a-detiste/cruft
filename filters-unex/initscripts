@@ -9,3 +9,4 @@
 /var/log/fsck/checkfs
 /var/log/fsck/checkroot
 /var/log/boot
+/lib/init/rw/sendsigs.omit.d

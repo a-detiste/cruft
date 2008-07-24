@@ -1,0 +1,3 @@
+# klogd 1.5-4
+/lib/init/rw/sendsigs.omit.d
+/lib/init/rw/sendsigs.omit.d/klogd

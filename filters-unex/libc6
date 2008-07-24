@@ -3,6 +3,8 @@
 /etc/ld.so.hwcappkgs
 /etc/ld.so.conf
 /etc/ld.so.cache
+/var/cache/ldconfig
+/var/cache/ldconfig/aux-cache
 /usr/lib/gconv/gconv-modules.cache
 # lckpwdf()
 /etc/.pwd.lock
