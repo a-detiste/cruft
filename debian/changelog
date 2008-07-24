@@ -6,6 +6,8 @@ cruft (0.9.11) unstable; urgency=low
     alternatives mismatch more intelligible (closes: Bug#487777)
   * filters-broken_symlinks: sysklogd, klogd: added sendsigs.omit.d files
   * filters-unex:
+    - apt: added term.log
+    - aptitude: added lock and pkgstates.old
     - libc6: added ldconfig directory and aux-cache file
     - initscripts, sysklogd, klogd: added /lib/init/rw/sendsigs.omit.d
     - libpam-modules: added /etc/security/opasswd
@@ -19,7 +21,7 @@ cruft (0.9.11) unstable; urgency=low
   * dropped linda overrides, as suggested by lintian
   * added a lintian override about the empty directories
 
- -- Marcin Owsiany <porridge@debian.org>  Wed, 23 Jul 2008 21:31:29 -0700
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 23 Jul 2008 21:45:49 -0700
 
 cruft (0.9.10) unstable; urgency=low
 

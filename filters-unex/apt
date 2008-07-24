@@ -14,3 +14,4 @@
 /etc/apt/trustdb.gpg
 /etc/apt/secring.gpg
 /var/lib/apt/extended_states
+/var/log/apt/term.log*
