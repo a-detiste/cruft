@@ -14,8 +14,10 @@ cruft (0.9.11) unstable; urgency=low
   * clarify man page as to what cruft "cleans up" (closes: Bug#487456)
   * updated debian/copyright, added myself and some links to it
   * added vcs-* and homepage headers to the control file
+  * bumped Standards-Version to 3.8.0.0 (only change needed was change of
+    findstring to filter when parsing DEB_BUILD_OPTIONS)
 
- -- Marcin Owsiany <porridge@debian.org>  Wed, 23 Jul 2008 20:44:56 -0700
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 23 Jul 2008 21:00:20 -0700
 
 cruft (0.9.10) unstable; urgency=low
 
