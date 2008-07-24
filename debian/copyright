@@ -1,8 +1,14 @@
 This package was written for Debian by Anthony Towns <ajt@debian.org>
+Subsequently maintained and developed by Marcin Owsiany <porridge@debian.org>
 
-Copyright:
+Project page: http://alioth.debian.org/projects/cruft/
+Wiki: http://wiki.debian.org/Cruft
+Subversion repository: http://svn.debian.org/wsvn/cruft
 
-Cruft Copyright (c) 1998 Anthony Towns
+Copyright and License:
+
+Cruft Copyright (c) 1998-2000 Anthony Towns
+      Copyright (c) 2005-2008 Marcin Owsiany
 
 This program is free software; you may redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
