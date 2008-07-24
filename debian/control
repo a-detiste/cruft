@@ -5,6 +5,9 @@ Maintainer: Marcin Owsiany <porridge@debian.org>
 Uploaders: Anthony Towns <ajt@debian.org>
 Build-Depends: debhelper (>> 5), pngcrush, dia | dia-gnome
 Standards-Version: 3.7.2.2
+Homepage: http://alioth.debian.org/projects/cruft/
+Vcs-SVN: svn://svn.debian.org/cruft/trunk
+Vcs-Browser: http://svn.debian.org/wsvn/cruft/trunk/
 
 Package: cruft
 Architecture: any
