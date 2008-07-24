@@ -54,7 +54,7 @@ while( defined($alternative_file = glob("/var/lib/dpkg/alternatives/*")) )
 		$alternative{$master}->{files}->[$i] = $slave;
 	}
     }
-    warn("No alternative declares a file pointed to by master link [$name]: [${winner_name}]"), next unless defined $winner;
+    warn("Master link \"/etc/alternatives/$name\" points to alternative \"${winner_name}\", but no such alternative is registered, according to \"/var/lib/dpkg/alternatives/$name\". See \"update-alternatives --display $name\"\n"), next unless defined $winner;
 
     # list the symlinks for files the winning alternative provides
     for ($i = 0; $i < $num_files; $i++) {
