@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
 	    
 	    /* Trim trailing whitespace */
 	    for ( pch = pch - 1;
-		  isspace(*pch) && pch >= buffer; 
+		  pch >= buffer && isspace(*pch); 
 		  pch-- )
 		;
 	    
