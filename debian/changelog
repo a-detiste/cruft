@@ -1,3 +1,14 @@
+cruft (0.9.12) unstable; urgency=high
+
+  * Minimal change to fix a serious bug; upload aimed at lenny
+  * filter_shell.c:
+    - when there are more patterns to load than we can handle then warn and
+      exit, instead of segfaulting (closes: Bug#498986)
+    - increase the number of patterns we can handle from 1000 (very easy to
+      reach) to 4000
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 21 Nov 2008 22:11:43 +0000
+
 cruft (0.9.11) unstable; urgency=low
 
   * Unset DISPLAY when launching dia, so it's less likely to fail if the
