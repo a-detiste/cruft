@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 set -e
 . /usr/lib/cruft/common.sh
 

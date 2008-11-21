@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/dash
 # Read lists of symlinks found on the filesystems and produce files with lists
 # of broken ones.
 
@@ -11,7 +11,7 @@ cd /var/spool/cruft
 for f in type_symlink_*
 do
 	debug " - Processing ${f}"
-	suffix=${f/type_symlink_/}
+	suffix=${f#type_symlink_}
 	touch "broken_symlinks_${suffix}.tmp"
 	cat "${f}" | while read link
 	do

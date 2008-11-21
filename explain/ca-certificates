@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 set -e
 [ -d /etc/ssl/certs ] || exit 0
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 p='apt-listchanges'
 f="/var/lib/dpkg/info/$p.list"
 set -e

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/dash
 set -e
 [ -f ../Makefile ] || ( cd .. && ./configure )
 [ -x ../merge_diff_test ] || make -C .. merge_diff_test  CFLAGS="-g -O0 -Wall -W -ansi -pedantic-errors"

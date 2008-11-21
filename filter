@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 # Read standard input and filter out files which match filter patterns listed
 # in the file given as the first argument
 set -e

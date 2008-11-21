@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 # If cruft is not entering /dev, then don't scan it here either
 if mount | awk '$3 == "/dev" {print $1}' | egrep -q '^(proc|devpts|nfs[1234]?|ncp|coda|(a|smb|ci|ncp|usb|tmp|sys)fs)$'
 then

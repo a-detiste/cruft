@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 d=/boot/grub
 set -e
 if [ ! -d "$d" ]; then d=/boot/boot/grub; fi

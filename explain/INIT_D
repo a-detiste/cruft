@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 set -e
 file /etc/rc?.d/[SK]???* | 
     egrep ": *symbolic link to \`?../init.d/[-a-zA-Z0-9_.]*'?$" |

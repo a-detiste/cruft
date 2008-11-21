@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 # Print on standard output the list of files which contain filter patterns for
 # the type given as the first argument
 set -e

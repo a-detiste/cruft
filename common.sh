@@ -3,7 +3,8 @@ cruft_debug()
 {
 	local min_level=${1:-1}
 	if [ -n "$CRUFT_DEBUG" ] && [ "$CRUFT_DEBUG" -ge $min_level ]; then
-		PS4='$(date +\>[%Y-%m-%d\ %H:%M:%S.%N])'" [$min_level] "
+		# dash turns into a forkbomb with this :-/
+		#PS4='$(date +\>[%Y-%m-%d\ %H:%M:%S.%N])'" [$min_level] "
 		set -x
 	fi
 }

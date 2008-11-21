@@ -11,7 +11,7 @@ Vcs-Browser: http://svn.debian.org/wsvn/cruft/trunk/
 
 Package: cruft
 Architecture: any
-Depends: ${shlibs:Depends}, file
+Depends: ${shlibs:Depends}, dash, file
 Description: Find any cruft built up on your system
  cruft is a program to look over your system for anything that shouldn't
  be there, but is; or for anything that should be there, but isn't.

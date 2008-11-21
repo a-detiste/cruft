@@ -1,9 +1,15 @@
-cruft (0.9.12) unstable; urgency=low
+cruft (0.9.12) experimental; urgency=low
 
+  * Changed all bash and sh scripts to use dash, because bash makes it hard to
+    write reliable scripts - see discussion at
+    http://groups.google.com/group/gnu.bash.bug/browse_thread/thread/e37f5c7ddcc55eeb
+    (closes: Bug#500261)
+  * Added a dependency on dash
+  * Fixed a bashism in check_type_symlink and disabled timestamps in $PS4
   * filter_shell.c: swapped checks in a for loop to avoid rather harmless but
     technically invalid uninitialized memory accesses
 
- -- Marcin Owsiany <porridge@debian.org>  Sun, 05 Oct 2008 13:08:56 +0100
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 21 Nov 2008 19:00:57 +0000
 
 cruft (0.9.11) unstable; urgency=low
 
