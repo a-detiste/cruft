@@ -7,11 +7,15 @@
 #define FALSE 0
 #define TRUE  1
 
+/* XXX this should be changed to use the heap. stack has its limits... */
+#define BUFFER_LEN 1000
+#define NUM_STRINGS 4000
+
 int shellexp(char*, char*);
 
 int main(int argc, char **argv) {
-    char strings[1000][1000];
-    char buffer[1000];
+    char strings[NUM_STRINGS][BUFFER_LEN];
+    char buffer[BUFFER_LEN];
     FILE* exp_list;
     int n_strings = 0;
     int i;
@@ -25,7 +29,7 @@ int main(int argc, char **argv) {
 	    continue;
 	}
 	
-	while( fgets( strings[n_strings], 1000, exp_list ) ) {
+	while( fgets( strings[n_strings], BUFFER_LEN, exp_list ) ) {
 	    char*pch;
 	    char*buffer = strings[n_strings];
 	    
@@ -46,7 +50,12 @@ int main(int argc, char **argv) {
 	    
 	    *(pch+1) = '\0';
 	    
-	    n_strings++; continue;
+	    n_strings++;
+	    if ( n_strings == NUM_STRINGS ) {
+		fprintf(stderr, "You have more than %d patterns defined. Change NUM_STRINGS definition in "__FILE__" and recompile.\n", NUM_STRINGS);
+		exit(EXIT_FAILURE);
+	    }
+	    continue;
 	    /* XXX: the following code is unreachable */
 	    /* Trim leading whitespace */
 	    if ( isspace(buffer[0]) ) { 
@@ -62,7 +71,7 @@ int main(int argc, char **argv) {
     
     /* Copy lines from standard input to standard output, skipping the ones
      * which matched at least one of the loaded patterns */
-    while( fgets( buffer, 1000, stdin ) ) {
+    while( fgets( buffer, BUFFER_LEN, stdin ) ) {
 	int match;
 	match = FALSE;
 	
