@@ -6,6 +6,7 @@ cruft_debug()
 		# dash turns into a forkbomb with this :-/
 		#PS4='$(date +\>[%Y-%m-%d\ %H:%M:%S.%N])'" [$min_level] "
 		set -x
+		ulimit -c unlimited
 	fi
 }
 

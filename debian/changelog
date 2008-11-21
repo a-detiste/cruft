@@ -8,8 +8,9 @@ cruft (0.9.12) experimental; urgency=low
   * Fixed a bashism in check_type_symlink and disabled timestamps in $PS4
   * filter_shell.c: swapped checks in a for loop to avoid rather harmless but
     technically invalid uninitialized memory accesses
+  * common.sh: disable corefile limit in debug mode
 
- -- Marcin Owsiany <porridge@debian.org>  Fri, 21 Nov 2008 19:00:57 +0000
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 21 Nov 2008 20:07:28 +0000
 
 cruft (0.9.11) unstable; urgency=low
 
