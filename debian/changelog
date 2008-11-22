@@ -1,4 +1,4 @@
-cruft (0.9.12) experimental; urgency=low
+cruft (0.9.13) experimental; urgency=low
 
   * Changed all bash and sh scripts to use dash, because bash makes it hard to
     write reliable scripts - see discussion at
@@ -6,7 +6,9 @@ cruft (0.9.12) experimental; urgency=low
     (closes: Bug#500261)
   * Added a dependency on dash
   * Fixed a bashism in check_type_symlink and disabled timestamps in $PS4
-  * common.sh: disable corefile limit in debug mode
+  * common.sh:
+    - disable corefile limit in debug mode
+    - added fusectl to list of ignored filesystems (closes: Bug#499783)
   * filter_shell.c:
     - swapped checks in a for loop to avoid rather harmless but technically
       invalid uninitialized memory accesses
@@ -14,7 +16,7 @@ cruft (0.9.12) experimental; urgency=low
     - when there are more patterns to load than we can handle then warn and
       exit, instead of segfaulting (closes: Bug#498986)
 
- -- Marcin Owsiany <porridge@debian.org>  Fri, 21 Nov 2008 20:33:46 +0000
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 22 Nov 2008 09:14:49 +0000
 
 cruft (0.9.11) unstable; urgency=low
 
