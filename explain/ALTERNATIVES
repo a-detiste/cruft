@@ -4,7 +4,7 @@ open( NEED, ">&=3" ) || die( "Couldn't open output for needed files!?!" );
 
 while( defined($alternative_file = glob("/var/lib/dpkg/alternatives/*")) )
 {
-    $name = "$1" if $alternative_file =~ m#^.*/([^/]*)$#;
+    $name = "$1" if $alternative_file =~ m{^.*/([^/]*)$};
 
     open( FILE, $alternative_file ) || die( "Couldn't open $alternative_file\n" );
     
