@@ -163,12 +163,56 @@ fixup_slashes()
 	sed 's:/\.$:/:;s:/$::;s:^$:/:'
 }
 
+package_has_script()
+{
+	local pkg="$1"
+	local script="$2"
+	local ctrl_path_tmp=$(mktemp)
+	if ! dpkg-query --control-path "${pkg}" "${script}" >"${ctrl_path_tmp}" 2>/dev/null
+	then
+		rm -f "${ctrl_path_tmp}"
+		# error, most likely ${pkg} is not installed
+		return 1
+	else
+		lines=$(wc -l < "${ctrl_path_tmp}")
+		rm -f "${ctrl_path_tmp}"
+		if [ "${lines}" -eq 0 ]
+		then
+			# no path returned
+			return 1
+		else
+			return 0
+		fi
+	fi
+}
+
+package_has_files()
+{
+	local pkg="$1"
+	local list_tmp=$(mktemp)
+	if ! dpkg-query --listfiles "${pkg}" >"${list_tmp}" 2>/dev/null
+	then
+		rm -f "${list_tmp}"
+		# error, most likely ${pkg} is not installed
+		return 1
+	else
+		lines=$(wc -l < "${list_tmp}")
+		if [ "${lines}" -eq 0 ]
+		then
+			# has no files
+			return 1
+		else
+			return 0
+		fi
+	fi
+}
+
 package_installed()
 {
 	local pkg="$1"
-	[ -f "/var/lib/dpkg/info/${pkg}.list" ] ||
-	[ -f "/var/lib/dpkg/info/${pkg}.prerm" ] ||
-	[ -f "/var/lib/dpkg/info/${pkg}.postrm" ]
+	package_has_script "${pkg}" prerm ||
+	package_has_script "${pkg}" postrm ||
+	package_has_files "${pkg}"
 }
 
 # return 0 if file with that name is to be processed

@@ -85,9 +85,11 @@ the same name. So if you want to override /usr/lib/cruft/explain/foo, just
 create an executable file called /etc/cruft/explain/foo.
 
 Also, any explain script will be run only if any of the following is true:
- - a package with the same name as the file is not completly purged (that
-   means, a .list, .postrm or .prerm file for this package exists in
-   /var/lib/dpkg/info)
+ - a package with the same name as the file is not completly purged - that is,
+   at least one of the following exist for the package:
+     * a non-empty file list,
+     * a postrm file,
+     * a prerm file.
  - the name of the file contains no lower-case characters. Thus, the way to
    have a script run regardless of any package being installed, just name it in
    UPPER_CASE
@@ -101,7 +103,7 @@ following filter files will be selected:
 
  - /etc/cruft/filters-TYPE/*
  - /etc/cruft/filters/*
- - /var/lib/dpkg/info/*.extrafiles
+ - installed "extrafiles" control files (in dpkg database)
  - /usr/lib/cruft/filters-TYPE/*
  - /usr/lib/cruft/filters/*
 

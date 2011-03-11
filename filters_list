@@ -11,7 +11,7 @@ get_all_filter_basenames()
 {
 	# the trick with cat is to detect "disk full" conditions but not fail on directory empty
 	(
-	if cd /var/lib/dpkg/info             2>/dev/null ; then ls *.extrafiles 2>/dev/null | sed 's,\.extrafiles$,,' ; fi
+	dpkg-query -W | awk '{print $1}' | xargs -I '{}' dpkg-query --control-path '{}' extrafiles | xargs -r -n 1 basename | sed 's,\.extrafiles$,,'
 	if cd /etc/cruft/filters             2>/dev/null ; then ls * 2>/dev/null | cat ; fi
 	if cd /usr/lib/cruft/filters         2>/dev/null ; then ls * 2>/dev/null | cat ; fi
 	if [ -n "${type}" ] ; then
@@ -27,8 +27,8 @@ for f in $(get_all_filter_basenames) ; do
 		echo "/etc/cruft/filters-${type}/${f}"
 	elif [ -e "/etc/cruft/filters/${f}" ] ; then
 		echo "${LIST}/etc/cruft/filters/${f}"
-	elif [ -e "/var/lib/dpkg/info/${f}.extrafiles" ] ; then
-		echo "${LIST}/var/lib/dpkg/info/${f}.extrafiles"
+	elif package_has_script "${f}" extrafiles ; then
+		dpkg-query --control-path "${f}" extrafiles | sed "s,^,${LIST},"
 	elif [ -n "${type}" -a -e "/usr/lib/cruft/filters-${type}/${f}"  ] ; then
 		echo "${LIST}/usr/lib/cruft/filters-${type}/${f}"
 	elif [ -e "/usr/lib/cruft/filters/${f}" ] ; then
