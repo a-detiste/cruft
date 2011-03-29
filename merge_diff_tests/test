@@ -9,12 +9,13 @@ do
 	cd ${subdir}
 	outs="$(cd output && echo *)"
 	rm -f ${outs}
-	cp input/* .
-	#gdb ../../merge_diff_test
-	../../merge_diff_test .
+	mkdir -p run
+	cp input/* run
+	#gdb ../../merge_diff_test run
+	../../merge_diff_test run
 	for out in $outs
 	do
-		diff -u output/${out} ${out}
+		diff -u output/${out} run/${out}
 	done
 	cd ..
 done

@@ -37,6 +37,7 @@ clean :
 	rm -f $(PROGS) merge_diff.o merge_diff_funcs.o shellexp.o *~ debian/*~ \
 	 shellexptest.o shellexptest merge_diff_test.o merge_diff_test \
 	 merge_diff_common.o river.o fn_stream.o
+	rm -rf merge_diff_tests/*/run
 
 check: shellexptest merge_diff_test
 	./test-shellexp
