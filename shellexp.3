@@ -18,7 +18,7 @@ The function returns a true value if
 .I string
 matches the cruft pattern
 .IR pattern ,
-and a false value (0) otherwise. Returns -1 in case of pattern syntax error.
+and a false value (0) otherwise. Returns \-1 in case of pattern syntax error.
 
 .PP
 Cruft patterns are similar to
@@ -92,7 +92,7 @@ and
 .BR /a/b/c/d/a.c .
 
 .TP
-.B /a/[0-9][^0-9]*
+.B /a/[0\-9][^0\-9]*
 matches
 .BR /a/1abc ,
 but not
@@ -110,7 +110,7 @@ are only reported when and if the matching algorithm reaches them.
 .BR glob (3),
 .BR cruft (8)
 and
-.BR dash-search (1).
+.BR dash\-search (1).
 .SH AUTHOR
 This manual page was written by Marcin Owsiany <porridge@debian.org>,
 for the Debian GNU/Linux system (but may be used by others).
