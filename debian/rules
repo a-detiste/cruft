@@ -1,95 +1,31 @@
 #!/usr/bin/make -f
-# Made with the aid of dh_make, by Craig Small
-# Sample debian/rules that uses debhelper. GNU copyright 1997 by Joey Hess.
-# Some lines taken from debmake, by Christoph Lameter.
+# cruft package rules file
+# Copyright 2011 Marcin Owsiany <porridge@debian.org>
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
-
-# Help cross-compiling
+# As recommended by "current Debian best practice" prescribed by autotools-dev,
+# we set configure flags appropriately to help cross-compiling:
+# These are set automatically by dpkg-buildpackage, but we cannot depend on
+# them being available, because caller might not be using dpkg-buildpackage
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
-CFLAGS += -g
-ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
-	CFLAGS += -O0
+ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+  confflags += --build $(DEB_HOST_GNU_TYPE)
 else
-	CFLAGS += -O2
+  confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
 endif
-export CFLAGS
 
-# dh_strip will take care of nostrip
+%:
+	dh $@ --with autoreconf --parallel
 
-build: build-stamp
-build-stamp:
-	dh_testdir
+override_dh_auto_configure:
+	dh_auto_configure -- $(confflags)
 
-	# Add here commands to compile the package.
-	./configure \
-		--host=$(DEB_HOST_GNU_TYPE) \
-		--build=$(DEB_BUILD_GNU_TYPE)
-	$(MAKE)
-
-# launch some tests
-	$(MAKE) shellexptest merge_diff_test
-	./test-shellexp
-	cd merge_diff_tests && ./test
-
-	touch build-stamp
-
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp
-
-	# Add here commands to clean up after the build process.
-	[ ! -f Makefile ] || $(MAKE) distclean
-
-	dh_clean
-
-# Build architecture-independent files here.
-binary-indep: build
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: build
-#	dh_testversion
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-	install -m 0644 -o root -g root debian/cruft.lintian-overrides debian/cruft/usr/share/lintian/overrides/cruft
-
-	# Add here commands to install the files into debian/cruft
-	$(MAKE) install
-## XXX
+override_dh_auto_install:
+	dh_auto_install
 	install -m 0644 -o root -g root debian/extrafiles debian/cruft/usr/lib/cruft/filters-unex/cruft
-## XXX
 
-	dh_installdocs README TODO design.png
-#	dh_installexamples
-#	dh_installmenu
-#	dh_installinit
-	dh_installcron
-	dh_installman
-	dh_installchangelogs
-	dh_strip
-	dh_compress
+override_dh_fixperms:
 	dh_fixperms
 	chmod 700 debian/cruft/var/spool/cruft
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-#	dh_makeshlibs
 
-##
-##	install -o root -g root -m 644 -p debian/extrafiles debian/cruft/DEBIAN/extrafiles
-##
-	dh_md5sums
-	dh_builddeb
-
-source diff:                                                                  
-	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary

@@ -3,16 +3,17 @@ Section: admin
 Priority: optional
 Maintainer: Marcin Owsiany <porridge@debian.org>
 Uploaders: Anthony Towns <ajt@debian.org>
-Build-Depends: debhelper (>> 5), pngcrush, dia | dia-gnome, dash
-Standards-Version: 3.8.0.0
+Build-Depends: debhelper (>= 7.0.50~), dh-autoreconf, pngcrush, dia | dia-gnome, dash
+Build-Conflicts: autoconf2.13
+Standards-Version: 3.9.1
 Homepage: http://alioth.debian.org/projects/cruft/
-Vcs-SVN: svn://svn.debian.org/cruft/trunk
-Vcs-Browser: http://svn.debian.org/wsvn/cruft/trunk/
+Vcs-Git: git://github.com/porridge/cruft.git
+Vcs-Browser: https://github.com/porridge/cruft
 
 Package: cruft
 Architecture: any
 Depends: ${shlibs:Depends}, dash, file
-Description: Find any cruft built up on your system
+Description: program that finds any cruft built up on your system
  cruft is a program to look over your system for anything that shouldn't
  be there, but is; or for anything that should be there, but isn't.
  .

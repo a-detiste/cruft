@@ -38,6 +38,10 @@ clean :
 	 shellexptest.o shellexptest merge_diff_test.o merge_diff_test \
 	 merge_diff_common.o river.o fn_stream.o
 
+check: shellexptest merge_diff_test
+	./test-shellexp
+	cd merge_diff_tests && ./test
+
 shellexptest: shellexptest.o shellexp.o
 filter_shell dash-search: shellexp.o
 merge_diff_test: merge_diff_test.o merge_diff_funcs.o merge_diff_common.o river.o fn_stream.o
@@ -55,4 +59,4 @@ distclean : clean
 devclean : configclean
 	rm -f configure
 
-.PHONY : all clean configclean distclean install
+.PHONY : all clean configclean distclean install check
