@@ -1,3 +1,15 @@
+cruft (0.9.15) unstable; urgency=low
+
+  * Moved the source tree to git.
+  * [5ccce15] Simplified and modernized the build.
+  * [cdbce1a] Make test output easier to clean and do clean it.
+  * [720aa0e] Use minus, not hyphen in some places.
+  * [df7e8db] Removed deps on dash, added misc:Depends.
+  * [94bd5dc] Point to git repo and updated year in copyright.
+  * [fd34d72] Added a git-buildpackage config.
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 30 Mar 2011 09:57:35 +0100
+
 cruft (0.9.14) unstable; urgency=low
 
   * Instead of directly accessing installed maintainer scripts and dpkg "list"
