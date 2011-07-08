@@ -1,2 +1,2 @@
 # sysklogd 1.5-4
-/lib/init/rw/sendsigs.omit.d/sysklogd
+/run/sendsigs.omit.d/sysklogd
