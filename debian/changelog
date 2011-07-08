@@ -1,3 +1,11 @@
+cruft (0.9.16) unstable; urgency=medium
+
+  * [852e6e9] Use /run instead of /lib/init/rw. (Closes: Bug#633025)
+  * [6454bba] Added a suggests on mailx and handle its lack. (Closes:
+    Bug#628390)
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 08 Jul 2011 10:55:52 +0100
+
 cruft (0.9.15) unstable; urgency=low
 
   * Moved the source tree to git.
