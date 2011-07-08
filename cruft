@@ -15,6 +15,7 @@ IGNORES=""
 STARTDIR="$(pwd)"
 # first, read the paths from command line
 DRIVES=""
+exitcode=0
 
 usage()
 {
@@ -221,8 +222,14 @@ if [ "$REPORT" = yes ]; then
 		cd "$STARTDIR"
 		cat "$TEMPFILE" > "$REPORTFILE"
 	fi
-	[ "$MAILTO" = "" ] || 
-            cat "$TEMPFILE" | mail -s "[`hostname`] Cruft Report" $MAILTO
+	if [ "$MAILTO" != "" ]; then
+		if which mail >/dev/null 2>&1 ; then
+			cat "$TEMPFILE" | mail -s "[`hostname`] Cruft Report" $MAILTO
+		else
+			echo "mail program unavailable, not sending the email" >&2
+			exitcode=1
+		fi
+	fi
 	rm -f "$TEMPFILE"
 fi
-
+exit $exitcode
