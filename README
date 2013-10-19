@@ -56,9 +56,8 @@ After producing the lists, the first one is compared to each of the three other
 ones using a modified mergesort algorithm. This produces three new lists of
 files:
 
- * files which are on the system, but they are not mentioned by neither the
-   "MAY" nor the "MUST" list
-   It is placed into /var/spool/cruft/unex_*
+ * files which are on the system, but are not mentioned in either of
+   the "MAY" or "MUST" lists. It is placed into /var/spool/cruft/unex_*
  
  * files which are in the "MUST" list but are not in the "actually present"
    list. It is placed into /var/spool/cruft/miss_*
