@@ -1,0 +1,2 @@
+#!/bin/dash
+dpkg-query -L grub-common | grep 'grub\.mo' | sed 's/usr\/share/boot\/grub/' | sed 's/\/LC_MESSAGES\/grub//'
