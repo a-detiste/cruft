@@ -4,5 +4,6 @@
 /boot/issue.txt
 /boot.bak
 /boot.bak/**
+/etc/rpi-issue
 /lib/modules.bak
 /lib/modules.bak/**
