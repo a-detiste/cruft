@@ -1,4 +1,3 @@
 /var/log/lightdm
 /var/log/lightdm/*.log
 /var/log/lightdm/*.log.old
-
