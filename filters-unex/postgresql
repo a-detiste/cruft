@@ -1,5 +1,9 @@
 /etc/postgresql/postgresql.conf
 /etc/postgresql/postmaster.conf
+/var/cache/postgresql
+/var/cache/postgresql/dicts
+/var/cache/postgresql/dicts/*.affix
+/var/cache/postgresql/dicts/*.dict
 /var/lib/postgresql
 # this should probably be more sophisticated
 /var/lib/postgresql/**
