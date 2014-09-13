@@ -2,5 +2,7 @@
 /boot/cmdline.txt
 /boot/config.txt
 /boot/issue.txt
+/boot.bak
 /boot.bak/**
+/lib/modules.bak
 /lib/modules.bak/**
