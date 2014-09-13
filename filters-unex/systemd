@@ -1,0 +1,11 @@
+/etc/systemd/system/*.path
+/etc/systemd/system/*.service
+/etc/systemd/system/*.timer
+/etc/systemd/system/**/*.path
+/etc/systemd/system/**/*.service
+/etc/systemd/system/**/*.timer
+/var/lib/systemd/catalog
+/var/lib/systemd/catalog/database
+/var/lib/systemd/catalog/random-seed
+/var/lib/systemd/timers
+/var/lib/systemd/timers/*.timer
