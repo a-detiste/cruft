@@ -1,0 +1,554 @@
+cruft (0.9.16) unstable; urgency=medium
+
+  * [852e6e9] Use /run instead of /lib/init/rw. (Closes: Bug#633025)
+  * [6454bba] Added a suggests on mailx and handle its lack. (Closes:
+    Bug#628390)
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 08 Jul 2011 10:55:52 +0100
+
+cruft (0.9.15) unstable; urgency=low
+
+  * Moved the source tree to git.
+  * [5ccce15] Simplified and modernized the build.
+  * [cdbce1a] Make test output easier to clean and do clean it.
+  * [720aa0e] Use minus, not hyphen in some places.
+  * [df7e8db] Removed deps on dash, added misc:Depends.
+  * [94bd5dc] Point to git repo and updated year in copyright.
+  * [fd34d72] Added a git-buildpackage config.
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 30 Mar 2011 09:57:35 +0100
+
+cruft (0.9.14) unstable; urgency=low
+
+  * Instead of directly accessing installed maintainer scripts and dpkg "list"
+    files, call dpkg-query as appropriate. This makes it much slower in some
+    cases but at least it will let us survive the incoming revolution in dpkg
+    database (closes: Bug#616068)
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 09 Mar 2011 09:21:40 +0000
+
+cruft (0.9.13) experimental; urgency=high
+
+  * Changed all bash and sh scripts to use dash, because bash makes it hard to
+    write reliable scripts - see discussion at
+    http://groups.google.com/group/gnu.bash.bug/browse_thread/thread/e37f5c7ddcc55eeb
+    (closes: Bug#500261)
+    - changed the shebang line
+    - added a dependency and a build-dependency on dash
+    - fixed a bashism in check_type_symlink and disabled timestamps in $PS4
+  * common.sh:
+    - disable corefile limit in debug mode
+    - added fusectl to list of ignored filesystems (closes: Bug#499783)
+  * filter_shell.c:
+    - swapped checks in a for loop to avoid rather harmless but technically
+      invalid uninitialized memory accesses
+    - increase the number of patterns we can handle to 4000
+    - when there are more patterns to load than we can handle then warn and
+      exit, instead of segfaulting (closes: Bug#498986)
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 22 Nov 2008 09:39:56 +0000
+
+cruft (0.9.11) unstable; urgency=low
+
+  * Unset DISPLAY when launching dia, so it's less likely to fail if the
+    variable is set incorrectly at build time.
+  * explain/ALTERNATIVES: make the warning about symlink and registered
+    alternatives mismatch more intelligible (closes: Bug#487777)
+  * filters-broken_symlinks: sysklogd, klogd: added sendsigs.omit.d files
+  * filters-unex:
+    - apt: added term.log
+    - aptitude: added lock and pkgstates.old
+    - libc6: added ldconfig directory and aux-cache file
+    - initscripts, sysklogd, klogd: added /lib/init/rw/sendsigs.omit.d
+    - libpam-modules: added /etc/security/opasswd
+    - dpkg: added triggers directory
+    - libuuid1: added /var/lib/libuuid
+  * clarify man page as to what cruft "cleans up" (closes: Bug#487456)
+  * updated debian/copyright, added myself and some links to it
+  * added vcs-* and homepage headers to the control file
+  * bumped Standards-Version to 3.8.0.0 (only change needed was change of
+    findstring to filter when parsing DEB_BUILD_OPTIONS)
+  * dropped linda overrides, as suggested by lintian
+  * added a lintian override about the empty directories
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 23 Jul 2008 21:45:49 -0700
+
+cruft (0.9.10) unstable; urgency=low
+
+  * Fixed two bashisms in cruft (closes: Bug#432207)
+  * Skip directories among explain scripts gracefully (closes: Bug#432788)
+  * Added a shellexp(3) manpage (closes: Bug#375788)
+  * Generate the PNG from the dia file and shrink it using pngcrush at build
+    time, instead of embedding it in the source package (closes: Bug#439926)
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 17 Oct 2007 12:57:50 +0100
+
+cruft (0.9.9) unstable; urgency=low
+
+  * check_type_symlink: fixed a failure when there are no broken symlinks on a
+    filesystem (closes: Bug#430401)
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 27 Jun 2007 18:17:16 +0100
+
+cruft (0.9.8) unstable; urgency=low
+
+  * Filter files:
+    - added: ipolish alsa-base apt-listbugs cryptsetup cups-pdf cupsys
+      cupsys-client dcc-common ddclient gdm gs-common pcmciautils sun-java5-bin
+      wpolish xserver-xorg x-ttcidfont-conf
+    - modified: apache-common apt cvs fontconfig hddtemp iamerican ibritish
+      locales x11-common
+  * Explain script modified: grub
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 23 Jun 2007 21:32:23 +0100
+
+cruft (0.9.7) experimental; urgency=low
+
+  * The "DebConf 7" release - includes 0.9.6-0.18 (experimental)
+  * Taking over the package with aj's permission
+    - finally got rid of that ugly version appendix
+  * Bumped standards-version to 3.7.2.2
+  * Bumped debhelper compat and version dep to 5
+  * Added lintian and linda overrides for the non-standard spool directory
+    permissions
+  * Significant changes aiming to fix some design issues:
+    - merge_diff: refactored to make the code less cryptic, and added a new
+      stream of data from the explain scripts
+    - cruft:
+      . moved filtering to after the merge_diff stage
+      . only use filters/explain scripts which have a matching package in the
+        system OR have UPPER_CASE name (closes: Bug#373708), also only use a
+        filter/script once, making it possible to do overrides cleanly
+        (closes: Bug#410800)
+      . introduced multiple filter directories, making it possible to silence
+        any complaints from cruft (closes: Bug#383364)
+  * many programs: lots of changes to detect potential output (but not only)
+    failures, for example due to filesystem being full. (closes: Bug#411860)
+  * Added a design.png diagram
+  * Many cleanups and minor enhancements to programs and documentation
+  * filter files changes submitted by Jeremy Bygott (closes: Bug#411602)
+    - changed: cron checksecurity emacs21-common base-files bsdgames
+      emacsen-common nvi pdmenu ppp vim vim-gnome dpkg logrotate
+    - new: tcl8.3 tcl8.4 emacs21
+    - removed: tcl8.0 emacs20
+  * Acknowledging bugs closed in NMUs (closes: Bug#51448, #51617, #52094,
+    Bug#182796, #335507, #35042, #37735, #42969, #47513, #50730, #51446,
+    Bug#51653, #55022, #88274, #95799, #100145, #110000, #146021, #149616,
+    Bug#155431, #263472, #265794, #272124, #284711, #291820, #334091,
+    Bug#367029, #373633, #373684, #59714, #102809, #126855, #174877,
+    Bug#233979, #308176, #349558, #29187, #65169, #94942, #133887, #133888,
+    Bug#134310, #149736, #304440, #371871, #371872, #66731, #319490, #411860,
+    Bug#373708, #410738, #410800, #411861, #346058, #383364, #157737)
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 22 Jun 2007 21:42:58 +0100
+
+cruft (0.9.6-0.17) unstable; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * merge_diff: renamed some variables and constants to make the logic more
+    readable
+  * Filter files:
+    - new: x11-common (closes: Bug#410738)
+    - removed: xfree86-common
+  * cruft: fixed the way DRIVES was set from command line, to actually
+    override the default, not just add to it (closes: Bug#411861)
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat,  3 Mar 2007 22:21:09 +0000
+
+cruft (0.9.6-0.16) unstable; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * TODO: added URLs of past cruft discussions
+  * Filter files:
+    - new: openbsd-inetd
+    - modified: apt base-files dhcp3-client initscripts libc6
+      module-init-tools
+  * explain/alternatives: modified not to list ALL symlinks, just the ones
+    which should be there
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 18 Jan 2007 18:44:56 +0000
+
+cruft (0.9.6-0.15) unstable; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Explain scripts:
+    - modified: doc-base (do not complain when doc-base isn't installed)
+    (Closes: #373684)
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 15 Jun 2006 08:29:09 +0100
+
+cruft (0.9.6-0.14) unstable; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Moved handling of .dhelp files from filter to modified explain script
+    provided by Kevin Ryde (Closes: #371871) 
+  * Changed interpreter of some bash explain scripts to sh, thanks to Joerg
+    Sommer, who pointed out checkbashisms  (Closes: #367029)
+  * Changed processing of -d and --ignore to allow multiple occurences, and
+    documented it in the manpage (Closes: #371872)
+  * Explain scripts:
+    - new: doc-base
+    - modified: apt-listchanges cvs2svn grub linda reportbug rubber zsh
+  * Filter files:
+    - modified: dhelp
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu,  8 Jun 2006 20:52:33 +0100
+
+cruft (0.9.6-0.13) unstable; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Filter files:
+    - new: apache-common apt-show-versions devscripts
+      libcommons-validator-java libncurses5 pbuilder phpmyadmin msttcorefonts
+      gnome-themes initscripts fontconfig scrollkeeper desktop-file-utils
+      shared-mime-info hddtemp
+    - updated: apache apache-ssl base-files fakeroot initscripts mysql-server
+      postgresql sgml-base squid tomcat4 xml-core
+  * cruft_find cruft common.sh explain/users explain/home_ftp
+    explain/lost_found: added conditional debugging support
+  * common.sh, common.pl: properly escape parens on find invocation
+  * debian/rules: properly install the filter file to avoid setting +x
+  * shellexptest.c: new tiny utility to test shellexp
+  * Explain scripts:
+    - new: linda rubber
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon,  6 Feb 2006 18:07:18 +0100
+
+cruft (0.9.6-0.12) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Many thanks to Jeremy Bygott, who provided most of the patches for many
+    changes in this release
+  * Explain scripts:
+    - apt-listchanges cvs2svn: only echo files if they exist
+    - reportbug: new script
+  * Filter files:
+    - updated: base-files exim4-daemon-heavy apache debsums dhelp ppp
+    - new: mysql-server postgresql tomcat4 syslog-ng apache-ssl
+      exim4-daemon-light chkrootkit hotplug lg-base libpango1.0-common
+      octave2.0 xfstt xscreensaver
+    - removed: pgp-i ppp-pam suidmanager wenglish
+    - renamed: expect5.24 -> expect, nethack -> nethack-common, wu-ftpd-academ
+      -> wu-ftpd, xntp3 -> ntp, filters/dhcpd -> filters/dhcp (also fixed a
+      path), xbase -> xfree86-common (updated a config file path), xemacs ->
+      xemacs21 (updated+fixed a path)
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed,  2 Nov 2005 16:31:07 +0100
+
+cruft (0.9.6-0.11) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * common.sh: local-scope function variables
+  * Explain scripts:
+    - fixed executable permission: grub zsh
+    - fixed error: grub (echo grub directory)
+    - new: screen apt-listchanges cvs2svn
+  * Filter files:
+    - fixed: apt-listchanges (wrong path to config file), locales (wrong path
+      to locale-archive)
+    - updated: netbase ucf sysstat exim4-config apt-listchanges (moved pyc
+      to explain script)
+    - new: aide clamav-daemon clamav-freshclam sgml-base xml-core exim4-base
+      exim4-daemon-heavy stunnel4 debsums libapr0
+  * Extended the list of remote filesystems in common.sh and explain/dev
+    (partially stolen from netbase).
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 28 Oct 2005 15:11:52 +0200
+
+cruft (0.9.6-0.10) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Filter files:
+    - new: aptitude apt-listchanges ca-certificates console-common cvs dump
+      exim4-config fonty iptraf libblkid1 libsnmp-base lm-sensors logcheck
+      logrotate mime-support nagios-nrpe-server samba-common snmpd ucf
+    - updated: apt base-files cron findutils initscripts locales modutils
+      popularity-contest postfix resolvconf ssh sudo sysklogd sysstat
+  * Explain scripts:
+    - new: grub zsh
+    - fixed: lost_found works properly on no ignores
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 27 Oct 2005 16:57:28 +0200
+
+cruft (0.9.6-0.9) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Fixed path in debian/extrafiles (Closes: #334091)
+  * Filter files:
+    - new: debconf login passwd libpam-runtime netkit-inetd resolvconf
+    - updated: ifupdown libc6 dhcp-client info modutils dpkg nvi base-files
+      man-db sysklogd
+    - removed filter files not named after packages (timezones lastlog
+      log_wtmp run_utmp) and moved their contents to libc6, login, base-files
+    - removed files for packages nonexistant in sid: ae bsmtpd
+      distributed-net-pproxy dpkg-mountable fvwm2 guile1.2 ldso majordomo
+      msqld netstd prime-net psptools quake tcl7.6 tix41 tk4.2 wwwcount
+      xemacs20-bin
+  * explain/gconf: Run find conditionally if the path exists
+  * explain/dpkg: implemented better diversion detection logic
+  * extrafiles: only use filter files in /usr/lib/cruft/filters if their
+    packages seem installed (Closes: #335507)
+  * debian/control:
+    - added >> 4 to debhelper build-dep
+    - updated Standards-Version to 3.6.2
+  * debian/rules: Added policy-required CFLAGS stuff, and cross-compilation
+    helpers
+  * debian/copyright:
+    - fixed typo in path to common-licenses
+    - updated FSF address
+  * debian/changelog: removed obsolete emacs settings
+  * Makefile.in: install common.?? without +x
+  * README: noted the changes to extrafiles
+
+ -- Marcin Owsiany <porridge@debian.org>  Tue, 25 Oct 2005 18:09:36 +0200
+
+cruft (0.9.6-0.8) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * cruft:
+    - do not use "/dev/stdout", rather cat to implied stdout. Also chdir to
+      original directory before catting to a report file.
+    - pass DRIVES information using a file in spool
+    - use filter_ignores
+  * common.sh: new cruft_find function wrapping around "find", pass DRIVES
+    information using a file in spool
+  * cruft_find: added new perl script to implement the cruft_find function
+  * filter_ignores: added new perl script to filter filenames WRT setting of
+    DRIVES and IGNORES (Closes: #47513)
+  * common.pl: added new perl library with common perl code
+  * explain scripts:
+    - dpkg: use find|xargs|cat|sort instead of globbing (Closes: #284711)
+    - dpkg: count diversions and file occurences and print filenames correct
+      number of times
+    - gconf: avoid warning if there are no gconf schema files
+    - lost_found: source common.sh before using its functions
+    - home_ftp, users: use new common.sh cruft_find function
+    - dev: adjusted fs list
+  * helper scripts: reimplemented as one Perl script, removed outdated updater
+    scripts. They don't contain old non-FHS paths now. (Closes: #126855)
+  * filter files: both automatically and manually updated and added some
+    scripts (Closes: #133887, #133888)
+  * Makefile.in:
+    - tweaked not to install .svn metadata
+    - really modified to remove shellexp.o in clean rule (last time it must
+      have been Makefile, not .in)
+    - added cruft_find and common.pl installation
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 29 Aug 2005 23:29:56 +0200
+
+cruft (0.9.6-0.7) experimental; urgency=medium
+
+  * Non-maintainer upload blessed by aj
+  * Remove shellexp.o in clean rule (Closes: #319490) Fixes an FTBFS, so
+    urgency=medium
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 25 Jul 2005 22:15:14 +0200
+
+cruft (0.9.6-0.6) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * Rewritten the README file to clear up the general idea on how cruft works.
+  * Moved common code from dash-search and filter_shell to shellexp.c
+  * Added some comments to code in various files
+  * Added --ignore support to cruft, and made explain files obey that (using
+    functions stored in new files common.sh). This allows serious speed
+    improvements in certain situations. (Closes: #29187)
+  * Updated manpage (Closes: #308176)
+  * Added support for running in chroots, by setting DRIVES to / if it turns
+    out empty.
+  * Added afs to list of ignored filesystems (Closes: #233979)
+  * Use dh_installman instead of obsolete dh_installmanpages
+  * Removed obsolete dh_suidregister
+  * Removed junky postinst "warning" (Closes: #174877, #304440)
+  * Removed the "optimization" from dash-search which caused only the first
+    file containing matching pattern to be printed. Apparently the purpose of
+    dash-search is to find all occurences. Noted in manpage that the file name
+    is printed for each line.
+  * filters/*: /usr/{doc,man} updated to /usr/share/{doc,man}
+  * filters/base-files: added /srv, /media, /usr/local and its subdirs
+  * filters/libc6: added /etc/.pwd.lock
+  * explain/ca-certificates: new file
+  * explain/dev: fixed grep to be quiet
+  * explain/dpkg: use a hash to remember diversions instead of an array
+  * explain/diversions: only print a diversion target if it exists in
+    filesystem
+  * explain/gconf: new file: a kludgy way to list at least some of the gconf files
+  * explain/tmp: removed, since this was just a copy of explain/dev
+  * Removed a misplaced adduser filter file.
+  * Noted in changelog that previous upload Closes: #149736 (I know this is
+    slight changelog abuse, but I haven't yet learned everything about BTS
+    version supoprt)
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 20 Jul 2005 21:55:08 +0200
+
+cruft (0.9.6-0.5) experimental; urgency=low
+
+  * Non-maintainer upload blessed by aj
+  * cruft:
+    - Use tempfile to make temporary file, which makes -r create reportfile
+      "report" (Closes: #182796, #42969)
+    - Report broken symlinks themselves, rather than their inexistant
+      destinations (Closes: #149736)
+    - Ignore /dev/(fd|std(in|out|err)) links (Closes: #146021)
+    - Added --chroots which allows to completly broken symlinks in chosen dirs
+    - Do not traverse some special filesystems
+      (Closes: #272124, #291820, #110000)
+    - Improved command line error reporting a little (Closes: #51446)
+    - Set LC_COLLATE to C to avoid sorting differences causing double output
+      (Closes: #55022, #155431). This should also make sorts faster in non-C locale
+      environments.
+  * explain files fixes:
+     - dev: don't scan it if cruft itself doesn't
+     - dpkg, diversions: Treat diversions properly (Closes: #263472):
+       . dpkg: don't report files which were diverted to something else
+       . diversions: report diversion destinations
+     - home_ftp: fixed find command (Closes: #88274)
+     - init_d: fixed grep expression for new 'file' output syntax
+     - lost_found: added ext3 to list of filesystems
+     - users: Users are allowed not to have home dirs and mailboxes. So only
+       list mailboxes and homedirs which really exist.
+       (Closes: #265794, #50730) Also use /var/mail instead of deprecated
+       /var/spool/mail
+  * filter files:
+     - prime-net: new file: (Closes: #95799)
+     - debfoster: new file: (Closes: #100145)
+     - more new files and additions to existing ones (Closes: #157737):
+       adduser, apt, base-files, dpkg, ifupdown, krb5-config, libc6,
+       libhesiod0, libnet-perl, locales, lpr, modutils, netbase,
+       nfs-kernel-server, openssl, php4, popularity-contest, proftpd, tcpd
+  * Wrote a manpage for dash-search (Closes: #37735)
+  * dash-search: added a matched arguments cache array to speed things up just
+    a little bit
+  * debian/compat: set to 4
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 16 Jul 2005 21:24:02 +0300
+
+cruft (0.9.6-0.4) unstable; urgency=low
+
+  * Non-maintainer bugsquash upload
+  * Add file to Build-depends. (Closes: #35042)
+
+ -- Hwei Sheng Teoh <hsteoh@quickfur.yi.org>  Fri, 22 Nov 2002 22:58:01 -0500
+
+cruft (0.9.6-0.3) unstable; urgency=low
+
+  * Non-maintainer upload
+  * New postrm script which prevents cruft leaving cruft behind in
+    /var/spool/cruft. Fixes: #66731
+  * Fixed location of GPL reference in copyright file. (Lintian error)
+  * dash-search.1 dh_undocumented manpage. (Lintian error)
+
+ -- Paul Martin <pm@debian.org>  Sat, 17 Mar 2001 04:18:09 +0000
+
+cruft (0.9.6-0.2) unstable; urgency=low
+
+  * Hack around to get argument parsing to work. Thanks to Janne Veli Kujala
+    for the patch. (closes: Bug#58035)
+
+  * Maintainer NMU. :) This package really needs to be rewritten and
+    cleaned up. :(
+
+ -- Anthony Towns <aj@azure.humbug.org.au>  Sun, 20 Feb 2000 19:00:36 +1000
+
+cruft (0.9.6-0.1) unstable; urgency=low
+
+  * Non-maintainer bugsquash upload.
+  * Only call "make distclean" if there is a Makefile (closes: #51617)
+  * debian/rules: Applied patch from BTS to install all necessary files
+    (closes: #51448, #52094, #51653)
+
+ -- Richard Braakman <dark@xs4all.nl>  Sun, 19 Dec 1999 18:36:39 +0100
+
+cruft (0.9.6) unstable; urgency=low
+
+  * Added autoconf support and Makefile, thanks to Mitch Blevins.
+  * Add machine name in mail.
+  * Deal with spaces in argument handling. (Closes: Bug#50180)
+  * Only display boring junk in postinst when installing (not upgrading).
+
+ -- Anthony Towns <ajt@debian.org>  Sun, 28 Nov 1999 01:02:22 +1000
+
+cruft (0.9.5) frozen unstable; urgency=low
+
+  * Fix bashism in postinst (Closes #27541)
+  * No longer reports one letter file names as cruft (Closes #23773)
+  * Merge NMU's (Closes #23523)
+  * Made manpage match actual options. (Closes #21730)
+  * Don't report alternative targets as missing
+
+  * Added some extra information to /usr/doc/README (as requested in,
+    but not closing, #21987)
+
+  * Changed home_ftp explanation to check for an ftp user in
+    /etc/passwd, and to do nothing if no ftp directory was found (thanks
+    to David Frey for /etc/passwd bit) (Closes #24339)
+
+  * Fix bashism (avoid ash bug?) in cruft ([ ""$FOO = "" ] doesn't
+    work as expected) (Closes #28593)
+
+ -- Anthony Towns <ajt@debian.org>  Mon,  9 Nov 1998 14:35:00 +1000
+
+cruft (0.9.4.2) unstable; urgency=low
+
+  * merge_diff.c: Initialize need.n to 0.
+
+ -- Daniel Jacobowitz <dan@debian.org>  Thu, 10 Sep 1998 16:21:01 -0400
+
+cruft (0.9.4.1) unstable; urgency=low
+
+  * Have dash-search actually compile, rather than using the i386-specific
+    one left around from some prior build.
+  * Add '#include <string.h>' so it'll actually compile under egcs.
+
+ -- Michael Alan Dorman <mdorman@debian.org>  Sun, 14 June 1998 19:00:03 +1000
+
+cruft (0.9.4) unstable; urgency=low
+
+  * Fixes buggy upload of 0.9.3 (.changes and .deb weren't final 
+    release of 0.9.3)
+  * Handle more alternatives 
+
+ -- Anthony Towns <ajt@debian.org>  Wed, 15 Apr 1998 19:00:03 +1000
+
+cruft (0.9.3) unstable; urgency=low
+
+  * Moved cruft.extrafiles dpkg control file to /usr/lib/cruft/filters
+    in preparation of actually uploading to unstable.
+  * Added need_* and want_* files: for things that *have* to be there,
+    but aren't particularly provided by anthing. Used for dealing with
+    symlinks (need_symlink_dest), and alternatives (/usr/bin/vi, rather
+    than /etc/alternatives/vi, eg).
+  * Moved canonical into /usr/lib/cruft 
+  * Added checks for broken symlinks 
+  * Moved distributed filters from /etc/cruft/filters to 
+    /usr/lib/cruft/filters
+  * Added TODO file 
+
+ -- Anthony Towns <ajt@debian.org>  Sat, 11 Apr 1998 23:14:32 +1000
+
+cruft (0.9.2) unreleased; urgency=low
+
+  * Got rid of /etc/cruft/explain/etc_dir test 
+  * Added command line parsing
+  * Saved report in /var/spool/cruft/report 
+  * Added handling of diversions
+
+ -- Anthony Towns <ajt@debian.org>  Fri, 10 Apr 1998 23:12:52 +1000
+
+cruft (0.9.1) unreleased; urgency=low
+
+  * Tidied up canonical.c
+  * Changed filters to use shell patterns instead of scripts
+  * Output results to stdout rather than leave in /var/spool/cruft
+  * Sped up canonical substantially (about twice as fast)
+  * Tightened handling of /etc
+  * Added /var/cache
+
+ -- Anthony Towns <ajt@debian.org>  Mon,  6 Apr 1998 22:24:34 +1000
+
+cruft (0.9) unreleased; urgency=low
+
+  * Initial Release.
+
+ -- Anthony Towns <ajt@debian.org>  Sun,  5 Apr 1998 00:46:56 +1000
+
