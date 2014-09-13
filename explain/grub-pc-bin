@@ -1,0 +1,2 @@
+#!/bin/dash
+dpkg -L grub-pc-bin | grep ^/usr/lib/grub | sed 's/usr\/lib/boot/'
