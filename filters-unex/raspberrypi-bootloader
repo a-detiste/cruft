@@ -1,2 +1,6 @@
+/boot/.firmware_revision
+/boot/cmdline.txt
+/boot/config.txt
+/boot/issue.txt
 /boot.bak/**
 /lib/modules.bak/**
