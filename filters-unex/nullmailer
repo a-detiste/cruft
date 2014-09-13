@@ -1,4 +1,8 @@
 /etc/nullmailer/adminaddr
 /etc/nullmailer/defaultdomain
 /etc/nullmailer/remotes
+/var/log/mail.err*
+/var/log/mail.info*
+/var/log/mail.log*
+/var/log/mail.warn*
 /var/spool/nullmailer/trigger
