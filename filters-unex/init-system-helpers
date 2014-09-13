@@ -1,0 +1,4 @@
+/var/lib/systemd/deb-systemd-helper-enabled
+/var/lib/systemd/deb-systemd-helper-enabled/**
+/var/lib/systemd/deb-systemd-helper-masked
+/var/lib/systemd/deb-systemd-helper-masked/**

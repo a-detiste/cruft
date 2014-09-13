@@ -1,0 +1,2 @@
+#!/bin/dash
+dpkg-query -L grub-pc-bin | grep ^/usr/lib/grub | grep -e '\.mod' -e '\.img' -e '\.lst' | sed 's#usr/lib#boot#'

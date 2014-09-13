@@ -1,8 +1,12 @@
 /etc/postgresql/postgresql.conf
 /etc/postgresql/postmaster.conf
-/var/lib/postgres
+/var/cache/postgresql
+/var/cache/postgresql/dicts
+/var/cache/postgresql/dicts/*.affix
+/var/cache/postgresql/dicts/*.dict
+/var/lib/postgresql
 # this should probably be more sophisticated
-/var/lib/postgres/**
+/var/lib/postgresql/**
 /var/log/postgresql
 /var/log/postgresql/postgres.log*
 /var/run/postgresql/.s.PGSQL.5432
