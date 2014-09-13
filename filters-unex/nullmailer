@@ -1,3 +1,4 @@
 /etc/nullmailer/adminaddr
 /etc/nullmailer/defaultdomain
 /etc/nullmailer/remotes
+/var/spool/nullmailer/trigger
