@@ -1,0 +1,12 @@
+/etc/apt-cacher-ng/backends_debian
+/etc/apt-cacher-ng/backends_debvol
+/etc/apt-cacher-ng/backends_ubuntu
+/var/cache/apt-cacher-ng
+/var/cache/apt-cacher-ng/**
+/var/lib/apt-cacher-ng/backends_debian.default
+/var/lib/apt-cacher-ng/backends_ubuntu.default
+/var/log/apt-cacher-ng
+/var/log/apt-cacher-ng/apt-cacher.err
+/var/log/apt-cacher-ng/apt-cacher.log
+/var/log/apt-cacher-ng/maint_*.log.html
+

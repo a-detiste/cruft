@@ -1,0 +1,2 @@
+/etc/php5/cgi/php.ini
+/etc/php5/cgi/conf.d/*.ini

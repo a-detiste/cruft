@@ -20,5 +20,3 @@
 /var/log/syslog*
 /var/log/user.log*
 /var/log/uucp.log*
-/run/sendsigs.omit.d
-/run/sendsigs.omit.d/sysklogd

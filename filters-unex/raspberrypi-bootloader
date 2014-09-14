@@ -1,0 +1,14 @@
+/boot/.firmware_revision
+/boot/cmdline.txt
+/boot/config.txt
+/boot/issue.txt
+/boot.bak
+/boot.bak/**
+/etc/rpi-issue
+/etc/apt/apt.conf.d/50raspi
+/etc/apt/sources.list.d/collabora.list
+/etc/apt/sources.list.d/raspi.list
+/etc/modprobe.d/raspi-blacklist.conf
+/lib/modules.bak
+/lib/modules.bak/**
+/usr/share/rpikernelhack

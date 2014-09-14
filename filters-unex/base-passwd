@@ -1,8 +1,12 @@
 /etc/group
-/etc/gshadow
-/etc/passwd
-/etc/shadow
 /etc/group-
+/etc/gshadow
 /etc/gshadow-
+/etc/passwd
 /etc/passwd-
+/etc/shadow
 /etc/shadow-
+/etc/subgid
+/etc/subgid-
+/etc/subuid
+/etc/subuid-

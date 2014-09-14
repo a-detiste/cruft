@@ -6,4 +6,3 @@
 /etc/apache/srm.conf
 /var/log/apache/access.log*
 /var/log/apache/error.log*
-/var/run/apache.pid

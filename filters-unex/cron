@@ -5,6 +5,4 @@
 /var/backups/gshadow.bak
 /var/backups/passwd.bak
 /var/backups/shadow.bak
-/var/lock/cron.daily
 /var/spool/cron/crontabs/*
-/var/run/crond.reboot

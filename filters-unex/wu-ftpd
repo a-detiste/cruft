@@ -1,3 +1,2 @@
 /var/log/xferlog*
 /var/log/xferreport
-/var/run/ftp.pids-all

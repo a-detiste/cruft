@@ -1,6 +1,8 @@
-# cupsys 1.2.7-4 (etch)
+# cupsys 1.7.5-1 (jessie)
 /etc/cups/classes.conf
 /etc/cups/classes.conf.*
+/etc/cups/cupsd.conf
+/etc/cups/cupsd-systemd-listen.conf
 /etc/cups/ppd
 /etc/cups/ppd/*.ppd
 /etc/cups/ppd/*.ppd.old
@@ -8,34 +10,35 @@
 /etc/cups/printers.conf.*
 /etc/cups/raw.convs
 /etc/cups/raw.types
-/var/lib/cups/ppds.dat
+/etc/cups/ssl/server.crt
+/etc/cups/ssl/server.key
+/etc/cups/subscriptions.conf
 /var/lib/cups/certs
 /var/lib/cups/certs/*
 /var/log/cups
-/var/log/cups/access.log
-/var/log/cups/access.log.*
+/var/log/cups/access_log
+/var/log/cups/access_log.*
 /var/log/cups/error_log
 /var/log/cups/error_log.*
 /var/log/cups/page_log
 /var/log/cups/page_log.*
-/var/run/cups
-/var/run/cups/certs
-/var/run/cups/certs/*
-/var/run/cups/cupsd.pid
-/var/run/cups/cups.sock
-/var/run/cups/printcap
+/var/cache/cups/help.index
 /var/cache/cups/job.cache
 /var/cache/cups/job.cache/*
+/var/cache/cups/ppd-updates
+/var/cache/cups/ppds.dat
 /var/cache/cups/remote.cache
 /var/cache/cups/remote.cache/*
 /var/spool/cups/*
 # enabled backends could be detected in an explain script for more accuracy
+/usr/lib/cups/backend/dnssd
 /usr/lib/cups/backend/http
 /usr/lib/cups/backend/ipp
 /usr/lib/cups/backend/lpd
+/usr/lib/cups/backend/mdns
 /usr/lib/cups/backend/parallel
 /usr/lib/cups/backend/scsi
 /usr/lib/cups/backend/serial
+/usr/lib/cups/backend/snmp
 /usr/lib/cups/backend/socket
 /usr/lib/cups/backend/usb
-/usr/lib/cups/backend/snmp

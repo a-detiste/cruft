@@ -2,3 +2,9 @@
 /etc/pam.d/common-auth
 /etc/pam.d/common-password
 /etc/pam.d/common-session
+/var/lib/pam/account
+/var/lib/pam/auth
+/var/lib/pam/password
+/var/lib/pam/seen
+/var/lib/pam/session
+/var/lib/pam/session-noninteractive

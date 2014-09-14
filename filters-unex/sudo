@@ -1,3 +1,1 @@
 /etc/sudoers
-/var/run/sudo
-/var/run/sudo/*

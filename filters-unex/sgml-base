@@ -3,3 +3,5 @@
 /etc/sgml/catalog
 /etc/sgml/catalog.old
 /var/lib/sgml-base
+/var/lib/sgml-base/supercatalog
+/var/lib/sgml-base/supercatalog.old

@@ -1,10 +1,12 @@
 /etc/localtime
 /etc/timezone
-/etc/ld.so.hwcappkgs
-/etc/ld.so.conf
 /etc/ld.so.cache
+/etc/ld.so.conf
+/etc/ld.so.hwcappkgs
+/etc/ld.so.preload
+/lib/ld-linux.so.3
+/usr/lib/gconv/gconv-modules.cache
 /var/cache/ldconfig
 /var/cache/ldconfig/aux-cache
-/usr/lib/gconv/gconv-modules.cache
 # lckpwdf()
 /etc/.pwd.lock

@@ -6,7 +6,4 @@
 /var/lib/news/*
 /var/log/news
 /var/log/news/**
-/var/run/innd/control
-/var/run/innd/innd.pid
-/var/run/innd/nntpin
 /var/spool/news/**

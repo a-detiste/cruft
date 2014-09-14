@@ -2,4 +2,3 @@
 /var/lib/clamav/daily.cvd
 /var/lib/clamav/main.cvd
 /var/log/clamav/freshclam.log*
-/var/run/clamav/freshclam.pid

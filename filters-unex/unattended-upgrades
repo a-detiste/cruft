@@ -1,0 +1,4 @@
+/etc/apt/apt.conf.d/20auto-upgrades
+/var/lib/apt/periodic/unattended-upgrades-stamp
+/var/log/unattended-upgrades/*.log
+/var/log/unattended-upgrades/*.gz

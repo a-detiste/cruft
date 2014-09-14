@@ -1,6 +1,0 @@
-#!/bin/dash
-set -e
-for user in root `awk -F: '{ if ( 1000 <= $3 && $3 < 30000 ) print $1 }' /etc/passwd`; do
-	d="/var/run/screen/S-$user"
-	if [ -d "$d" ]; then echo "$d"; fi
-done

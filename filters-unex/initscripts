@@ -5,8 +5,6 @@
 # nologin is a symlink to a file which may be created in /var...
 /etc/nologin
 /etc/motd.tail
-/var/run/motd
 /var/log/fsck/checkfs
 /var/log/fsck/checkroot
 /var/log/boot
-/run/sendsigs.omit.d

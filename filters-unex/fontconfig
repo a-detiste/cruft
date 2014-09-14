@@ -1,3 +1,4 @@
-# fontconfig 2.3.2-1.1
-/etc/defoma/fontconfig.subst-rule
-/usr/share/fonts/**/fonts.cache-1
+/var/cache/fontconfig
+/var/cache/fontconfig/CACHEDIR.TAG
+/var/cache/fontconfig/*.cache-?
+/var/log/fontconfig.log
