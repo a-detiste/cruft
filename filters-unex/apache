@@ -1,8 +1,0 @@
-/etc/apache/access.conf
-/etc/apache/conf
-/etc/apache/cron.conf
-/etc/apache/httpd.conf
-/etc/apache/mime.types
-/etc/apache/srm.conf
-/var/log/apache/access.log*
-/var/log/apache/error.log*

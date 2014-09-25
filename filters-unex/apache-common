@@ -1,7 +1,0 @@
-/etc/apache/modules.conf
-/var/www
-/var/www/index.html
-# I've not decided yet what to do about the following files, since they _are_
-# created by a postinst, but they signify a possible problem with the package,
-# so it might be better to just show them to the user..
-# /etc/apache*/suggested_corrections

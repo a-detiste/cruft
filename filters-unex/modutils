@@ -1,7 +1,0 @@
-/etc/conf.modules
-/etc/modules
-/etc/modules.conf
-/etc/modules.conf.old
-/etc/modutils/conf.i386
-/var/log/ksymoops
-/var/log/ksymoops/**
