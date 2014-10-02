@@ -1,3 +1,11 @@
+cruft (0.9.16+nmu1) unstable; urgency=medium
+
+  * Mentored Non-maintainer upload.
+  * Overhaul ruleset for recent kernels & systemd
+  * Add support for RaspberryPi
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 02 Oct 2014 21:38:00 +0200
+
 cruft (0.9.16) unstable; urgency=medium
 
   * [852e6e9] Use /run instead of /lib/init/rw. (Closes: Bug#633025)

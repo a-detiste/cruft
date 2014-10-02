@@ -5,7 +5,7 @@ CFLAGS = @CFLAGS@ -Wall -W -ansi -pedantic-errors
 
 INS = install
 
-DATADIRS = explain filters-broken_symlinks filters-frbn filters-miss filters-unex
+DATADIRS = explain filters-broken_symlinks filters-unex
 
 DESTDIR = `pwd`/debian/cruft
 
