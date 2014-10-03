@@ -1,7 +1,7 @@
 Source: cruft
 Section: admin
 Priority: optional
-Maintainer: Marcin Owsiany <porridge@debian.org>
+Maintainer: Debian QA Group <packages@qa.debian.org>
 Uploaders: Anthony Towns <ajt@debian.org>
 Build-Depends: debhelper (>= 7.0.50~), dh-autoreconf, pngcrush, dia | dia-gnome
 Build-Conflicts: autoconf2.13
