@@ -1,7 +1,7 @@
 /etc/cron.d/geoip-database-contrib
-/usr/share/GeoIP/GeoIP.dat
-/usr/share/GeoIP/GeoIPASNum.dat
-/usr/share/GeoIP/GeoIPASNumv6.dat
-/usr/share/GeoIP/GeoIPv6.dat
-/usr/share/GeoIP/GeoLiteCity.dat
-/usr/share/GeoIP/GeoLiteCityv6.dat
+/var/lib/geoip-database-contrib/GeoIP.dat
+/var/lib/geoip-database-contrib/GeoIPASNum.dat
+/var/lib/geoip-database-contrib/GeoIPASNumv6.dat
+/var/lib/geoip-database-contrib/GeoIPv6.dat
+/var/lib/geoip-database-contrib/GeoLiteCity.dat
+/var/lib/geoip-database-contrib/GeoLiteCityv6.dat
