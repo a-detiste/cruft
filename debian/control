@@ -2,13 +2,13 @@ Source: cruft
 Section: admin
 Priority: optional
 Maintainer: Debian QA Group <packages@qa.debian.org>
-Uploaders: Anthony Towns <ajt@debian.org>
-Build-Depends: debhelper (>= 7.0.50~), dh-autoreconf, pngcrush, dia | dia-gnome
+Uploaders: Alexandre Detiste <alexandre.detiste@gmail.com>
+Build-Depends: debhelper (>= 9~), dh-autoreconf, pngcrush, dia | dia-gnome
 Build-Conflicts: autoconf2.13
-Standards-Version: 3.9.1
+Standards-Version: 3.9.6
 Homepage: http://alioth.debian.org/projects/cruft/
-Vcs-Git: git://github.com/porridge/cruft.git
-Vcs-Browser: https://github.com/porridge/cruft
+Vcs-Git: git://github.com/a-detiste/cruft.git
+Vcs-Browser: https://github.com/a-detiste/cruft
 
 Package: cruft
 Architecture: any
