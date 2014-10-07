@@ -21,10 +21,6 @@ endif
 override_dh_auto_configure:
 	dh_auto_configure -- $(confflags)
 
-override_dh_auto_install:
-	dh_auto_install
-	install -m 0644 -o root -g root debian/extrafiles debian/cruft/usr/lib/cruft/filters-unex/cruft
-
 override_dh_fixperms:
 	dh_fixperms
 	chmod 700 debian/cruft/var/spool/cruft
