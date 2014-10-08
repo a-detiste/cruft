@@ -1,0 +1,14 @@
+#!/bin/dash
+
+set -e
+. /usr/lib/cruft/common.sh
+cruft_debug
+
+cd /home/
+for user in root `awk -F: '{ if ( 1000 <= $3 && $3 < 30000 ) print $1 }' /etc/passwd`; do
+	kdecache="/var/tmp/kdecache-$user"
+
+	if [ -d "$kdecache" ]; then
+		find "$kdecache" >&3
+	fi
+done
