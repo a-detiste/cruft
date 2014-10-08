@@ -10,12 +10,10 @@ while read dir; do
 	if [ -z "$ignores" ]; then
 		echo $dir
 	else	
+		keep=1
 		for ignore in $ignores; do
-			if is_subdir "$ignore" "$dir" ; then
-				:
-			else
-				echo "$dir"
-			fi
+			if is_subdir "$ignore" "$dir" ; then keep=0; fi
 		done
+		if [ $keep=0 ] ; then echo "$dir"; fi
 	fi
 done
