@@ -1,3 +1,4 @@
 #!/bin/dash
 echo /boot/grub/i386-pc
+echo /boot/grub/i386-pc/core.img
 dpkg-query -L grub-pc-bin | grep ^/usr/lib/grub | grep -e '\.mod' -e '\.img' -e '\.lst' -e '\.o'| sed 's#usr/lib#boot#'

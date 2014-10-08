@@ -1,5 +1,9 @@
 #!/bin/dash
+echo /boot/grub
+echo /boot/grub/grub.cfg
+echo /boot/grub/grubenv
+echo /boot/grub/fonts
 echo /boot/grub/locale
+echo /etc/default/grub
 dpkg-query -L grub-common | grep 'grub\.mo' | sed 's#usr/share#boot/grub#' | sed 's#/LC_MESSAGES/grub##'
 [ -e /usr/share/grub/unicode.pf2 ] && echo /boot/grub/fonts/unicode.pf2
-
