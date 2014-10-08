@@ -1,4 +1,5 @@
 # cupsys 1.7.5-1 (jessie)
+/etc/printcap
 /etc/cups/classes.conf
 /etc/cups/classes.conf.*
 /etc/cups/cupsd.conf
@@ -13,6 +14,7 @@
 /etc/cups/ssl/server.crt
 /etc/cups/ssl/server.key
 /etc/cups/subscriptions.conf
+/etc/cups/subscriptions.conf.O
 /var/lib/cups/certs
 /var/lib/cups/certs/*
 /var/log/cups
@@ -24,11 +26,14 @@
 /var/log/cups/page_log.*
 /var/cache/cups/help.index
 /var/cache/cups/job.cache
+/var/cache/cups/job.cache.O
 /var/cache/cups/job.cache/*
 /var/cache/cups/ppd-updates
 /var/cache/cups/ppds.dat
 /var/cache/cups/remote.cache
 /var/cache/cups/remote.cache/*
+/var/cache/cups/*.snmp
+/var/cache/cups/*.data
 /var/spool/cups/*
 # enabled backends could be detected in an explain script for more accuracy
 /usr/lib/cups/backend/dnssd
