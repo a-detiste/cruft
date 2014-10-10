@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifndef __USE_BSD
 #define __USE_BSD
+#endif
 #include <unistd.h>
 
 #include <errno.h>
