@@ -1,6 +1,3 @@
-usr/bin
-usr/sbin
-usr/lib/cruft
 var/spool/cruft
 etc/cruft
 etc/cruft/explain

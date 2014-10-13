@@ -16,22 +16,23 @@ PROGS  = $(PROGS1) $(PROGS2)
 all : $(PROGS) design.png
 
 install1 : $(PROGS1) filter filters_list cruft_find filter_ignores check_type_symlink
+	mkdir -p $(DESTDIR)/usr/lib/cruft/
 	$(INS) $^ $(DESTDIR)/usr/lib/cruft/
 
 install11 : common.sh common.pl
-	$(INS) -m 0644 $^ $(DESTDIR)/usr/lib/cruft/
+	$(INS) -D -m 0644 $^ $(DESTDIR)/usr/lib/cruft/
 
 install2 : $(PROGS2)
-	$(INS) $< $(DESTDIR)/usr/bin/$<
+	$(INS) -D $< $(DESTDIR)/usr/bin/$<
 
 installdirs : $(DATADIRS)
 	set -e ; for d in $^ ; do \
-		mkdir $(DESTDIR)/usr/lib/cruft/$$d; \
+		mkdir -p $(DESTDIR)/usr/lib/cruft/$$d; \
 		find $$d -maxdepth 1 -type f | xargs -i cp '{}' $(DESTDIR)/usr/lib/cruft/$$d/; \
 	done
 
 install : install1 install11 install2 installdirs cruft
-	$(INS) cruft $(DESTDIR)/usr/sbin/cruft
+	$(INS) -D cruft $(DESTDIR)/usr/sbin/cruft
 
 clean : 
 	rm -f $(PROGS) merge_diff.o merge_diff_funcs.o shellexp.o *~ debian/*~ \
