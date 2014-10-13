@@ -13,6 +13,9 @@
 /usr/share/mime/version
 /usr/share/mime/XMLnamespaces
 # mime types: */*
+/usr/share/mime/all
+/usr/share/mime/all/all.xml
+/usr/share/mime/all/allfiles.xml
 /usr/share/mime/application
 /usr/share/mime/application/*.xml
 /usr/share/mime/audio
@@ -29,6 +32,8 @@
 /usr/share/mime/multipart/*.xml
 /usr/share/mime/text
 /usr/share/mime/text/*.xml
+/usr/share/mime/uri
+/usr/share/mime/uri/*.xml
 /usr/share/mime/video
 /usr/share/mime/video/*.xml
 /usr/share/mime/x-content
