@@ -1,6 +1,0 @@
-/bin/lsmod.modutils
-/sbin/lsmod.modutils
-/sbin/modprobe.modutils
-/sbin/rmmod.modutils
-/sbin/ksyms
-/sbin/kallsyms
