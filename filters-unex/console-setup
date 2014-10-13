@@ -1,3 +1,4 @@
 /etc/console-setup/*.psf.gz
 /etc/console-setup/*.kmap.gz
 /etc/default/console-setup
+/etc/default/keyboard
