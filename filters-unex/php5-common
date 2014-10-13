@@ -1,2 +1,4 @@
 /etc/php5/conf.d
+/etc/php5/mods-available/opcache.ini
+/etc/php5/mods-available/pdo.ini
 /var/lib/php5/modules/**
