@@ -18,7 +18,6 @@
 /etc/adjtime
 /etc/environment
 /etc/fstab
-/etc/inputrc
 /etc/hostname
 /etc/mailname
 /etc/motd
