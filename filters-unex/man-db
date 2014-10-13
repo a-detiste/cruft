@@ -1,4 +1,2 @@
 /var/cache/man
 /var/cache/man/**
-/usr/bin/man
-/usr/bin/mandb
