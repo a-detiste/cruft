@@ -10,3 +10,7 @@
 /etc/subgid-
 /etc/subuid
 /etc/subuid-
+/var/backups/group.bak
+/var/backups/gshadow.bak
+/var/backups/passwd.bak
+/var/backups/shadow.bak

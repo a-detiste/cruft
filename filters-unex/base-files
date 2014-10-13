@@ -29,7 +29,6 @@
 /etc/papersize
 /etc/profile
 /etc/resolv.conf
-/var/backups/**
 /var/mail
 /var/opt
 /usr/share/info/dir

@@ -5,6 +5,8 @@
 /etc/apt/trusted.gpg~
 /etc/apt/trustdb.gpg
 /etc/apt/secring.gpg
+/var/backups/apt.extended_states.0
+/var/backups/apt.extended_states.*.gz
 /var/cache/apt/archives
 /var/cache/apt/archives/*
 /var/cache/apt/lock
