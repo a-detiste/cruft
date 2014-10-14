@@ -12,3 +12,4 @@
 /lib/modules.bak
 /lib/modules.bak/**
 /usr/share/rpikernelhack
+/etc/udev/rules.d/40-scratch.rules
