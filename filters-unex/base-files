@@ -30,7 +30,6 @@
 /etc/resolv.conf
 /var/mail
 /var/opt
-/usr/share/info/dir
 /var/spool/mail
 /var/log/wtmp
 /var/log/btmp

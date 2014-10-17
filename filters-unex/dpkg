@@ -1,6 +1,5 @@
 /etc/dpkg/dpkg.cfg
 /etc/dpkg/origins/default
-/usr/share/info/dir.old
 /var/backups/alternatives.tar.0
 /var/backups/alternatives.tar.*.gz
 /var/backups/dpkg.arch.0
