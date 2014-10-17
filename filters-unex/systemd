@@ -23,7 +23,6 @@
 /var/lib/systemd/coredump
 /var/lib/systemd/random-seed
 /var/lib/systemd/timers
-/var/lib/systemd/timers/*.timer
 /var/tmp/systemd-private-*
 /var/tmp/systemd-private-*/tmp
 

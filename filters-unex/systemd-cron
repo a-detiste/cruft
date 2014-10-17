@@ -1,1 +1,2 @@
+/var/lib/systemd/timers/stamp-cron-*.timer
 /var/spool/cron/crontabs/*
