@@ -13,3 +13,10 @@ find /etc/ssl/certs -type l -name '????????.?' |
  do
    [ -e "$name" ] && echo "$name"
  done
+
+find /etc/ssl/certs -type l -name '????????' |
+ while read name
+ do
+	link=$(readlink $name)
+   [ "$link"="ssl-cert-snakeoil.pem" ] && echo "$name"
+ done
