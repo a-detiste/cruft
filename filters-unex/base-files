@@ -42,5 +42,12 @@
 /usr/local/man
 /usr/local/sbin
 /usr/local/share
+/usr/local/share/applnk
+/usr/local/share/applications
+/usr/local/share/apps
+/usr/local/share/fonts
+/usr/local/share/games
 /usr/local/share/man
+/usr/local/share/mimelnk
+/usr/local/share/mimelnk/application
 /usr/local/src
