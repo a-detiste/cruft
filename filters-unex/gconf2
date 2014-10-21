@@ -1,1 +1,5 @@
-/usr/bin/gconftool
+# copy of /usr/share/gconf/default.path
+/etc/gconf/2/path
+/etc/gconf/gconf.xml.defaults/%gconf-tree.xml
+/etc/gconf/gconf.xml.mandatory/%gconf-tree.xml
+/var/lib/gconf/defaults/%gconf-tree.xml
