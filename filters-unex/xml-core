@@ -14,4 +14,5 @@
 /usr/local/share/xml/schema
 /var/lib/xml-core
 /var/lib/xml-core/catalog
+/var/lib/xml-core/sgml-data
 /var/lib/xml-core/xml-core
