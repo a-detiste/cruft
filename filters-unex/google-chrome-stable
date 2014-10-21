@@ -1,5 +1,6 @@
 /etc/apt/sources.list.d/google-chrome.list
 /etc/default/google-chrome
+/usr/share/applications/defaults.list
 /usr/share/icons/hicolor/16x16/apps/google-chrome.png
 /usr/share/icons/hicolor/22x22/apps/google-chrome.png
 /usr/share/icons/hicolor/24x24/apps/google-chrome.png

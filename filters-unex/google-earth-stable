@@ -1,5 +1,6 @@
 /etc/apt/sources.list.d/google-earth.list
 /etc/default/google-earth
+/usr/share/applications/defaults.list
 /usr/share/applications/google-earth.desktop
 /usr/share/applnk/google-earth.desktop
 /usr/share/icons/hicolor/16x16/apps/google-earth.png
