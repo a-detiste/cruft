@@ -1,3 +1,16 @@
+cruft (0.9.19) unstable; urgency=medium
+
+  * [9231e14] Remove debian/extrafiles as it was never implemented:
+    https://lists.debian.org/debian-policy/1998/04/msg00089.html
+  * [c3c008c] [384ae1e] [9d7e374] Fix compiling warnings
+  * Updates to various filters: systemd v215, grub2 v2.02,
+    ca-certificates ...
+  * New explain scripts for Kde4, *-icon-theme
+  * Remove extraneous filters for packages that are now
+     well handled by alternatives
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 22 Oct 2014 10:32:28 +0200
+
 cruft (0.9.18) unstable; urgency=medium
 
   * New Maintainer (Closes: #763888)
