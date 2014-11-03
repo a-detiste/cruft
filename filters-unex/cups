@@ -35,6 +35,7 @@
 /var/cache/cups/*.snmp
 /var/cache/cups/*.data
 /var/spool/cups/*
+/var/spool/cups/tmp/cups-dbus-notifier-lockfile
 # enabled backends could be detected in an explain script for more accuracy
 /usr/lib/cups/backend/dnssd
 /usr/lib/cups/backend/http
