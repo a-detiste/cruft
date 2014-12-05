@@ -1,3 +1,6 @@
+/var/cache/lightdm
+/var/cache/lightdm/dmrc
+/var/cache/lightdm/dmrc/*.dmrc
 /var/log/lightdm
 /var/log/lightdm/*.log
 /var/log/lightdm/*.log.old
