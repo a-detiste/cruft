@@ -1,2 +1,4 @@
 /usr/lib/game-data-packager/game_data_packager/__pycache__
 /usr/lib/game-data-packager/game_data_packager/__pycache__/*.pyc
+/usr/lib/game-data-packager/game_data_packager/games/__pycache__
+/usr/lib/game-data-packager/game_data_packager/games/__pycache__/*.pyc
