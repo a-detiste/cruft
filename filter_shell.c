@@ -7,19 +7,22 @@
 #define FALSE 0
 #define TRUE  1
 
-/* XXX this should be changed to use the heap. stack has its limits... */
 #define BUFFER_LEN 1000
 #define NUM_STRINGS 4000
 
 int shellexp(char*, char*);
 
 int main(int argc, char **argv) {
-    char strings[NUM_STRINGS][BUFFER_LEN];
+    char (*strings)[BUFFER_LEN] = calloc(NUM_STRINGS, BUFFER_LEN);
     char buffer[BUFFER_LEN];
     FILE* exp_list;
     int n_strings = 0;
     int i;
     
+    if (!strings)
+    {
+        return EXIT_FAILURE;
+    }
     /* Read into memory all patterns from the files specified as command line
      * arguments */
     for ( i = 1; i < argc; i++ ) {
@@ -83,9 +86,13 @@ int main(int argc, char **argv) {
 	}
 	if ( !match ) {
 	    if (printf("%s\n", buffer) < 0)
+            {
+                free(strings);
 	    	return EXIT_FAILURE;
+            }
 	} 
     }
+    free(strings);
     if (fclose(stdout) != 0)
     	return EXIT_FAILURE;
     return EXIT_SUCCESS;
