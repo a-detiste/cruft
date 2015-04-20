@@ -1,0 +1,13 @@
+usr/lib/cruft/common.pl
+usr/lib/cruft/filter
+usr/lib/cruft/filters_list
+usr/lib/cruft/cruft_find
+usr/lib/cruft/filter_ignores
+usr/lib/cruft/check_type_symlink
+usr/lib/cruft/filters-broken_symlinks/login
+usr/lib/cruft/canonical
+usr/lib/cruft/filter_shell
+usr/lib/cruft/merge_diff
+usr/lib/cruft/readlinks
+usr/bin/dash-search
+usr/sbin/cruft

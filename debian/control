@@ -11,7 +11,7 @@ Vcs-Browser: https://github.com/a-detiste/cruft
 
 Package: cruft
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, file
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, file, cruft-common
 Suggests: mailx
 Description: program that finds any cruft built up on your system
  cruft is a program to look over your system for anything that shouldn't
@@ -22,3 +22,15 @@ Description: program that finds any cruft built up on your system
  .
  cruft is still in pre-release; your assistance in improving its accuracy
  and performance is appreciated.
+
+Package: cruft-common
+Architecture: all
+Depends: ${misc:Depends}
+Description: information database shared by cruft & cruft-ng
+ cruft & cruft-ng are programs to look over your system for anything
+ that shouldn't be there, but is; or for anything that should be there,
+ but isn't.
+ .
+ This package contain extra information about packages
+ that are not avaible in Debian standard packages information
+ repositories like dpkg, alternatives, diversions, ...

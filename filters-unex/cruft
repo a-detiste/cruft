@@ -1,5 +1,3 @@
-/etc/cruft/explain/*
-/etc/cruft/filters/*
 /var/spool/cruft/file_*
 /var/spool/cruft/mayx_*
 /var/spool/cruft/msnt_*

@@ -11,6 +11,9 @@ debian/autoreconf.before
 debian/cruft.debhelper.log
 debian/cruft.substvars
 debian/cruft/
+debian/cruft-common.debhelper.log
+debian/cruft-common.substvars
+debian/cruft-common/
 debian/files
 design.png
 filter_shell

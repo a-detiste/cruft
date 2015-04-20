@@ -4,7 +4,7 @@ Source: https://github.com/a-detiste/cruft.git
 Files:*
 Copyright: 1998-2000 Anthony Towns <ajt@debian.org>
            2005-2011 Marcin Owsiany <porridge@debian.org>
-           2014      Alexandre Detiste <alexandre.detiste@gmail.com>
+           2014-2015 Alexandre Detiste <alexandre.detiste@gmail.com>
 License: GPL-2+
  This program is free software; you may redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
