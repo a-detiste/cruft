@@ -26,6 +26,8 @@ Description: program that finds any cruft built up on your system
 Package: cruft-common
 Architecture: all
 Depends: ${misc:Depends}
+Breaks: cruft (<< 0.9.20)
+Replaces: cruft (<< 0.9.20)
 Description: information database shared by cruft & cruft-ng
  cruft & cruft-ng are programs to look over your system for anything
  that shouldn't be there, but is; or for anything that should be there,
