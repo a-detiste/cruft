@@ -140,7 +140,9 @@ get_prunes_for()
 
 get_ignores()
 {
-	cat /var/spool/cruft/IGNORES
+	if [ -e /var/spool/cruft/IGNORES ] ; then
+	    cat /var/spool/cruft/IGNORES
+	fi
 }
 
 set_ignores()
