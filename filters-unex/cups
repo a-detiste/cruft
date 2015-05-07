@@ -3,10 +3,11 @@
 /etc/cups/classes.conf
 /etc/cups/classes.conf.*
 /etc/cups/cupsd.conf
+/etc/cups/cupsd.conf.O
 /etc/cups/cupsd-systemd-listen.conf
 /etc/cups/ppd
 /etc/cups/ppd/*.ppd
-/etc/cups/ppd/*.ppd.old
+/etc/cups/ppd/*.ppd.O
 /etc/cups/printers.conf
 /etc/cups/printers.conf.*
 /etc/cups/raw.convs
