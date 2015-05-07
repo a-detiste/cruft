@@ -1,13 +1,15 @@
-cruft (0.9.20) unstable; urgency=low
+cruft (0.9.20) unstable; urgency=medium
 
   * Spin-off filters database in new cruft-common package,
     so it can be shared with cruft-ng
   * Add miscellanous filters, mostly to match *.pyc files
+  * Review RaspBian support
+  * add /etc/ethers shared by various network packages
 
   [ Reimar Döffinger ]
   * filter_shell.c: Allocate buffer via calloc instead of on-stack
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 20 Apr 2015 18:03:41 +0200
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 07 May 2015 11:43:41 +0200
 
 cruft (0.9.19) unstable; urgency=medium
 
