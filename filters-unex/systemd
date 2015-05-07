@@ -18,6 +18,7 @@
 /etc/systemd/system/*.wants/*.socket
 /etc/systemd/system/*.wants/*.target
 /etc/systemd/system/*.wants/*.timer
+/var/lib/container
 /var/lib/systemd/backlight
 /var/lib/systemd/backlight/*
 /var/lib/systemd/catalog
