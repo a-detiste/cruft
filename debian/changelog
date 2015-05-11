@@ -6,6 +6,7 @@ cruft (0.9.20) unstable; urgency=medium
   * Review RaspBian support
   * add /etc/ethers shared by various network packages
   * add rule for etckeeper (Closes: #784980)
+  * drop depedency on perl, perl-base is enough
 
   [ Reimar Döffinger ]
   * filter_shell.c: Allocate buffer via calloc instead of on-stack
