@@ -5,6 +5,7 @@ cruft (0.9.20) unstable; urgency=medium
   * Add miscellanous filters, mostly to match *.pyc files
   * Review RaspBian support
   * add /etc/ethers shared by various network packages
+  * add rule for etckeeper (Closes: #784980)
 
   [ Reimar Döffinger ]
   * filter_shell.c: Allocate buffer via calloc instead of on-stack

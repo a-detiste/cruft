@@ -1,0 +1,4 @@
+/etc/.etckeeper
+/etc/.etckeeper/**
+/var/cache/etckeeper
+/var/cache/etckeeper/**
