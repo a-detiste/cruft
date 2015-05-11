@@ -97,14 +97,13 @@ Also, any explain script will be run only if any of the following is true:
 Selecting filter files
 ----------------------
 
-For filtering the list of files of a certain TYPE (any of: frbn miss unex), the
+For filtering the list of files, the
 following filter files will be selected:
 
- - /etc/cruft/filters-TYPE/*
  - /etc/cruft/filters/*
- - installed "extrafiles" control files (in dpkg database)
- - /usr/lib/cruft/filters-TYPE/*
- - /usr/lib/cruft/filters/*
+ - installed "extrafiles" control files (in dpkg database) (*)
+ - /usr/lib/cruft/filters-unex/*
+ - /usr/lib/cruft/filters-broken_symlinks/*
 
 However, if a filter file called "foo" (or "foo.extrafiles") exists in any of
 the above location, only the first one in this list will be considered.
@@ -112,8 +111,7 @@ Moreover, the same CASE-type naming convention applies as with explain scripts
 (that is, a filter file which has any lower case letters will only be run if a
 package with the same name is present in the system).
 
-Please note that /etc/cruft/filters/ and /usr/lib/cruft/filters/ are
-deprecated, and support for these directories will be removed at some point.
+(*): not yet implemented
 
 
 How to make cruft not report some file
@@ -132,7 +130,7 @@ There are several ways to do this:
    reported. This is a little more flexible, but requires cruft to traverse the
    directory tree, which takes some time. An example could be:
 
-                computer:~# echo '/usr/local/**' > /etc/cruft/filters-unex/USR_LOCAL
+                computer:~# echo '/usr/local/**' > /etc/cruft/filters/USR_LOCAL
  
  * create an 'explanation' script which prints to FD3 the names of all files
    which are not to be reported. This is the most flexible way, since you can
