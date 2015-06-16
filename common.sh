@@ -157,7 +157,11 @@ set_ignores()
 # suffixed with appropriate options
 cruft_find()
 {
-	/usr/lib/cruft/cruft_find "$@"
+	if [ -x /usr/lib/cruft/cruft_find "$@" ]; then
+		/usr/lib/cruft/cruft_find "$@"
+	else
+		find "$@" >&3
+	fi
 }
 
 fixup_slashes()
