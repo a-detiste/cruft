@@ -9,11 +9,10 @@ while read dir; do
 	ignores="$(get_ignores)"
 	if [ -z "$ignores" ]; then
 		echo $dir
-	else	
-		keep=1
-		for ignore in $ignores; do
-			if is_subdir "$ignore" "$dir" ; then keep=0; fi
-		done
-		if [ $keep=0 ] ; then echo "$dir"; fi
+	else
+		[ -z "$(for ignore in $ignores
+		do
+			is_subdir "$ignore" "$dir" && echo matched
+		done)" ] && echo "$dir"
 	fi
 done
