@@ -7,11 +7,12 @@ cruft (0.9.20) unstable; urgency=medium
   * add /etc/ethers shared by various network packages
   * add rule for etckeeper (Closes: #784980)
   * drop depedency on perl, perl-base is enough
+  * fix handling of /lost+found in ignored paths
 
   [ Reimar Döffinger ]
   * filter_shell.c: Allocate buffer via calloc instead of on-stack
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 07 May 2015 11:43:41 +0200
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Tue, 16 Jun 2015 13:43:41 +0200
 
 cruft (0.9.19) unstable; urgency=medium
 
