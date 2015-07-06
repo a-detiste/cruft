@@ -1,0 +1,9 @@
+#!/bin/dash
+set -e
+. /usr/lib/cruft/common.sh
+
+for user in root `awk -F: '{ if ( 1000 <= $3 && $3 < 30000 ) print $1 }' /etc/passwd`; do
+	home=`grep "^$user:" /etc/passwd | cut -d: -f6`
+
+	[ -e /var/lib/sudo/$user ] && find /var/lib/sudo/$user
+done
