@@ -1,6 +1,7 @@
 cruft (0.9.21) UNRELEASED; urgency=medium
 
   * make it build with DEB_BUILD_OPTIONS=parallel=23 (Closes: #790844)
+  * fix "/usr/lib/cruft/cruft_find: unexpected operator" (Closes: #791579)
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sat, 04 Jul 2015 17:02:23 +0200
 

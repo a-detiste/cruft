@@ -157,10 +157,10 @@ set_ignores()
 # suffixed with appropriate options
 cruft_find()
 {
-	if [ -x /usr/lib/cruft/cruft_find "$@" ]; then
+	if [ -x /usr/lib/cruft/cruft_find ]; then
 		/usr/lib/cruft/cruft_find "$@"
 	else
-		find "$@" >&3
+		find "$@"
 	fi
 }
 
