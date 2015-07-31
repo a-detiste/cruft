@@ -1,0 +1,11 @@
+/var/lib/sddm
+/var/lib/sddm/.cache
+/var/lib/sddm/.cache/icon-cache.kcache
+/var/lib/sddm/.cache/plasma*
+/var/lib/sddm/.config
+/var/lib/sddm/.dbus
+/var/lib/sddm/.dbus/session-bus
+/var/lib/sddm/.dbus/session-bus/*
+/var/lib/sddm/.xsession-errors
+/var/lib/sddm/state.conf
+/var/log/sddm.log
