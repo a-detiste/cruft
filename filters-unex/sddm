@@ -1,3 +1,5 @@
+/etc/sddm.conf
+/usr/share/sddm/themes/*/theme.conf.user
 /var/lib/sddm
 /var/lib/sddm/.cache
 /var/lib/sddm/.cache/icon-cache.kcache
