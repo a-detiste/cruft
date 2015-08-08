@@ -1,4 +1,6 @@
+/var/spool/cruft/broken_*
 /var/spool/cruft/file_*
+/var/spool/cruft/filter_list_*
 /var/spool/cruft/mayx_*
 /var/spool/cruft/msnt_*
 /var/spool/cruft/must_*
