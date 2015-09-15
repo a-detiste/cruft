@@ -1,2 +1,3 @@
 /etc/popularity-contest.conf
+/etc/cron.d/popularity-contest
 /var/log/popularity-contest*
