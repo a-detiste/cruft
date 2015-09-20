@@ -1,0 +1,7 @@
+/usr/lib/pymodules/python2.7/ndg
+/usr/lib/pymodules/python2.7/ndg/*
+/usr/lib/pymodules/python2.7/ndg/httpsclient/**
+/usr/lib/pymodules/python2.7/ndg_httpsclient-*-nspkg.pth
+/usr/lib/pymodules/python2.7/ndg_httpsclient-*.egg-info
+/usr/lib/pymodules/python2.7/ndg_httpsclient-*.egg-info/*
+/usr/lib/python2.7/dist-packages/ndg/__init__.py
