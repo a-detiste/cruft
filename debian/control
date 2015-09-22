@@ -12,7 +12,7 @@ Vcs-Browser: https://github.com/a-detiste/cruft
 Package: cruft
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, file, cruft-common
-Suggests: mailx
+Suggests: mailx, cruft-ng
 Description: program that finds any cruft built up on your system
  cruft is a program to look over your system for anything that shouldn't
  be there, but is; or for anything that should be there, but isn't.
