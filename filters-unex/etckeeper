@@ -1,4 +1,6 @@
 /etc/.etckeeper
 /etc/.etckeeper/**
+/etc/.git
+/etc/.git/**
 /var/cache/etckeeper
 /var/cache/etckeeper/**

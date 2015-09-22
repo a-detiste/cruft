@@ -1,3 +1,10 @@
+cruft (0.9.22) UNRELEASED; urgency=low
+
+  * etckeeper: add "/etc/.git" to filter (Closes: #799744)
+  * suggest cruft-ng in debian/control
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Tue, 22 Sep 2015 09:58:34 +0200
+
 cruft (0.9.21) unstable; urgency=low
 
   * make it build with DEB_BUILD_OPTIONS=parallel=23 (Closes: #790844)
