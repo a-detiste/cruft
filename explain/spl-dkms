@@ -1,0 +1,9 @@
+#!/bin/sh -e
+ver=$(uname -r)
+if [ -e /lib/modules/${ver}/updates/dkms/spl.ko ]
+then
+    echo /lib/modules/${ver}/updates
+    echo /lib/modules/${ver}/updates/dkms
+    echo /lib/modules/${ver}/updates/dkms/spl.ko
+    echo /lib/modules/${ver}/updates/dkms/splat.ko
+fi

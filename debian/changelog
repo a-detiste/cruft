@@ -3,6 +3,7 @@ cruft (0.9.22) UNRELEASED; urgency=low
   * etckeeper: add "/etc/.git" to filter (Closes: #799744)
   * suggest cruft-ng in debian/control
   * split ssh in openssh-client + openssh-server (Closes: #800105)
+  * add filters for some "*-dkms" packages (Closes: #800103)
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Tue, 22 Sep 2015 09:58:34 +0200
 

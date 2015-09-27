@@ -1,0 +1,11 @@
+#!/bin/sh -e
+ver=$(uname -r)
+if [ -e /lib/modules/${ver}/updates/dkms/vboxdrv.ko ]
+then
+    echo /lib/modules/${ver}/updates
+    echo /lib/modules/${ver}/updates/dkms
+    echo /lib/modules/${ver}/updates/dkms/vboxdrv.ko
+    echo /lib/modules/${ver}/updates/dkms/vboxnetadp.ko
+    echo /lib/modules/${ver}/updates/dkms/vboxnetfit.ko
+    echo /lib/modules/${ver}/updates/dkms/vboxpci.ko
+fi
