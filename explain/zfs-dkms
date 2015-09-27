@@ -1,7 +1,7 @@
 #!/bin/sh -e
-ver=$(uname -r)
-if [ -e /lib/modules/${ver}/updates/dkms/zfs.ko ]
-then
+versions=$(/usr/sbin/dkms status -m zfs | cut -d\, -f 3 | tr -d ' ')
+for ver in $versions
+do
     echo /lib/modules/${ver}/updates
     echo /lib/modules/${ver}/updates/dkms
     echo /lib/modules/${ver}/updates/dkms/zfs.ko
@@ -9,4 +9,4 @@ then
     echo /lib/modules/${ver}/updates/dkms/znvpair.ko
     echo /lib/modules/${ver}/updates/dkms/zpios.ko
     echo /lib/modules/${ver}/updates/dkms/zunicode.ko
-fi
+done
