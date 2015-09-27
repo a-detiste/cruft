@@ -10,3 +10,11 @@ do
 		cruft_find "/var/lib/dkms/$package"
 	fi
 done
+
+for version in $(/usr/sbin/dkms status | cut -d\, -f 3 | tr -d ' ' | sort -u)
+do
+	if [ -e "/boot/initrd.img-${version}.old-dkms" ]
+	then
+		echo "/boot/initrd.img-${version}.old-dkms"
+	fi
+done
