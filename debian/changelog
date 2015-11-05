@@ -1,4 +1,4 @@
-cruft (0.9.22) UNRELEASED; urgency=low
+cruft (0.9.22) unstable; urgency=low
 
   * etckeeper: add "/etc/.git" to filter (Closes: #799744)
   * suggest cruft-ng in debian/control
@@ -6,8 +6,9 @@ cruft (0.9.22) UNRELEASED; urgency=low
   * add generic support for "*-dkms" packages (Closes: #800103)
   * add filter for LVM2 (Closes: #800102)
   * refresh Apache 2 rule (Closes: #800104)
+  * add filter for lxc
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Tue, 22 Sep 2015 09:58:34 +0200
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 05 Nov 2015 23:33:34 +0100
 
 cruft (0.9.21) unstable; urgency=low
 
