@@ -1,8 +1,4 @@
-#/etc/apache/access.conf
-#/etc/apache/conf
-#/etc/apache/cron.conf
-#/etc/apache/httpd.conf
-#/etc/apache/mime.types
-#/etc/apache/srm.conf
+/etc/apache2/conf-enabled/*.conf
+/etc/apache2/mods-enabled/*.load
 /var/log/apache2/access.log*
 /var/log/apache2/error.log*
