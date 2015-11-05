@@ -1,0 +1,3 @@
+/usr/share/yum-cli/*.pyc
+/var/lib/yum/uuid
+/var/log/yum.log
