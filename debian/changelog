@@ -4,6 +4,7 @@ cruft (0.9.22) UNRELEASED; urgency=low
   * suggest cruft-ng in debian/control
   * split ssh in openssh-client + openssh-server (Closes: #800105)
   * add generic support for "*-dkms" packages (Closes: #800103)
+  * add filter for LVM2 (Closes: #800102)
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Tue, 22 Sep 2015 09:58:34 +0200
 
