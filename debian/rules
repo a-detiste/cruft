@@ -21,7 +21,7 @@ endif
 override_dh_auto_configure:
 	dh_auto_configure -- $(confflags)
 
-override_dh_fixperms:
+override_dh_fixperms-arch:
 	dh_fixperms
 	chmod 700 debian/cruft/var/spool/cruft
 
