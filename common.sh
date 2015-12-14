@@ -203,6 +203,7 @@ package_has_files()
 		return 1
 	else
 		lines=$(wc -l < "${list_tmp}")
+		rm -f "${list_tmp}"
 		if [ "${lines}" -eq 0 ]
 		then
 			# has no files
