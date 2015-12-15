@@ -8,5 +8,6 @@
 /var/spool/cruft/miss_*
 /var/spool/cruft/unex_*
 /var/spool/cruft/type_symlink_*
+/var/spool/cruft/whte_*
 /var/spool/cruft/DRIVES
 /var/spool/cruft/IGNORES
