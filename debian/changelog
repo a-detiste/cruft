@@ -1,3 +1,10 @@
+cruft (0.9.24) UNRELEASED; urgency=medium
+
+  [ Benedict Harcourt ]
+  * avoid leaking temporary files in /tmp/tmp.*
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Tue, 15 Dec 2015 15:00:09 +0100
+
 cruft (0.9.23) unstable; urgency=low
 
   * Fix FTBFS when built with dpkg-buildpackage -A (Closes: #806009)
