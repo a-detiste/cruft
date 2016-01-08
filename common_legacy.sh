@@ -110,7 +110,7 @@ set_ignores()
 # suffixed with appropriate options
 cruft_find()
 {
-	/usr/lib/cruft/cruft_find "$@"
+	exec /usr/lib/cruft/cruft_find "$@"
 }
 
 fixup_slashes()
