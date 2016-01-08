@@ -91,13 +91,13 @@ int merge_diff(char *spool_dir_name)
 
 	if (! rivers_open_files(spool_dir_name, rivers))
 		return EXIT_FAILURE;
-	
+
 	cruft_debug(DEBUG_HEADER);
 
 	for(;;) {
 		int smallest[NUM_RIVERS];
 		memset(smallest, 0, sizeof(int) * NUM_RIVERS);
-		
+
 		if (! rivers_prepare_round(rivers))
 			break;
 
@@ -109,12 +109,12 @@ int merge_diff(char *spool_dir_name)
 		if (smallest[MUST_IDX] && ! smallest[FILE_IDX])
 			if (! river_output_line(&rivers[MUST_IDX]))
 				return EXIT_FAILURE;
-		
+
 		/* is, but not explained by must nor may */
 		if (smallest[FILE_IDX] && (! smallest[MUST_IDX] && ! smallest[MAYX_IDX]))
 			if (! river_output_line(&rivers[FILE_IDX]))
 				return EXIT_FAILURE;
-	
+
 		/* must not be, but is */
 		if (smallest[MSNT_IDX] && smallest[FILE_IDX])
 			if (! river_output_line(&rivers[MSNT_IDX]))
@@ -122,14 +122,14 @@ int merge_diff(char *spool_dir_name)
 
 		if (smallest[MSNT_IDX]) {
 			if (smallest[MAYX_IDX])
-				fprintf(stderr, "Explain script (may and musn't) conflict: [%s]\n", river_least_line(&rivers[MSNT_IDX]));
+				fprintf(stderr, "Explain script (may and mustn't) conflict: [%s]\n", river_least_line(&rivers[MSNT_IDX]));
 			if (smallest[MUST_IDX])
-				fprintf(stderr, "Explain script (must and musn't) conflict: [%s]\n", river_least_line(&rivers[MSNT_IDX]));
+				fprintf(stderr, "Explain script (must and mustn't) conflict: [%s]\n", river_least_line(&rivers[MSNT_IDX]));
 		}
-	
+
 		scroll_smallest(smallest, rivers);
 	}
-	
+
 	if (! rivers_close(rivers))
 		return EXIT_FAILURE;
 
