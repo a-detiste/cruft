@@ -1,6 +1,7 @@
 usr/lib/cruft/canonical
 usr/lib/cruft/check_type_symlink
 usr/lib/cruft/common.pl
+usr/lib/cruft/common_legacy.sh
 usr/lib/cruft/cruft_find
 usr/lib/cruft/filter
 usr/lib/cruft/filters_list

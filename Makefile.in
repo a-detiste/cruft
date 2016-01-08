@@ -19,7 +19,7 @@ install1 : $(PROGS1) filter filters_list cruft_find filter_ignores check_type_sy
 	mkdir -p $(DESTDIR)/usr/lib/cruft/
 	$(INS) $^ $(DESTDIR)/usr/lib/cruft/
 
-install11 : common.sh common.pl
+install11 : common.sh common_legacy.sh common.pl
 	mkdir -p $(DESTDIR)/usr/lib/cruft/
 	$(INS) -D -m 0644 $^ $(DESTDIR)/usr/lib/cruft/
 

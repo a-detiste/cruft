@@ -1,9 +1,13 @@
-cruft (0.9.24) UNRELEASED; urgency=medium
+cruft (0.9.24) unstable; urgency=low
+
+  * split common.sh in common.sh + common_legacy.sh,
+    only keep the bare minimum in cruft-common package
+  * cruft-common: update to misc. packages rules
 
   [ Benedict Harcourt ]
-  * avoid leaking temporary files in /tmp/tmp.*
+  * cruft: avoid leaking temporary files in /tmp/tmp.*
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Tue, 15 Dec 2015 15:00:09 +0100
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Fri, 08 Jan 2016 12:12:36 +0100
 
 cruft (0.9.23) unstable; urgency=low
 

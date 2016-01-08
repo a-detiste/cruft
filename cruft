@@ -1,6 +1,6 @@
 #!/bin/dash
 set -e
-. /usr/lib/cruft/common.sh
+. /usr/lib/cruft/common_legacy.sh
 
 cruft_debug 2
 

@@ -2,7 +2,7 @@
 # Print on standard output the list of files which contain filter patterns for
 # the type given as the first argument
 set -e
-. /usr/lib/cruft/common.sh
+. /usr/lib/cruft/common_legacy.sh
 cruft_debug 2
 
 type="$1"
