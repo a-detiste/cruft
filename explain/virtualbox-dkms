@@ -6,6 +6,6 @@ do
     echo /lib/modules/${ver}/updates/dkms
     echo /lib/modules/${ver}/updates/dkms/vboxdrv.ko
     echo /lib/modules/${ver}/updates/dkms/vboxnetadp.ko
-    echo /lib/modules/${ver}/updates/dkms/vboxnetfit.ko
+    echo /lib/modules/${ver}/updates/dkms/vboxnetflt.ko
     echo /lib/modules/${ver}/updates/dkms/vboxpci.ko
 done
