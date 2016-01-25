@@ -3,6 +3,8 @@
 /usr/share/sddm/themes/*/theme.conf.user
 /var/lib/sddm
 /var/lib/sddm/.cache
+/var/lib/sddm/.cache/fontconfig
+/var/lib/sddm/.cache/fontconfig/*
 /var/lib/sddm/.cache/icon-cache.kcache
 /var/lib/sddm/.cache/plasma*
 /var/lib/sddm/.config
