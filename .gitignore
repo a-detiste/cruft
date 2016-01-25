@@ -6,6 +6,7 @@ config.log
 config.status
 configure
 dash-search
+debian/.debhelper/
 debian/autoreconf.after
 debian/autoreconf.before
 debian/cruft.debhelper.log
