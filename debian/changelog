@@ -1,3 +1,10 @@
+cruft (0.9.25) UNRELEASED; urgency=medium
+
+  * add filters for UsrMerge support: coreutils, less, mksh
+  * new filters for xdm, qemu-user-binfmt
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 25 Jan 2016 12:44:45 +0100
+
 cruft (0.9.24) unstable; urgency=low
 
   * split common.sh in common.sh + common_legacy.sh,
