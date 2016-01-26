@@ -15,6 +15,7 @@ debian/cruft/
 debian/cruft-common.debhelper.log
 debian/cruft-common.substvars
 debian/cruft-common/
+debian/debhelper-build-stamp
 debian/files
 debian/tmp
 design.png
