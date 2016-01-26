@@ -1,2 +1,4 @@
-# cryptsetup 1.0.4+svn26-1 (etch)
 /etc/crypttab
+# UsrMerge
+/usr/sbin/cryptdisks_start
+/usr/sbin/cryptdisks_stop
