@@ -1,6 +1,6 @@
 cruft (0.9.25) UNRELEASED; urgency=medium
 
-  * add filters for UsrMerge support: coreutils, less, mksh
+  * add filters for UsrMerge support: coreutils, less, mksh, policycoreutils
   * new filters for xdm, qemu-user-binfmt, misc. java packages
   * check semi-automatically for obsolete packages;
     remove old packages that got removed from the archive before 2008
