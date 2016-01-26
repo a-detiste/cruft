@@ -6,7 +6,7 @@ import time
 
 # repository is mirrored here:
 #
-# deb http://users.teledisnet.be/ade15809/ jessie main
+# deb http://users.teledisnet.be/ade15809/ stretch main
 
 BASE = '/home/tchet/git'
 CRUFT = os.path.join(BASE, 'cruft')
