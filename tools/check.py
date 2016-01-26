@@ -14,6 +14,9 @@ for line in proc.stdout:
 current_packages.add('raspberrypi-bootloader')
 current_packages.add('libraspberrypi0')
 
+# Google repository
+current_packages.add('google-earth-stable')
+
 # Add Stable, remove cache file to trigger download
 if not os.path.isfile('tools/Packages_amd64'):
     subprocess.check_call(['ben', 'download',
