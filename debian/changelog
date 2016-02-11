@@ -1,3 +1,9 @@
+cruft (0.9.26) UNRELEASED; urgency=medium
+
+  * Use HTTPS for Vcs-Git URL.
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 11 Feb 2016 10:07:19 +0100
+
 cruft (0.9.25) unstable; urgency=medium
 
   * add filters for UsrMerge support: coreutils, less, mksh, policycoreutils,

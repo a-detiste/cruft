@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 9~), dh-autoreconf, pngcrush, dia | dia-gnome
 Build-Conflicts: autoconf2.13
 Standards-Version: 3.9.6
 Homepage: http://alioth.debian.org/projects/cruft/
-Vcs-Git: git://github.com/a-detiste/cruft.git
+Vcs-Git: https://github.com/a-detiste/cruft.git
 Vcs-Browser: https://github.com/a-detiste/cruft
 
 Package: cruft
