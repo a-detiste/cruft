@@ -1,0 +1,7 @@
+# actually libmono-corlib4.5-cil
+# but versioned packages are a pain to maintain in cruft-common;
+# and this one depends one mono-runtime
+/usr/lib/mono/aot-cache
+/usr/lib/mono/aot-cache/*
+/usr/lib/mono/aot-cache/*/mscorlib.dll.so
+#/usr/lib/mono/aot-cache/${ARCH}/mscorlib.dll.so
