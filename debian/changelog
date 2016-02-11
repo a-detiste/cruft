@@ -1,13 +1,14 @@
-cruft (0.9.25) UNRELEASED; urgency=medium
+cruft (0.9.25) unstable; urgency=medium
 
   * add filters for UsrMerge support: coreutils, less, mksh, policycoreutils,
-    cryptsetup
-  * new filters for xdm, qemu-user-binfmt, misc. java packages, NetworkManager
+    cryptsetup, xfsdump, davfs2
+  * new filters for xdm, qemu-user-binfmt, misc. java packages, NetworkManager,
+    mono-utils, xfonts-75dpi, xfonts-100dpi, ifrench, menu-xdg, exult,...
   * check semi-automatically for obsolete packages;
     remove old packages that got removed from the archive before 2008
     rename 'bind' to 'bind9'
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 25 Jan 2016 12:44:45 +0100
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 11 Feb 2016 10:01:28 +0100
 
 cruft (0.9.24) unstable; urgency=low
 
