@@ -1,3 +1,9 @@
+cruft (0.9.24~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Paul Wise <pabs@debian.org>  Fri, 12 Feb 2016 12:54:31 +1100
+
 cruft (0.9.24) unstable; urgency=low
 
   * split common.sh in common.sh + common_legacy.sh,
