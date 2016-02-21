@@ -1,5 +1,6 @@
 /etc/NetworkManager/system-connections/*
 /var/lib/NetworkManager/NetworkManager.state
+/var/lib/NetworkManager/*.conf
 /var/lib/NetworkManager/dhclient*.lease
 /var/lib/NetworkManager/seen-bssids
 /var/lib/NetworkManager/timestamps
