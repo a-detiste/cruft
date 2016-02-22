@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=492001
+#
+# needs: bash, mailx, cron-daemon, cruft-ng or cruft
+#
+# symlink/copy this in /etc/cron.daily
+#
+# this is called 'z_...' because it must run after
+# /etc/cron.daily/apt & /etc/cron.daily/mlocate
+#
+
+# clean-up from previous interrupted runs
+rm -f /var/spool/cruft/report_*.log.tmp
+
+if [ -x /usr/bin/cruft-ng ]
+then
+	CRUFT=cruft-ng
+elif [ -x /usr/sbin/cruft ]
+then
+	CRUFT=cruft
+else
+	echo ERROR: please install cruft-ng or cruft
+	exit 1
+fi
+
+prev=$(ls /var/spool/cruft/report_*.log 2>/dev/null | tail -n 1)
+last=/var/spool/cruft/report_$(date '+%Y%m%d').log
+
+# can only run once a day
+[ "$prev" = "$last" ] && exit 0
+
+# first run
+if [ -z "$prev" ]
+then
+	nice ionice $CRUFT > $last.tmp
+	mv $last.tmp $last
+	exit 0
+fi
+
+nice ionice $CRUFT > $last.tmp
+
+# abort on no-change
+if [ ! diff <(sed -n '1!p' < $prev) <(sed -n '1!p' < $last.tmp) > /dev/null 2>&1 ]
+then
+	rm $last.tmp
+	exit 0
+fi
+
+mv $last.tmp $last
+diff -u $prev $last | mailx -s "delta cruft for $(date '+%Y%m%d')" root
