@@ -15,7 +15,7 @@ PROGS  = $(PROGS1) $(PROGS2)
 
 all : $(PROGS) design.png
 
-install1 : $(PROGS1) filter filters_list cruft_find filter_ignores check_type_symlink
+install1 : $(PROGS1) filter filters_list cruft_find filter_ignores check_type_symlink z_cruft
 	mkdir -p $(DESTDIR)/usr/lib/cruft/
 	$(INS) $^ $(DESTDIR)/usr/lib/cruft/
 
