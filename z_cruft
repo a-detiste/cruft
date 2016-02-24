@@ -41,7 +41,7 @@ fi
 nice ionice $CRUFT > $last.tmp
 
 # abort on no-change
-if [ ! diff <(sed -n '1!p' < $prev) <(sed -n '1!p' < $last.tmp) > /dev/null 2>&1 ]
+if [ -z "$(diff <(sed -n '1!p' < $prev) <(sed -n '1!p' < $last.tmp) 2>/dev/null)" ]
 then
 	rm $last.tmp
 	exit 0
