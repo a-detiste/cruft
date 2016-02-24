@@ -4,6 +4,7 @@ cruft (0.9.26) UNRELEASED; urgency=medium
   * UsrMerge: add filter for acl
   * Bump Standards-Version to 3.9.7, no changes needed
   * cruft-common: Add optional cron job (Closes: #492001)
+  * Enable full hardening.
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 11 Feb 2016 10:07:19 +0100
 
