@@ -48,4 +48,4 @@ then
 fi
 
 mv $last.tmp $last
-diff -u $prev $last | mailx -s "delta cruft for $(date '+%Y%m%d')" root
+diff --show-function-line='^-' -u $prev $last | mailx -s "delta cruft for $(date '+%Y%m%d')" root
