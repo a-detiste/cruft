@@ -6,4 +6,5 @@
 /var/log/mail.info*
 /var/log/mail.log*
 /var/log/mail.warn*
+/var/spool/nullmailer/queue/*
 /var/spool/nullmailer/trigger
