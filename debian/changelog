@@ -1,12 +1,15 @@
-cruft (0.9.26) UNRELEASED; urgency=medium
+cruft (0.9.26) unstable; urgency=medium
 
   * Use HTTPS for Vcs-Git URL.
-  * UsrMerge: add filter for acl
+  * UsrMerge: add filter for acl, open-iscsi
+  * update filters for sudo, pbuilder, lxde-icon-theme, policykit-1, plymouth,
+    connman, network-manager, maybe, rpmlint, heroes, libxml-sax-perl,
+    console-setup, nullmailer.
   * Bump Standards-Version to 3.9.7, no changes needed
   * cruft-common: Add optional cron job (Closes: #492001)
   * Enable full hardening.
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 11 Feb 2016 10:07:19 +0100
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 10 Mar 2016 23:14:55 +0100
 
 cruft (0.9.25) unstable; urgency=medium
 
