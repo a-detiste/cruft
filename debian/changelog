@@ -64,7 +64,7 @@ cruft (0.9.20) unstable; urgency=medium
 
   * Spin-off filters database in new cruft-common package,
     so it can be shared with cruft-ng
-  * Add miscellanous filters, mostly to match *.pyc files
+  * Add miscellaneous filters, mostly to match *.pyc files
   * Review RaspBian support
   * add /etc/ethers shared by various network packages
   * add rule for etckeeper (Closes: #784980)
@@ -292,7 +292,7 @@ cruft (0.9.6-0.14) unstable; urgency=low
     provided by Kevin Ryde (Closes: #371871) 
   * Changed interpreter of some bash explain scripts to sh, thanks to Joerg
     Sommer, who pointed out checkbashisms  (Closes: #367029)
-  * Changed processing of -d and --ignore to allow multiple occurences, and
+  * Changed processing of -d and --ignore to allow multiple occurrences, and
     documented it in the manpage (Closes: #371872)
   * Explain scripts:
     - new: doc-base
@@ -426,7 +426,7 @@ cruft (0.9.6-0.8) experimental; urgency=low
   * common.pl: added new perl library with common perl code
   * explain scripts:
     - dpkg: use find|xargs|cat|sort instead of globbing (Closes: #284711)
-    - dpkg: count diversions and file occurences and print filenames correct
+    - dpkg: count diversions and file occurrences and print filenames correct
       number of times
     - gconf: avoid warning if there are no gconf schema files
     - lost_found: source common.sh before using its functions
@@ -470,7 +470,7 @@ cruft (0.9.6-0.6) experimental; urgency=low
   * Removed junky postinst "warning" (Closes: #174877, #304440)
   * Removed the "optimization" from dash-search which caused only the first
     file containing matching pattern to be printed. Apparently the purpose of
-    dash-search is to find all occurences. Noted in manpage that the file name
+    dash-search is to find all occurrences. Noted in manpage that the file name
     is printed for each line.
   * filters/*: /usr/{doc,man} updated to /usr/share/{doc,man}
   * filters/base-files: added /srv, /media, /usr/local and its subdirs
