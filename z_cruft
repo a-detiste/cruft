@@ -40,6 +40,13 @@ fi
 
 nice ionice $CRUFT > $last.tmp
 
+# abort if $CRUFT has been killed
+if ! grep ^end $last.tmp -q
+then
+	rm $last.tmp
+	exit 0
+fi
+
 # abort on no-change
 if [ -z "$(diff <(sed -n '1!p' < $prev) <(sed -n '1!p' < $last.tmp) 2>/dev/null)" ]
 then
