@@ -10,6 +10,8 @@
 # /etc/cron.daily/apt & /etc/cron.daily/mlocate
 #
 
+dpkg_ts_before=$(date -r /var/lib/dpkg/status +%s)
+
 # clean-up from previous interrupted runs
 rm -f /var/spool/cruft/report_*.log.tmp
 
@@ -36,6 +38,7 @@ nice ionice $CRUFT > $last.tmp
 if ! grep ^end $last.tmp -q
 then
 	rm $last.tmp
+	# don't complain, simply try again tomorrow
 	exit 0
 fi
 
@@ -43,6 +46,19 @@ fi
 if [ -z "$prev" ]
 then
 	mv $last.tmp $last
+	exit 0
+fi
+
+# check for race with manually-run dpkg/apt/aptitude
+#
+# unattended-upgrades is not impacted thanks to
+# /etc/cron.daily/ execution being serialized by run-parts.
+
+dpkg_ts_after=$(date -r /var/lib/dpkg/status +%s)
+if [ $dpkg_ts_after -ne $dpkg_ts_before ]
+then
+	rm $last.tmp
+	# don't complain, simply try again tomorrow
 	exit 0
 fi
 
