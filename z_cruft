@@ -30,20 +30,19 @@ last=/var/spool/cruft/report_$(date '+%Y%m%d').log
 # can only run once a day
 [ "$prev" = "$last" ] && exit 0
 
-# first run
-if [ -z "$prev" ]
-then
-	nice ionice $CRUFT > $last.tmp
-	mv $last.tmp $last
-	exit 0
-fi
-
 nice ionice $CRUFT > $last.tmp
 
 # abort if $CRUFT has been killed
 if ! grep ^end $last.tmp -q
 then
 	rm $last.tmp
+	exit 0
+fi
+
+# first run
+if [ -z "$prev" ]
+then
+	mv $last.tmp $last
 	exit 0
 fi
 
