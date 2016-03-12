@@ -5,11 +5,11 @@
 /etc/ppp/resolv.conf
 /etc/ppp/peers/provider
 /etc/chatscripts/provider
-/etc/ppp/peers/
-/etc/ppp/ip-up.d/
-/etc/ppp/ip-down.d/
-/etc/ppp/
-/etc/chatscripts/
+/etc/ppp/peers
+/etc/ppp/ip-up.d
+/etc/ppp/ip-down.d
+/etc/ppp
+/etc/chatscripts
 /var/log/ppp.log
 /var/log/ppp-connect-errors
 /var/log/ppp-ipupdown.log

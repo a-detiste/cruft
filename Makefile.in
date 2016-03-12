@@ -47,6 +47,9 @@ check: shellexptest merge_diff_test
 	echo Checking for trailing whitespaces
 	grep -E -R -H " +$$" filters-unex/ || true
 	! grep -E -R -q " +$$" filters-unex/
+	echo Checking for trailing slashes
+	grep -E -R -H "/+$$" filters-unex/ || true
+	! grep -E -R -q "/+$$" filters-unex/
 
 shellexptest: shellexptest.o shellexp.o
 filter_shell dash-search: shellexp.o
