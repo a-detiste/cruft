@@ -1,6 +1,6 @@
 cruft (0.9.27) UNRELEASED; urgency=medium
 
-  * 
+  * Add filters for new php-common & php-pgsql; likely more needed soon.
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 16 Mar 2016 06:29:47 +0100
 
