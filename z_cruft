@@ -32,6 +32,10 @@ last=/var/spool/cruft/report_$(date '+%Y%m%d').log
 # can only run once a day
 [ "$prev" = "$last" ] && exit 0
 
+# avoid spurious diff in 'missing: dpkg' if this is on a tmpfs
+# and there was nothing to update today
+mkdir -p /var/cache/apt/archives/partial
+
 nice ionice $CRUFT > $last.tmp
 
 # abort if $CRUFT has been killed
