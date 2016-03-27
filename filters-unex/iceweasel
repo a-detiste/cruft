@@ -1,2 +1,9 @@
 /etc/iceweasel/searchplugins/locale
 /etc/iceweasel/searchplugins/locale/*
+# transition back to firefox/firefox-esr
+/etc/iceweasel
+/etc/iceweasel/pref
+/etc/iceweasel/profile
+/etc/iceweasel/profile/chrome
+/etc/iceweasel/searchplugins
+/etc/iceweasel/searchplugins/common
