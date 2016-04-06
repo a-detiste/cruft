@@ -23,4 +23,5 @@
 /var/lib/apt/periodic/update-stamp
 /var/lib/apt/periodic/update-success-stamp
 /var/lib/apt/periodic/upgrade-stamp
+/var/lib/systemd/timers/stamp-apt-daily.timer
 /var/log/apt/term.log*
