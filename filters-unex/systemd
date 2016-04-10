@@ -2,6 +2,7 @@
 /etc/init.d/.depend.start
 /etc/init.d/.depend.stop
 /etc/machine-id
+/etc/systemd/network/*.network
 /etc/systemd/system/*.automount
 /etc/systemd/system/*.mount
 /etc/systemd/system/*.path
