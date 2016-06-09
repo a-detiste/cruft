@@ -23,7 +23,8 @@ int dash_search(char *dir, int argc, char **argv) {
 	exit(EXIT_FAILURE);
     }
 
-    chdir(dir);
+    if (chdir(dir))
+        return EXIT_FAILURE;
     while( (pde = readdir( dpkg_info )) ) {
 	FILE* f;
 	f = fopen( pde->d_name, "r" );
@@ -53,12 +54,14 @@ int main(int argc, char **argv)
 {
 	int ret;
 
+	/*
 	if (( ret = dash_search("/usr/lib/cruft/filters-broken_symlinks", argc, argv)) != EXIT_SUCCESS)
 		return ret;
 	if (( ret = dash_search("/usr/lib/cruft/filters-frbn", argc, argv)) != EXIT_SUCCESS)
 		return ret;
 	if (( ret = dash_search("/usr/lib/cruft/filters-miss", argc, argv)) != EXIT_SUCCESS)
 		return ret;
+	*/
 	if (( ret = dash_search("/usr/lib/cruft/filters-unex", argc, argv)) != EXIT_SUCCESS)
 		return ret;
 	
