@@ -1,4 +1,5 @@
 # gdm 3.20.1-1 (stretch)
+/etc/gdm3/greeter.dconf-defaults
 /etc/X11/default-display-manager
 /var/lib/gdm3/.ICEauthority
 /var/lib/gdm3/.config

@@ -2,7 +2,7 @@ cruft (0.9.28) UNRELEASED; urgency=medium
 
   * Fix README.gz location in man page (LP: #1574245)
   * Add/refresh filters matching default Stretch install (mostly Gnome desktop):
-    gdm3,
+    gdm3, evince, gnome-menus, nome-accessibility-themes
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 24 Apr 2016 15:33:42 +0200
 
