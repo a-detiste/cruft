@@ -2,6 +2,9 @@
 /etc/gdm3/greeter.dconf-defaults
 /etc/X11/default-display-manager
 /var/lib/gdm3/.ICEauthority
+/var/lib/gdm3/.cache
+/var/lib/gdm3/.cache/fontconfig
+/var/lib/gdm3/.cache/fontconfig/*
 /var/lib/gdm3/.config
 /var/lib/gdm3/.config/gnome-session
 /var/lib/gdm3/.config/gnome-session/saved-session
