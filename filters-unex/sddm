@@ -7,6 +7,7 @@
 /var/lib/sddm/.cache/fontconfig/*
 /var/lib/sddm/.cache/icon-cache.kcache
 /var/lib/sddm/.cache/plasma*
+/var/lib/sddm/.cache/qt_compose_cache_*
 /var/lib/sddm/.config
 /var/lib/sddm/.dbus
 /var/lib/sddm/.dbus/session-bus
