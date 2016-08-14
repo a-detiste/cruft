@@ -11,25 +11,25 @@ import time
 BASE = '/home/tchet/git'
 CRUFT = os.path.join(BASE, 'cruft')
 
-subprocess.check_call(['git', 'checkout', 'debian/changelog'], cwd = CRUFT)
+subprocess.check_call(['git', 'checkout', 'debian/changelog'], cwd=CRUFT)
 
 version = subprocess.check_output(['dpkg-parsechangelog',
-                                  '-l', os.path.join(CRUFT, 'debian/changelog'),
-                                  '-S', 'Version'],
-                                  universal_newlines = True).strip()
+                                   '-l', os.path.join(CRUFT, 'debian/changelog'),
+                                   '-S', 'Version'],
+                                  universal_newlines=True).strip()
 today = time.strftime('%Y%m%d%H%M')
 snapshot = version + '~git' + today
 
 subprocess.check_call(['dch', '-b',
                        '-v', snapshot,
                        "Git snapshot"],
-                       cwd = CRUFT)
-subprocess.check_call(['debuild', '-us', '-uc', '-b'],cwd = CRUFT)
-subprocess.check_call(['git', 'checkout', 'debian/changelog'], cwd = CRUFT)
+                      cwd=CRUFT)
+subprocess.check_call(['debuild', '-us', '-uc', '-b'], cwd=CRUFT)
+subprocess.check_call(['git', 'checkout', 'debian/changelog'], cwd=CRUFT)
 subprocess.check_call(['rsync',
                        'cruft-common_%s_all.deb' % snapshot,
                        'pi@pi:/tmp'],
-                       cwd = BASE)
+                      cwd=BASE)
 subprocess.check_call(['ssh', 'pi@pi', 'publish', '/tmp/cruft-common_%s_all.deb' % snapshot])
 
 publish = """#!/bin/bash
@@ -48,4 +48,4 @@ for file in ('cruft_%s_amd64.build',
              'cruft-common_%s_all.deb',
              'cruft-dbgsym_%s_amd64.deb'):
     subprocess.check_call(['rm', '-v', file % snapshot],
-                           cwd = BASE)
+                          cwd=BASE)

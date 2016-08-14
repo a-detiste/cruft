@@ -5,8 +5,8 @@ import subprocess
 
 current_packages = set()
 proc = subprocess.Popen(['apt-cache', 'pkgnames'],
-    universal_newlines=True,
-    stdout=subprocess.PIPE)
+                        universal_newlines=True,
+                        stdout=subprocess.PIPE)
 for line in proc.stdout:
     current_packages.add(line.rstrip())
 
@@ -22,27 +22,27 @@ if not os.path.isfile('tools/Packages_amd64'):
     subprocess.check_call(['ben', 'download',
                            '--archs', 'amd64',
                            '--suite', 'stable'],
-                           cwd='tools')
+                          cwd='tools')
     os.unlink('tools/Sources')
 
 with open('tools/Packages_amd64', 'r', encoding='utf8') as p:
     for line in p:
         if line.startswith('Package:'):
-            current_packages.add(line.split(':',1)[1].strip())
+            current_packages.add(line.split(':', 1)[1].strip())
 
 
 filters = set()
 proc = subprocess.Popen(['ls', 'filters-unex'],
-    universal_newlines=True,
-    stdout=subprocess.PIPE)
+                        universal_newlines=True,
+                        stdout=subprocess.PIPE)
 for line in proc.stdout:
     filters.add(line.rstrip())
 
 
 explain = set()
 proc = subprocess.Popen(['ls', 'explain'],
-    universal_newlines=True,
-    stdout=subprocess.PIPE)
+                        universal_newlines=True,
+                        stdout=subprocess.PIPE)
 for line in proc.stdout:
     if line == line.lower():
         explain.add(line.rstrip())
