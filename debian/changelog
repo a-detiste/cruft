@@ -412,7 +412,7 @@ cruft (0.9.6-0.9) experimental; urgency=low
       man-db sysklogd
     - removed filter files not named after packages (timezones lastlog
       log_wtmp run_utmp) and moved their contents to libc6, login, base-files
-    - removed files for packages nonexistant in sid: ae bsmtpd
+    - removed files for packages nonexistent in sid: ae bsmtpd
       distributed-net-pproxy dpkg-mountable fvwm2 guile1.2 ldso majordomo
       msqld netstd prime-net psptools quake tcl7.6 tix41 tk4.2 wwwcount
       xemacs20-bin
@@ -522,7 +522,7 @@ cruft (0.9.6-0.5) experimental; urgency=low
     - Report broken symlinks themselves, rather than their inexistant
       destinations (Closes: #149736)
     - Ignore /dev/(fd|std(in|out|err)) links (Closes: #146021)
-    - Added --chroots which allows to completly broken symlinks in chosen dirs
+    - Added --chroots which allows to completely broken symlinks in chosen dirs
     - Do not traverse some special filesystems
       (Closes: #272124, #291820, #110000)
     - Improved command line error reporting a little (Closes: #51446)
