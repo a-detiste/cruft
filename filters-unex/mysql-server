@@ -1,3 +1,4 @@
+/etc/apparmor.d/local/usr.sbin.mysqld
 /etc/mysql/debian.cnf
 /var/lib/mysql
 # this should probably be more sophisticated
