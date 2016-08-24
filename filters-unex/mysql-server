@@ -8,3 +8,4 @@
 /var/log/mysql/mysql-bin.*
 /var/log/mysql/mysql.log*
 /var/log/mysql/mysql.err*
+/var/log/mysql/error.log*
