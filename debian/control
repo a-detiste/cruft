@@ -2,7 +2,7 @@ Source: cruft
 Section: admin
 Priority: optional
 Maintainer: Alexandre Detiste <alexandre.detiste@gmail.com>
-Build-Depends: debhelper (>= 9~), dh-autoreconf, pngcrush, dia | dia-gnome
+Build-Depends: debhelper (>= 10~), dh-autoreconf, pngcrush, dia | dia-gnome
 Build-Conflicts: autoconf2.13
 Standards-Version: 3.9.8
 Homepage: http://alioth.debian.org/projects/cruft/
