@@ -34,5 +34,5 @@ Description: information database shared by cruft & cruft-ng
  but isn't.
  .
  This package contain extra information about packages
- that are not avaible in Debian standard packages information
+ that are not available in Debian standard packages information
  repositories like dpkg, alternatives, diversions, ...
