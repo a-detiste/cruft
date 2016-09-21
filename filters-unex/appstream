@@ -1,4 +1,6 @@
 /var/cache/app-info
+/var/cache/app-info/gv
+/var/cache/app-info/gv/*.gz
 /var/cache/app-info/xapian
 /var/cache/app-info/xapian/**
 /var/lib/app-info
