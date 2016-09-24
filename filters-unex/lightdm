@@ -4,6 +4,10 @@
 /var/lib/lightdm
 /var/lib/lightdm/.Xauthority
 /var/lib/lightdm/.cache
+/var/lib/lightdm/.cache/dconf
+/var/lib/lightdm/.cache/dconf/user
+/var/lib/lightdm/.cache/fontconfig
+/var/lib/lightdm/.cache/fontconfig/*
 /var/lib/lightdm/.cache/lightdm-gtk-greeter
 /var/lib/lightdm/.cache/lightdm-gtk-greeter/state
 /var/lib/lightdm/.dbus
