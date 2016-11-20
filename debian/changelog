@@ -1,6 +1,7 @@
 cruft (0.9.29) UNRELEASED; urgency=medium
 
   * Switch to Debhelper 10
+  * add new package(s): libvlc-bin
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 21 Sep 2016 13:54:37 +0200
 
