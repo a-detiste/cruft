@@ -1,3 +1,4 @@
+/etc/apparmor.d
 /etc/apparmor.d/local
 /etc/apparmor.d/local/usr.sbin.cupsd
 /var/cache/cups/org.cups.cupsd

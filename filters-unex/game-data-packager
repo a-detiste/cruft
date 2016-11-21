@@ -7,5 +7,6 @@
 /usr/share/games/game-data-packager/game_data_packager/unpack/__pycache__
 /usr/share/games/game-data-packager/game_data_packager/unpack/__pycache__/*.pyc
 # runtime
+/etc/apparmor.d
 /etc/apparmor.d/local
 /etc/apparmor.d/local/usr.lib.unreal
