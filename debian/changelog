@@ -1,8 +1,9 @@
 cruft (0.9.29) UNRELEASED; urgency=medium
 
   * Switch to Debhelper 10
-  * add new package(s): libvlc-bin
-  * refresh package(s): sudo
+  * add new packages: libvlc-bin, liblimba0, linux-base, smartmontools, wifi-radar
+  * refresh packages: appstream, apt, emacseb-common, gdm3, intel-microcode,
+    ligtdm, mysql-server, rsyslog, sddm, sudo
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 21 Sep 2016 13:54:37 +0200
 
