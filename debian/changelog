@@ -2,7 +2,8 @@ cruft (0.9.29) UNRELEASED; urgency=medium
 
   * Switch to Debhelper 10
   * handle "sysv-rc"-less systems gracefully
-  * add new packages: libvlc-bin, liblimba0, linux-base, smartmontools, wifi-radar
+  * add new packages: libvlc-bin, liblimba0, linux-base, smartmontools,
+    wifi-radar
   * refresh packages: appstream, apt, emacseb-common, gdm3, intel-microcode,
     ligtdm, mysql-server, rsyslog, sddm, sudo
 
