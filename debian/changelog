@@ -1,4 +1,4 @@
-cruft (0.9.29) UNRELEASED; urgency=medium
+cruft (0.9.29) unstable; urgency=medium
 
   * Switch to Debhelper 10
   * handle "sysv-rc"-less systems gracefully
@@ -7,7 +7,7 @@ cruft (0.9.29) UNRELEASED; urgency=medium
   * refresh packages: appstream, apt, emacseb-common, gdm3, intel-microcode,
     ligtdm, mysql-server, rsyslog, sddm, sudo
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 21 Sep 2016 13:54:37 +0200
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 27 Nov 2016 18:08:14 +0100
 
 cruft (0.9.28) unstable; urgency=medium
 
