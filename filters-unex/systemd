@@ -1,7 +1,5 @@
-/etc/init.d/.depend.boot
-/etc/init.d/.depend.start
-/etc/init.d/.depend.stop
 /etc/machine-id
+/etc/rc.local
 /etc/systemd/network/*.network
 /etc/systemd/system/*.automount
 /etc/systemd/system/*.mount
