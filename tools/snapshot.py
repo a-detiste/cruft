@@ -8,7 +8,7 @@ import time
 #
 # deb http://users.teledisnet.be/ade15809/ stretch main
 
-BASE = '/home/pi'
+BASE = '/home/tchet/git'
 CRUFT = os.path.join(BASE, 'cruft')
 
 subprocess.check_call(['git', 'checkout', 'debian/changelog'], cwd=CRUFT)
