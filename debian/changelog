@@ -6,6 +6,8 @@ cruft (0.9.29) unstable; urgency=medium
     wifi-radar
   * refresh packages: appstream, apt, emacseb-common, gdm3, intel-microcode,
     ligtdm, mysql-server, rsyslog, sddm, sudo
+  * add support for SElinux-enabled systems, thanks to Christian Göttsche
+    (Closes: #850531)
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 27 Nov 2016 18:08:14 +0100
 
