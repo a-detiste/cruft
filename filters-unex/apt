@@ -17,6 +17,7 @@
 /var/lib/apt/lists/partial/*
 /var/lib/apt/extended_states
 /var/lib/apt/periodic/autoclean-stamp
+/var/lib/apt/periodic/clean-stamp
 /var/lib/apt/periodic/download-upgradeable-stamp
 /var/lib/apt/periodic/update-stamp
 /var/lib/apt/periodic/update-success-stamp
