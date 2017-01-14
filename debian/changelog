@@ -5,6 +5,7 @@ cruft (0.9.30) UNRELEASED; urgency=medium
   * add filter for irqbalance
   * more tweaks for "sysv-rc"-less systems
   * refresh filter for aspell
+  * add support for Numix-Light icon theme
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 08 Jan 2017 12:06:05 +0100
 
