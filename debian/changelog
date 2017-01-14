@@ -1,4 +1,4 @@
-cruft (0.9.30) UNRELEASED; urgency=medium
+cruft (0.9.30) unstable; urgency=medium
 
   * add support for SElinux-enabled systems, thanks to Christian Göttsche
     (Closes: #850531)
@@ -7,7 +7,7 @@ cruft (0.9.30) UNRELEASED; urgency=medium
   * refresh filter for aspell
   * add support for Numix-Light icon theme
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 08 Jan 2017 12:06:05 +0100
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sat, 14 Jan 2017 15:58:32 +0100
 
 cruft (0.9.29) unstable; urgency=medium
 
