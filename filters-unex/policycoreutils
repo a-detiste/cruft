@@ -1,3 +1,4 @@
+/.autorelabel
 /etc/selinux/config
 # UsrMerge symlink
 /usr/sbin/load_policy
