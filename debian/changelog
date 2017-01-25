@@ -1,10 +1,10 @@
-cruft (0.9.31) UNRELEASED; urgency=medium
+cruft (0.9.31) unstable; urgency=medium
 
   * SElinux: also consider /.autorelabel
   * update mysql-server
   * SELinux: ignore selinuxfs and tracefs
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 15 Jan 2017 17:42:58 +0100
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 25 Jan 2017 22:06:18 +0100
 
 cruft (0.9.30) unstable; urgency=medium
 
