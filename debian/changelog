@@ -1,3 +1,9 @@
+cruft (0.9.32) UNRELEASED; urgency=medium
+
+  * add support for ca-certificates-mono, freepascal
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 15 Feb 2017 07:39:31 +0100
+
 cruft (0.9.31) unstable; urgency=medium
 
   * SElinux: also consider /.autorelabel
