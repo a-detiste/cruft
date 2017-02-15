@@ -18,8 +18,6 @@
 /var/lib/dpkg/diversions
 /var/lib/dpkg/diversions-old
 /var/lib/dpkg/info/*
-/var/lib/dpkg/lock
-/var/lib/dpkg/methlock
 /var/lib/dpkg/methods/**
 /var/lib/dpkg/statoverride
 /var/lib/dpkg/statoverride-old
@@ -29,3 +27,9 @@
 /var/lib/dpkg/triggers/*
 /var/log/alternatives.log*
 /var/log/dpkg.log*
+# transient files
+/var/lib/dpkg/lock
+/var/lib/dpkg/methlock
+/var/lib/dpkg/status-new
+/var/lib/dpkg/updates/0*
+/var/lib/dpkg/updates/tmp.i
