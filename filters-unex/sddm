@@ -12,6 +12,10 @@
 /var/lib/sddm/.dbus
 /var/lib/sddm/.dbus/session-bus
 /var/lib/sddm/.dbus/session-bus/*
+/var/lib/sddm/.local
+/var/lib/sddm/.local/share
+/var/lib/sddm/.local/share/sddm
+/var/lib/sddm/.local/share/sddm/xorg-session.log
 /var/lib/sddm/.xsession-errors
 /var/lib/sddm/state.conf
 /var/log/sddm.log

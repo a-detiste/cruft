@@ -4,6 +4,7 @@ cruft (0.9.32) UNRELEASED; urgency=medium
   * add support for dpkg's transient files,
     running cruft-(ng) and dpkg/apt simultaneously would
     still give erroneous results, but this reduce the noise.
+  * update filter for sddm
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 15 Feb 2017 07:39:31 +0100
 
