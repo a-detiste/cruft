@@ -1,4 +1,6 @@
-# pbuilder 0.123
+/etc/pbuilderrc
 /var/cache/pbuilder/aptcache/*.deb
+/var/cache/pbuilder/base*.cow
+/var/cache/pbuilder/base*.cow/**
 /var/cache/pbuilder/build
 /var/cache/pbuilder/result/*

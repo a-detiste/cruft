@@ -3,5 +3,6 @@
 /var/lib/emacsen-common/state/package/installed/dictionaries-common
 /var/lib/emacsen-common/state/package/installed/emacsen-common
 /var/lib/emacsen-common/state/package/installed/haskell-mode
+/var/lib/emacsen-common/state/package/installed/pylint
 /usr/local/share/emacs
 /usr/local/share/emacs/site-lisp

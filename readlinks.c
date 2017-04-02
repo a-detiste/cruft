@@ -87,7 +87,8 @@ int main(void) {
 	    /* basename == link */
 	    numchars = readlink( buffer, basename, sz_buffs - 1 );
 	    if ( numchars != -1 && (unsigned)numchars < sz_buffs - 1 ) {
-		chdir(last);
+		if(chdir(last))
+		    return EXIT_FAILURE;
 		basename[numchars] = 0;
 		strcpy(buffer,basename);
 		break;

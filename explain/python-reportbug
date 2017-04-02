@@ -1,4 +1,4 @@
 #!/bin/dash
-p='reportbug'
+p='python-reportbug'
 set -e
 dpkg-query --listfiles "${p}" | awk '$0~/\.py$/ {print $0"c\n" $0"o"}' | while read o; do if [ -e "$o" ]; then echo "$o"; fi; done

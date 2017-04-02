@@ -1,5 +1,5 @@
 # this function is called by all the scripts in explain/
-# but only really usefull when called from main cruft pgm
+# but only really useful when called from main cruft pgm
 cruft_debug(){
 	:
 }

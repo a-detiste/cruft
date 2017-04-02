@@ -1,7 +1,7 @@
 # Makefile for cruft
 
 CC     = @CC@
-CFLAGS = @CFLAGS@ -Wall -W -ansi -pedantic-errors
+CFLAGS = @CFLAGS@ -Wall -W -pedantic-errors
 
 INS = install
 
@@ -15,7 +15,7 @@ PROGS  = $(PROGS1) $(PROGS2)
 
 all : $(PROGS) design.png
 
-install1 : $(PROGS1) filter filters_list cruft_find filter_ignores check_type_symlink
+install1 : $(PROGS1) filter filters_list cruft_find filter_ignores check_type_symlink z_cruft
 	mkdir -p $(DESTDIR)/usr/lib/cruft/
 	$(INS) $^ $(DESTDIR)/usr/lib/cruft/
 
@@ -47,6 +47,9 @@ check: shellexptest merge_diff_test
 	echo Checking for trailing whitespaces
 	grep -E -R -H " +$$" filters-unex/ || true
 	! grep -E -R -q " +$$" filters-unex/
+	echo Checking for trailing slashes
+	grep -E -R -H "/+$$" filters-unex/ || true
+	! grep -E -R -q "/+$$" filters-unex/
 
 shellexptest: shellexptest.o shellexp.o
 filter_shell dash-search: shellexp.o

@@ -15,8 +15,10 @@ else
   confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
 endif
 
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
 %:
-	dh $@ --with autoreconf --parallel
+	dh $@
 
 override_dh_auto_configure:
 	dh_auto_configure -- $(confflags)

@@ -2,7 +2,7 @@
 set -e
 
 # this is a trimmed down version of USERS script
-# only usefull for cruft-ng
+# only useful for cruft-ng
 #
 # cruft won't see this file
 

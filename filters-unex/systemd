@@ -1,7 +1,6 @@
-/etc/init.d/.depend.boot
-/etc/init.d/.depend.start
-/etc/init.d/.depend.stop
 /etc/machine-id
+/etc/rc.local
+/etc/systemd/network/*.network
 /etc/systemd/system/*.automount
 /etc/systemd/system/*.mount
 /etc/systemd/system/*.path
@@ -29,6 +28,8 @@
 /var/lib/systemd/rfkill
 /var/lib/systemd/rfkill/*
 /var/lib/systemd/timers
+/var/log/journal
+/var/log/journal/**
 /var/tmp/systemd-private-*
 /var/tmp/systemd-private-*/tmp
 

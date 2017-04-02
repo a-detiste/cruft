@@ -6,6 +6,7 @@ config.log
 config.status
 configure
 dash-search
+debian/.debhelper/
 debian/autoreconf.after
 debian/autoreconf.before
 debian/cruft.debhelper.log
@@ -14,6 +15,7 @@ debian/cruft/
 debian/cruft-common.debhelper.log
 debian/cruft-common.substvars
 debian/cruft-common/
+debian/debhelper-build-stamp
 debian/files
 debian/tmp
 design.png
@@ -23,3 +25,4 @@ merge_diff_test
 merge_diff_tests/01/run/
 readlinks
 shellexptest
+tools/Packages_amd64

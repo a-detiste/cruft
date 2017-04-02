@@ -2,16 +2,16 @@ Source: cruft
 Section: admin
 Priority: optional
 Maintainer: Alexandre Detiste <alexandre.detiste@gmail.com>
-Build-Depends: debhelper (>= 9~), dh-autoreconf, pngcrush, dia | dia-gnome
+Build-Depends: debhelper (>= 10~), dh-autoreconf, pngcrush, dia | dia-gnome
 Build-Conflicts: autoconf2.13
-Standards-Version: 3.9.6
+Standards-Version: 3.9.8
 Homepage: http://alioth.debian.org/projects/cruft/
-Vcs-Git: git://github.com/a-detiste/cruft.git
+Vcs-Git: https://github.com/a-detiste/cruft.git
 Vcs-Browser: https://github.com/a-detiste/cruft
 
 Package: cruft
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, file, cruft-common (>= 0.9.24)
+Depends: ${shlibs:Depends}, ${misc:Depends}, file, cruft-common (>= 0.9.24~)
 Suggests: mailx, cruft-ng
 Description: program that finds any cruft built up on your system
  cruft is a program to look over your system for anything that shouldn't
@@ -34,5 +34,5 @@ Description: information database shared by cruft & cruft-ng
  but isn't.
  .
  This package contain extra information about packages
- that are not avaible in Debian standard packages information
+ that are not available in Debian standard packages information
  repositories like dpkg, alternatives, diversions, ...

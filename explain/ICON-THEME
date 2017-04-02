@@ -9,5 +9,16 @@ packages="$(echo $packages1 $packages2 | sort -u)"
 
 for package in $packages;
 do
+	# lxde-icon-theme
+	if [ "$package" = "lxde" ]
+	then
+		package=nuoveXT2
+	fi
+
+	if [ "$package" = "numix" ]
+	then
+		find /usr/share/icons/ -iwholename /usr/share/icons/Numix-Light/icon-theme.cache
+	fi
+
 	find /usr/share/icons/ -iwholename /usr/share/icons/$package/icon-theme.cache
 done;

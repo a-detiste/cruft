@@ -1,1 +1,2 @@
-/etc/sudoers
+/etc/sudoers.d/*
+/var/lib/sudo/ts

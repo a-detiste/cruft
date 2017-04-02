@@ -1,3 +1,76 @@
+cruft (0.9.31) unstable; urgency=medium
+
+  * SElinux: also consider /.autorelabel
+  * update mysql-server
+  * SELinux: ignore selinuxfs and tracefs
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 25 Jan 2017 22:06:18 +0100
+
+cruft (0.9.30) unstable; urgency=medium
+
+  * add support for SElinux-enabled systems, thanks to Christian Göttsche
+    (Closes: #850531)
+  * add filter for irqbalance
+  * more tweaks for "sysv-rc"-less systems
+  * refresh filter for aspell
+  * add support for Numix-Light icon theme
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sat, 14 Jan 2017 15:58:32 +0100
+
+cruft (0.9.29) unstable; urgency=medium
+
+  * Switch to Debhelper 10
+  * handle "sysv-rc"-less systems gracefully
+  * add new packages: libvlc-bin, liblimba0, linux-base, smartmontools,
+    wifi-radar
+  * refresh packages: appstream, apt, emacseb-common, gdm3, intel-microcode,
+    ligtdm, mysql-server, rsyslog, sddm, sudo
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 27 Nov 2016 18:08:14 +0100
+
+cruft (0.9.28) unstable; urgency=medium
+
+  * Fix README.gz location in man page (LP: #1574245)
+  * Add/refresh filters matching default Stretch install (mostly Gnome desktop):
+    gdm3, evince, gnome-menus, gnome-accessibility-themes,
+    bluez, packagekit, appstream, cracklib-runtime, ibritish, iamerican,...
+  * Standards-Version 3.9.8, no further change required.
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 09 Jun 2016 19:54:58 +0200
+
+cruft (0.9.27) unstable; urgency=medium
+
+  * Add filters for new php-common & php-pgsql; likely more needed soon.
+  * Handle IceWeasel -> FireFox transitional package.
+  * Update filters for apt, apt-listchanges, colord, usbmuxd.
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 24 Apr 2016 11:26:12 +0200
+
+cruft (0.9.26) unstable; urgency=medium
+
+  * Use HTTPS for Vcs-Git URL.
+  * UsrMerge: add filter for acl, open-iscsi
+  * update filters for sudo, pbuilder, lxde-icon-theme, policykit-1, plymouth,
+    connman, network-manager, maybe, rpmlint, heroes, libxml-sax-perl,
+    console-setup, nullmailer.
+  * Bump Standards-Version to 3.9.7, no changes needed
+  * cruft-common: Add optional cron job (Closes: #492001)
+  * Enable full hardening.
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 10 Mar 2016 23:14:55 +0100
+
+cruft (0.9.25) unstable; urgency=medium
+
+  * add filters for UsrMerge support: coreutils, less, mksh, policycoreutils,
+    cryptsetup, xfsdump, davfs2
+  * new filters for xdm, qemu-user-binfmt, misc. java packages, NetworkManager,
+    mono-utils, xfonts-75dpi, xfonts-100dpi, ifrench, menu-xdg, exult,...
+  * check semi-automatically for obsolete packages;
+    remove old packages that got removed from the archive before 2008
+    rename 'bind' to 'bind9'
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Thu, 11 Feb 2016 10:01:28 +0100
+
 cruft (0.9.24~bpo8+1) jessie-backports; urgency=medium
 
   * Rebuild for jessie-backports.
@@ -45,7 +118,7 @@ cruft (0.9.20) unstable; urgency=medium
 
   * Spin-off filters database in new cruft-common package,
     so it can be shared with cruft-ng
-  * Add miscellanous filters, mostly to match *.pyc files
+  * Add miscellaneous filters, mostly to match *.pyc files
   * Review RaspBian support
   * add /etc/ethers shared by various network packages
   * add rule for etckeeper (Closes: #784980)
@@ -273,7 +346,7 @@ cruft (0.9.6-0.14) unstable; urgency=low
     provided by Kevin Ryde (Closes: #371871) 
   * Changed interpreter of some bash explain scripts to sh, thanks to Joerg
     Sommer, who pointed out checkbashisms  (Closes: #367029)
-  * Changed processing of -d and --ignore to allow multiple occurences, and
+  * Changed processing of -d and --ignore to allow multiple occurrences, and
     documented it in the manpage (Closes: #371872)
   * Explain scripts:
     - new: doc-base
@@ -369,7 +442,7 @@ cruft (0.9.6-0.9) experimental; urgency=low
       man-db sysklogd
     - removed filter files not named after packages (timezones lastlog
       log_wtmp run_utmp) and moved their contents to libc6, login, base-files
-    - removed files for packages nonexistant in sid: ae bsmtpd
+    - removed files for packages nonexistent in sid: ae bsmtpd
       distributed-net-pproxy dpkg-mountable fvwm2 guile1.2 ldso majordomo
       msqld netstd prime-net psptools quake tcl7.6 tix41 tk4.2 wwwcount
       xemacs20-bin
@@ -407,7 +480,7 @@ cruft (0.9.6-0.8) experimental; urgency=low
   * common.pl: added new perl library with common perl code
   * explain scripts:
     - dpkg: use find|xargs|cat|sort instead of globbing (Closes: #284711)
-    - dpkg: count diversions and file occurences and print filenames correct
+    - dpkg: count diversions and file occurrences and print filenames correct
       number of times
     - gconf: avoid warning if there are no gconf schema files
     - lost_found: source common.sh before using its functions
@@ -451,7 +524,7 @@ cruft (0.9.6-0.6) experimental; urgency=low
   * Removed junky postinst "warning" (Closes: #174877, #304440)
   * Removed the "optimization" from dash-search which caused only the first
     file containing matching pattern to be printed. Apparently the purpose of
-    dash-search is to find all occurences. Noted in manpage that the file name
+    dash-search is to find all occurrences. Noted in manpage that the file name
     is printed for each line.
   * filters/*: /usr/{doc,man} updated to /usr/share/{doc,man}
   * filters/base-files: added /srv, /media, /usr/local and its subdirs
@@ -479,7 +552,7 @@ cruft (0.9.6-0.5) experimental; urgency=low
     - Report broken symlinks themselves, rather than their inexistant
       destinations (Closes: #149736)
     - Ignore /dev/(fd|std(in|out|err)) links (Closes: #146021)
-    - Added --chroots which allows to completly broken symlinks in chosen dirs
+    - Added --chroots which allows to completely broken symlinks in chosen dirs
     - Do not traverse some special filesystems
       (Closes: #272124, #291820, #110000)
     - Improved command line error reporting a little (Closes: #51446)

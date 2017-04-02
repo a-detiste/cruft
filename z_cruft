@@ -1,0 +1,77 @@
+#!/bin/bash
+#
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=492001
+#
+# needs: bash, mailx, cron-daemon, cruft-ng or cruft
+#
+# symlink/copy this in /etc/cron.daily
+#
+# this is called 'z_...' because it must run after
+# /etc/cron.daily/apt & /etc/cron.daily/mlocate
+#
+
+dpkg_ts_before=$(date -r /var/lib/dpkg/status +%s)
+
+# clean-up from previous interrupted runs
+rm -f /var/spool/cruft/report_*.log.tmp
+
+if [ -x /usr/bin/cruft-ng ]
+then
+	CRUFT=cruft-ng
+elif [ -x /usr/sbin/cruft ]
+then
+	CRUFT=cruft
+else
+	echo ERROR: please install cruft-ng or cruft
+	exit 1
+fi
+
+prev=$(ls /var/spool/cruft/report_*.log 2>/dev/null | tail -n 1)
+last=/var/spool/cruft/report_$(date '+%Y%m%d').log
+
+# can only run once a day
+[ "$prev" = "$last" ] && exit 0
+
+# avoid spurious diff in 'missing: dpkg' if this is on a tmpfs
+# and there was nothing to update today
+mkdir -p /var/cache/apt/archives/partial
+
+nice ionice $CRUFT > $last.tmp
+
+# abort if $CRUFT has been killed
+if ! grep ^end $last.tmp -q
+then
+	rm $last.tmp
+	# don't complain, simply try again tomorrow
+	exit 0
+fi
+
+# first run
+if [ -z "$prev" ]
+then
+	mv $last.tmp $last
+	exit 0
+fi
+
+# check for race with manually-run dpkg/apt/aptitude
+#
+# unattended-upgrades is not impacted thanks to
+# /etc/cron.daily/ execution being serialized by run-parts.
+
+dpkg_ts_after=$(date -r /var/lib/dpkg/status +%s)
+if [ $dpkg_ts_after -ne $dpkg_ts_before ]
+then
+	rm $last.tmp
+	# don't complain, simply try again tomorrow
+	exit 0
+fi
+
+# abort on no-change
+if [ -z "$(diff <(sed -n '1!p' < $prev) <(sed -n '1!p' < $last.tmp) 2>/dev/null)" ]
+then
+	rm $last.tmp
+	exit 0
+fi
+
+mv $last.tmp $last
+diff --show-function-line='^-' -u $prev $last | mailx -s "delta cruft for $(date '+%Y%m%d')" root

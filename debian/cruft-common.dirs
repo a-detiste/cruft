@@ -1,3 +1,4 @@
 etc/cruft
 etc/cruft/explain
 etc/cruft/filters
+var/spool/cruft

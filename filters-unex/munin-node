@@ -1,4 +1,4 @@
-/var/lib/munin-node/
+/var/lib/munin-node
 /var/lib/munin-node/plugin-state
 /var/lib/munin-node/plugin-state/munin
 /var/lib/munin-node/plugin-state/munin/*

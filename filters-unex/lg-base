@@ -1,8 +1,4 @@
-# lg-base 113-1
+# package was removed in 2005,
+# but popcon says 9 users have kept this package
+# so lets keep it too
 /usr/share/doc/lg/**
-# This could be better, if every lg-issue provided a list, or a detailed list,
-# or it could be created by an explain script.
-# Though it may not be worth the hassle, since lg-* may be removed from the
-# archive (licence problems).
-# For now, this filter is worth having because sarge has lg packages (and
-# people will keep them around for sarge+1).
