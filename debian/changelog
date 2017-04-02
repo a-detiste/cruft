@@ -1,3 +1,9 @@
+cruft (0.9.31~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Paul Wise <pabs@debian.org>  Sun, 02 Apr 2017 10:20:58 +0800
+
 cruft (0.9.31) unstable; urgency=medium
 
   * SElinux: also consider /.autorelabel
