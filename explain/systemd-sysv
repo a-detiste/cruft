@@ -4,7 +4,7 @@ set -e
 
 test -d /var/lib/systemd/timers/ || exit 0
 
-for f in $(ls /var/lib/systemd/timers/ -1)
+for f in $(cd /var/lib/systemd/timers/ ; echo *.timer)
 do
   unit=${f#stamp-}
 
