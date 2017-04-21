@@ -5,6 +5,7 @@ cruft (0.9.32) UNRELEASED; urgency=medium
     running cruft-(ng) and dpkg/apt simultaneously would
     still give erroneous results, but this reduce the noise.
   * update filter for sddm
+  * add catch-all for systemd persistent timers timestamps
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 15 Feb 2017 07:39:31 +0100
 
