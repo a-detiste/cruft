@@ -182,7 +182,7 @@ process_package()
 		# package to be installed, process the file unconditionally
 		return 0
 	elif package_installed "${name}" ; then
-		# process a file whose matching package is not completly purged
+		# process a file whose matching package is not completely purged
 		return 0
 	else
 		debug "   skipping ${name} - package not installed"

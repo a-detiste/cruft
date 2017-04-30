@@ -127,7 +127,7 @@ cruft (0.9.20) unstable; urgency=medium
   * Review RaspBian support
   * add /etc/ethers shared by various network packages
   * add rule for etckeeper (Closes: #784980)
-  * drop depedency on perl, perl-base is enough
+  * drop dependency on perl, perl-base is enough
   * fix handling of /lost+found in ignored paths
 
   [ Reimar Döffinger ]
