@@ -4,3 +4,4 @@
 /etc/mono/certstore/certs/Trust
 /etc/mono/certstore/certs/Trust/ski-*.cer
 /etc/mono/certstore/certs/Trust/tbp-*.cer
+/etc/mono/certstore/keypairs
