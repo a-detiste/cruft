@@ -4,3 +4,4 @@
 #/etc/polkit-1/rules.d/50-default.rules
 #
 # but not this empty dir (why ?)
+/var/lib/polkit-1/.cache
