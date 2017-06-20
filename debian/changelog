@@ -6,6 +6,7 @@ cruft (0.9.32) UNRELEASED; urgency=medium
     still give erroneous results, but this reduce the noise.
   * update filter for sddm, apt, policykit-1
   * add catch-all for systemd persistent timers timestamps
+  * bump Standard-Version to 4.0.0, no change needed
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 15 Feb 2017 07:39:31 +0100
 
