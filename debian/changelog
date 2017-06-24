@@ -1,4 +1,4 @@
-cruft (0.9.32) UNRELEASED; urgency=medium
+cruft (0.9.32) unstable; urgency=medium
 
   * add support for ca-certificates-mono, freepascal, Let's Encrypt (certbot)
   * add support for dpkg's transient files,
@@ -7,8 +7,9 @@ cruft (0.9.32) UNRELEASED; urgency=medium
   * update filter for sddm, apt, policykit-1
   * add catch-all for systemd persistent timers timestamps
   * bump Standard-Version to 4.0.0, no change needed
+  * use HTTPS url for homepage
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 15 Feb 2017 07:39:31 +0100
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sat, 24 Jun 2017 10:44:53 +0200
 
 cruft (0.9.31) unstable; urgency=medium
 
