@@ -1,2 +1,2 @@
-/etc/fpc-3.0.0.bak
-/etc/fpc-3.0.0.cfg
+/etc/fpc-*.bak
+/etc/fpc-*.cfg
