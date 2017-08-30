@@ -30,7 +30,7 @@ subprocess.check_call(['rsync',
                        'cruft-common_%s_all.deb' % snapshot,
                        'pi@pi:/tmp'],
                       cwd=BASE)
-subprocess.check_call(['ssh', 'pi@pi', 'publish', '/tmp/cruft-common_%s_all.deb' % snapshot])
+subprocess.check_call(['ssh', '-t', 'pi@pi', 'publish', '/tmp/cruft-common_%s_all.deb' % snapshot])
 
 publish = """#!/bin/bash
 
