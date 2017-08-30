@@ -8,6 +8,9 @@
 /var/lib/sddm/.cache/icon-cache.kcache
 /var/lib/sddm/.cache/plasma*
 /var/lib/sddm/.cache/qt_compose_cache_*
+/var/lib/sddm/.cache/sddm-greeter
+/var/lib/sddm/.cache/sddm-greeter/qmlcache
+/var/lib/sddm/.cache/sddm-greeter/qmlcache/*.qmlc
 /var/lib/sddm/.config
 /var/lib/sddm/.dbus
 /var/lib/sddm/.dbus/session-bus
