@@ -6,6 +6,7 @@
 /var/lib/sddm/.cache/fontconfig
 /var/lib/sddm/.cache/fontconfig/*
 /var/lib/sddm/.cache/icon-cache.kcache
+/var/lib/sddm/.cache/mesa
 /var/lib/sddm/.cache/mesa/*
 /var/lib/sddm/.cache/mesa/*/*
 /var/lib/sddm/.cache/plasma*
