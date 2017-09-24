@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Alexandre Detiste <alexandre.detiste@gmail.com>
 Build-Depends: debhelper (>= 10~), pngcrush, dia | dia-gnome
 Build-Conflicts: autoconf2.13
-Standards-Version: 4.0.0
+Standards-Version: 4.1.0
 Homepage: https://alioth.debian.org/projects/cruft/
 Vcs-Git: https://github.com/a-detiste/cruft.git
 Vcs-Browser: https://github.com/a-detiste/cruft

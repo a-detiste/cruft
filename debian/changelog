@@ -1,11 +1,12 @@
-cruft (0.9.33) UNRELEASED; urgency=medium
+cruft (0.9.33) unstable; urgency=medium
 
   * add filter for libxml-sax-expat-perl, e2fsprogs, openjdk-9-jre-headless,
     python-configparser, mariadb-server, dhcpcd5, nfs-common, dphys-swapfile
   * update filter for screen, sddm
   * check ruleset on a fresh RaspBian image
+  * bump Standards-Version to 4.1.0, no change needed
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Fri, 30 Jun 2017 14:06:57 +0200
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 24 Sep 2017 14:54:24 +0200
 
 cruft (0.9.32) unstable; urgency=medium
 
