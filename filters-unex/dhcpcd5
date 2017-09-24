@@ -1,0 +1,4 @@
+/etc/dhcpcd.duid
+/var/lib/dhcpcd5
+/var/lib/dhcpcd5/*.lease
+
