@@ -1,7 +1,7 @@
 cruft (0.9.33) UNRELEASED; urgency=medium
 
   * add filter for libxml-sax-expat-perl, e2fsprogs, openjdk-9-jre-headless,
-    python-configparser, mariadb-server, dhcpcd5, nfs-common
+    python-configparser, mariadb-server, dhcpcd5, nfs-common, dphys-swapfile
   * update filter for screen, sddm
   * check ruleset on a fresh RaspBian image
 
