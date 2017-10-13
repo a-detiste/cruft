@@ -24,6 +24,10 @@
 /etc/letsencrypt/live/*/privkey.pem
 /etc/letsencrypt/renewal
 /etc/letsencrypt/renewal/*.conf
+/etc/letsencrypt/renewal-hooks
+/etc/letsencrypt/renewal-hooks/post
+/etc/letsencrypt/renewal-hooks/deploy
+/etc/letsencrypt/renewal-hooks/pre
 /var/lib/letsencrypt
 /var/lib/systemd/timers/stamp-certbot.timer
 /var/log/letsencrypt

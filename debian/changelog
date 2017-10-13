@@ -1,3 +1,9 @@
+cruft (0.9.34) UNRELEASED; urgency=medium
+
+  * update filter for certbot
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Fri, 13 Oct 2017 10:16:16 +0200
+
 cruft (0.9.33) unstable; urgency=medium
 
   * add filter for libxml-sax-expat-perl, e2fsprogs, openjdk-9-jre-headless,
