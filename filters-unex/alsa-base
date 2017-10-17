@@ -1,4 +1,0 @@
-# alsa-base 1.0.13-5 (etch)
-/etc/default/alsa
-/etc/apm/suspend.d/80alsa
-/etc/apm/resume.d/20alsa

@@ -1,8 +1,0 @@
-#!/bin/sh -e
-versions=$(/usr/sbin/dkms status -m kdbus | cut -d\, -f 3 | tr -d ' ')
-for ver in $versions
-do
-    echo /lib/modules/${ver}/updates
-    echo /lib/modules/${ver}/updates/dkms
-    echo /lib/modules/${ver}/updates/dkms/kdbus.ko
-done
