@@ -1,6 +1,6 @@
 cruft (0.9.34) UNRELEASED; urgency=medium
 
-  * update filter for certbot
+  * update filter for certbot, postgresql 10
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Fri, 13 Oct 2017 10:16:16 +0200
 
