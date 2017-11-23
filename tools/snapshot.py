@@ -50,11 +50,13 @@ else:
     subprocess.check_call(['rsync', os.path.join(BASE, DEB), 'pi@pi:/tmp'])
     subprocess.check_call(['ssh', '-t', 'pi@pi', 'publish', os.path.join('/tmp', DEB)])
 
+arch = subprocess.check_output(['dpkg', '--print-architecture']).decode('ascii').strip()
+
 for file in ('cruft_%s_a*.build',
              'cruft_%s_a*.buildinfo',
              'cruft_%s_a*.changes',
              'cruft_%s_a*.deb',
              'cruft-common_%s_all.deb',
              'cruft-dbgsym_%s_a*.deb'):
-    subprocess.check_call(['rm', '-v', file % snapshot],
+    subprocess.check_call(['rm', '-v', (file % snapshot).replace('*a', arch)],
                           cwd=BASE)
