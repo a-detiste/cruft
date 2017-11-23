@@ -1,0 +1,9 @@
+#!/bin/dash
+
+find /etc/apparmor.d/ -maxdepth 1 -type f -name 'usr.*' |
+while read fullname
+do
+        file=$(basename $fullname)
+	[ -e /etc/apparmor.d/cache/$file ] && echo /etc/apparmor.d/cache/$file
+	[ -e /etc/apparmor.d/local/$file ] && echo /etc/apparmor.d/local/$file
+done
