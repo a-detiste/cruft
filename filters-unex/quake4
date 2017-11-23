@@ -1,2 +1,2 @@
-/etc/apparmor.d
+/etc/apparmor.d/local
 /etc/apparmor.d/local/usr.lib.quake4.quake4.x86
