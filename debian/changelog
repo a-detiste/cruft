@@ -1,6 +1,6 @@
 cruft (0.9.34) UNRELEASED; urgency=medium
 
-  * add support for AppArmor
+  * add support for AppArmor, libdvd-pkg (DeCSS)
   * update filter for certbot, postgresql 10
   * remove obsolete rules for packages dropped before Stretch release:
     kdbus-dkms, python-reportbug, alsa-base, emacs23-common, gnome-themes,
