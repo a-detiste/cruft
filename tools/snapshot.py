@@ -12,7 +12,7 @@ if os.uname().nodename == 'pi':
   # avoid wearing SD card + speed-up
   BASE = '/tmp'
   subprocess.check_call(['rsync', '/home/pi/cruft', '/tmp/',
-                         '-rti',
+                         '-rtv',
                          '--exclude=*.o',
                          '--exclude=.debhelper',
                          '--exclude=debian/cruft',
@@ -52,11 +52,13 @@ else:
 
 arch = subprocess.check_output(['dpkg', '--print-architecture']).decode('ascii').strip()
 
-for file in ('cruft_%s_a*.build',
-             'cruft_%s_a*.buildinfo',
-             'cruft_%s_a*.changes',
-             'cruft_%s_a*.deb',
-             'cruft-common_%s_all.deb',
-             'cruft-dbgsym_%s_a*.deb'):
-    subprocess.check_call(['rm', '-v', (file % snapshot).replace('*a', arch)],
+for file in ('cruft_%s_%s.build',
+             'cruft_%s_%s.buildinfo',
+             'cruft_%s_%s.changes',
+             'cruft_%s_%s.deb',
+             'cruft-dbgsym_%s_%s.deb'):
+    subprocess.check_call(['rm', '-v', file % (snapshot, arch)],
                           cwd=BASE)
+
+subprocess.check_call(['rm', '-v', 'cruft-common_%s_all.deb' % snapshot],
+                       cwd=BASE)
