@@ -6,6 +6,7 @@ cruft (0.9.34) UNRELEASED; urgency=medium
     kdbus-dkms, python-reportbug, alsa-base, emacs23-common, gnome-themes,
     lg-base, libclang1-3.4, libllvm3.5, libnet-perl, lsb-core, php5-*,
     python-support, sysklogd, tcl8.4
+  * set Rules-Requires-Root: no
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Fri, 13 Oct 2017 10:16:16 +0200
 
