@@ -4,8 +4,10 @@
 /etc/gshadow-
 /etc/passwd
 /etc/passwd-
+/etc/passwd.org
 /etc/shadow
 /etc/shadow-
+/etc/shadow.org
 /etc/subgid
 /etc/subgid-
 /etc/subuid

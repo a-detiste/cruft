@@ -1,7 +1,8 @@
 cruft (0.9.34) UNRELEASED; urgency=medium
 
   * add support for AppArmor, libdvd-pkg (DeCSS), xfce4-session
-  * update filter for certbot, postgresql 10, shared-mime-info, systemd
+  * update filter for certbot, postgresql 10, shared-mime-info, systemd,
+    base-passwd
   * remove obsolete rules for packages dropped before Stretch release:
     kdbus-dkms, python-reportbug, alsa-base, emacs23-common, gnome-themes,
     lg-base, libclang1-3.4, libllvm3.5, libnet-perl, lsb-core, php5-*,
