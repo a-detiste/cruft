@@ -24,6 +24,8 @@
 /var/lib/systemd/catalog
 /var/lib/systemd/catalog/database
 /var/lib/systemd/coredump
+/var/lib/systemd/linger
+/var/lib/systemd/linger/*
 /var/lib/systemd/random-seed
 /var/lib/systemd/rfkill
 /var/lib/systemd/rfkill/*
