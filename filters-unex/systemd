@@ -37,3 +37,8 @@
 #systemd-timesyncd: new location
 /var/lib/systemd/timesync
 /var/lib/systemd/timesync/clock
+#systemd-timesyncd: yet another location
+/var/lib/private
+/var/lib/private/systemd
+/var/lib/private/systemd/timesync
+/var/lib/private/systemd/timesync/clock
