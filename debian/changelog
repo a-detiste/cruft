@@ -1,4 +1,4 @@
-cruft (0.9.34) UNRELEASED; urgency=medium
+cruft (0.9.34) unstable; urgency=medium
 
   * add support for AppArmor, libdvd-pkg (DeCSS), xfce4-session
   * update filter for certbot, postgresql 10, shared-mime-info, systemd,
@@ -11,7 +11,7 @@ cruft (0.9.34) UNRELEASED; urgency=medium
   * switch to Debhelper lever 11
   * bump Standards-Version to 4.1.3, no change needed
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Tue, 02 Jan 2018 15:21:31 +0100
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Tue, 02 Jan 2018 15:29:41 +0100
 
 cruft (0.9.33) unstable; urgency=medium
 
