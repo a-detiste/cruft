@@ -1,3 +1,9 @@
+cruft (0.9.35) UNRELEASED; urgency=medium
+
+  * add support for libpam-modules-bin
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 15 Jan 2018 17:17:35 +0100
+
 cruft (0.9.34) unstable; urgency=medium
 
   * add support for AppArmor, libdvd-pkg (DeCSS), xfce4-session
