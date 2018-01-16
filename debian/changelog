@@ -1,6 +1,6 @@
 cruft (0.9.35) UNRELEASED; urgency=medium
 
-  * add support for libpam-modules-bin
+  * add support for libpam-modules-bin, monit
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 15 Jan 2018 17:17:35 +0100
 
