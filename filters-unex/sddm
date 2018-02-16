@@ -9,6 +9,9 @@
 /var/lib/sddm/.cache/mesa
 /var/lib/sddm/.cache/mesa/*
 /var/lib/sddm/.cache/mesa/*/*
+/var/lib/sddm/.cache/mesa_shader_cache
+/var/lib/sddm/.cache/mesa_shader_cache/*
+/var/lib/sddm/.cache/mesa_shader_cache/*/*
 /var/lib/sddm/.cache/plasma*
 /var/lib/sddm/.cache/qt_compose_cache_*
 /var/lib/sddm/.cache/sddm-greeter
