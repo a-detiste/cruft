@@ -1,6 +1,6 @@
 cruft (0.9.35) UNRELEASED; urgency=medium
 
-  * add support for libpam-modules-bin, monit, ibus
+  * add support for libpam-modules-bin, monit, ibus, java-common
   * update AppArmor support
   * add support for some Ubuntu-only packages: fonts,...
   * turn python3-pip into a dynamic script, to only track
