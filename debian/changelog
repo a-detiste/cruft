@@ -5,6 +5,7 @@ cruft (0.9.35) UNRELEASED; urgency=medium
   * add support for some Ubuntu-only packages: fonts,...
   * turn python3-pip into a dynamic script, to only track
     current python3 version
+  * remove reference to useless Alioth homepage
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 15 Jan 2018 17:17:35 +0100
 
