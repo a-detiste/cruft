@@ -9,3 +9,5 @@ do
 done
 
 find /usr/share/fonts -name .uuid
+
+test -d /usr/local/share/fonts/ && find /usr/local/share/fonts -name .uuid
