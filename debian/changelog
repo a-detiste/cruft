@@ -1,7 +1,7 @@
 cruft (0.9.35) UNRELEASED; urgency=medium
 
   * add support for libpam-modules-bin, monit, ibus, java-common,
-    python3-twisted, lirc
+    python3-twisted, lirc, java 10
   * update AppArmor, fontconfig support
   * add support for some Ubuntu-only packages: fonts,...
   * turn python3-pip into a dynamic script, to only track
