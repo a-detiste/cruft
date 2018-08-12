@@ -1,4 +1,4 @@
-cruft (0.9.35) UNRELEASED; urgency=medium
+cruft (0.9.35) unstable; urgency=medium
 
   * add support for libpam-modules-bin, monit, ibus, java-common,
     python3-twisted, lirc, java 10
@@ -9,7 +9,7 @@ cruft (0.9.35) UNRELEASED; urgency=medium
   * remove reference to useless Alioth homepage
   * update graphviz
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 15 Jan 2018 17:17:35 +0100
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 12 Aug 2018 19:01:14 +0200
 
 cruft (0.9.34) unstable; urgency=medium
 
