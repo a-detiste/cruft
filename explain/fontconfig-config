@@ -7,3 +7,5 @@ for file in $(ls /usr/share/fontconfig/conf.avail/);
 do
 	[ -e /etc/fonts/conf.d/$file ] && echo /etc/fonts/conf.d/$file
 done
+
+find /usr/share/fonts -name .uuid
