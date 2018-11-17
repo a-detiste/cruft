@@ -1,3 +1,9 @@
+cruft (0.9.36) UNRELEASED; urgency=medium
+
+  * refresh filters for systemd, dpkg, iptables, java
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sat, 17 Nov 2018 18:29:40 +0100
+
 cruft (0.9.35) unstable; urgency=medium
 
   * add support for libpam-modules-bin, monit, ibus, java-common,
