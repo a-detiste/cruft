@@ -29,6 +29,7 @@
 /var/log/dpkg.log*
 # transient files
 /var/lib/dpkg/lock
+/var/lib/dpkg/lock-frontend
 /var/lib/dpkg/methlock
 /var/lib/dpkg/status-new
 /var/lib/dpkg/updates/0*
