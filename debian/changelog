@@ -1,3 +1,9 @@
+cruft (0.9.37) UNRELEASED; urgency=medium
+
+  * switch to Debhelper level 12
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 06 Jan 2019 17:40:50 +0100
+
 cruft (0.9.36) unstable; urgency=medium
 
   * refresh filters for systemd, dpkg, iptables, java
