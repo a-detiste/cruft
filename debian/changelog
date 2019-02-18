@@ -1,10 +1,11 @@
-cruft (0.9.37) UNRELEASED; urgency=medium
+cruft (0.9.37) unstable; urgency=medium
 
   * switch to Debhelper level 12
   * replace pngcrush (marked for removal) build dependency by optipng equivalent
   * add filter for emacs25, thanks Jörg Sommer (Closes: #918656)
+  * update filter for grub, ca-certificates-mono
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 06 Jan 2019 17:40:50 +0100
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 18 Feb 2019 02:28:30 +0100
 
 cruft (0.9.36) unstable; urgency=medium
 

@@ -5,3 +5,6 @@
 /etc/mono/certstore/certs/Trust/ski-*.cer
 /etc/mono/certstore/certs/Trust/tbp-*.cer
 /etc/mono/certstore/keypairs
+/etc/mono/certstore/new-certs
+/etc/mono/certstore/new-certs/Trust
+/etc/mono/certstore/new-certs/Trust/*.0
