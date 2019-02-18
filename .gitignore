@@ -1,10 +1,5 @@
-Makefile
 *.o
-autom4te.cache/
 canonical
-config.log
-config.status
-configure
 dash-search
 debian/.debhelper/
 debian/autoreconf.after

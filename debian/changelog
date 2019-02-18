@@ -1,3 +1,9 @@
+cruft (0.9.38) UNRELEASED; urgency=medium
+
+  * drop useless & hurtfull autoconf, this is a native package
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 18 Feb 2019 10:46:44 +0100
+
 cruft (0.9.37) unstable; urgency=medium
 
   * switch to Debhelper level 12
