@@ -1,6 +1,7 @@
 cruft (0.9.37) UNRELEASED; urgency=medium
 
   * switch to Debhelper level 12
+  * replace pngcrush (marked for removal) build dependency by optipng equivalent
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Sun, 06 Jan 2019 17:40:50 +0100
 
