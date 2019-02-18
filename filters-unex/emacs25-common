@@ -1,0 +1,3 @@
+/usr/share/emacs/site-lisp/**/Install.log.gz
+/usr/share/emacs/site-lisp/**/*.el
+/usr/share/emacs/site-lisp/**/*.elc
