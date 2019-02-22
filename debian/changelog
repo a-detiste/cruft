@@ -1,8 +1,9 @@
-cruft (0.9.38) UNRELEASED; urgency=medium
+cruft (0.9.38) unstable; urgency=medium
 
   * drop useless & hurtfull autoconf, this is a native package
+  * reapply pngcrush->optipng patch to correct Makefile
 
- -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 18 Feb 2019 10:46:44 +0100
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 18 Feb 2019 10:57:27 +0100
 
 cruft (0.9.37) unstable; urgency=medium
 

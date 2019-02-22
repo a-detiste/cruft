@@ -59,7 +59,9 @@ merge_diff_funcs.o merge_diff_test.o merge_diff_common.o river.o fn_stream.o mer
 
 design.png: design.dia
 	unset DISPLAY ; dia --size 800x740 --export tmp-$@ $<
-	pngcrush -q -c 0 tmp-$@ $@
-	rm tmp-$@
+	#pngcrush -q -c 0 tmp-$@ $@
+	#rm tmp-$@
+	optipng -o 7 tmp-$@
+	mv tmp-$@ $@
 
-.PHONY : all clean install check
+.PHONY: all clean install check
