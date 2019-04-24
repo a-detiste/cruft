@@ -1,2 +1,3 @@
 # not caught by piuparts ?
 /var/lib/plymouth/boot-duration
+/var/log/boot.log
