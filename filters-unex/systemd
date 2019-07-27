@@ -17,6 +17,8 @@
 /etc/systemd/system/*.wants/*.socket
 /etc/systemd/system/*.wants/*.target
 /etc/systemd/system/*.wants/*.timer
+/etc/systemd/user/sockets.target.wants
+/etc/systemd/user/sockets.target.wants/*.socket
 /var/cache/private
 /var/lib/container
 /var/lib/machines
@@ -25,6 +27,10 @@
 /var/lib/systemd/catalog
 /var/lib/systemd/catalog/database
 /var/lib/systemd/coredump
+/var/lib/systemd/deb-systemd-user-helper-enabled
+/var/lib/systemd/deb-systemd-user-helper-enabled/*.socket.dsh-also
+/var/lib/systemd/deb-systemd-user-helper-enabled/sockets.target.wants
+/var/lib/systemd/deb-systemd-user-helper-enabled/sockets.target.wants/*.socket
 /var/lib/systemd/linger
 /var/lib/systemd/linger/*
 /var/lib/systemd/random-seed
