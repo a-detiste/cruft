@@ -1,4 +1,3 @@
-# cupsys 1.7.5-1 (jessie)
 /etc/printcap
 /etc/cups/classes.conf
 /etc/cups/classes.conf.*
@@ -35,6 +34,7 @@
 /var/cache/cups/remote.cache/*
 /var/cache/cups/*.snmp
 /var/cache/cups/*.data
+/var/cache/cups/*.strings
 /var/spool/cups/*
 /var/spool/cups/tmp/cups-dbus-notifier-lockfile
 # enabled backends could be detected in an explain script for more accuracy
