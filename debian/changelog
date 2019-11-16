@@ -1,6 +1,7 @@
 cruft (0.9.39) UNRELEASED; urgency=medium
 
-  * update plymouth, systemd, sddm, unattended-upgrades, cups, aptitude
+  * update plymouth, systemd, sddm, unattended-upgrades, cups, aptitude,
+    appstream
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 24 Apr 2019 09:29:00 +0200
 
