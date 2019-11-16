@@ -16,10 +16,14 @@
 /var/lib/sddm/.cache/qt_compose_cache_*
 /var/lib/sddm/.cache/qtshadercache
 /var/lib/sddm/.cache/qtshadercache/*
+/var/lib/sddm/.cache/qtshadercache*
+/var/lib/sddm/.cache/qtshadercache*/*
 /var/lib/sddm/.cache/sddm-greeter
 /var/lib/sddm/.cache/sddm-greeter/qmlcache
 /var/lib/sddm/.cache/sddm-greeter/qmlcache/*.qmlc
 /var/lib/sddm/.config
+/var/lib/sddm/.config/pulse
+/var/lib/sddm/.config/pulse/*
 /var/lib/sddm/.dbus
 /var/lib/sddm/.dbus/session-bus
 /var/lib/sddm/.dbus/session-bus/*
