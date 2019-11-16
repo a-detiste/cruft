@@ -4,7 +4,7 @@ test -d /etc/apparmor.d || exit 0
 
 test -d /etc/apparmor.d/local && echo /etc/apparmor.d/local
 
-find /etc/apparmor.d/ -maxdepth 1 -type f -name '*.*' |
+find /etc/apparmor.d/ -maxdepth 1 -type f |
 while read fullname
 do
         file=$(basename $fullname)
