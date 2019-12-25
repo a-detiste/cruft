@@ -1,13 +1,7 @@
-#!/usr/bin/perl
+#!/bin/bash
 
-open(DIVERT, "/var/lib/dpkg/diversions" ) || die( "Couldn't open diversions info\n");
+LANG=C dpkg-divert --list | cut -d' ' -f5 | while read diversion
+do
+	test -e $diversion && echo $diversion
+done
 
-$x = 0;
-while(<DIVERT>) {
-	if ($x % 3 == 1) {
-		chomp;
-		print $_."\n" or die $! if -e $_; # a diversion doesn't necessarily need to be active
-	}
-	$x++;
-}
-close STDOUT or die $!;
