@@ -1,7 +1,7 @@
 cruft (0.9.39) UNRELEASED; urgency=medium
 
   * update plymouth, systemd, sddm, unattended-upgrades, cups, aptitude,
-    appstream, network-manager, apparmor
+    appstream, network-manager, apparmor, apache2, mono-runtime
   * add mosquitto, wordpress
   * do not read dpkg internal database (Closes: #944926), W-I-P
 

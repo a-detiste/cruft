@@ -19,6 +19,10 @@
 /etc/systemd/system/*.wants/*.timer
 /etc/systemd/user/default.target.wants
 /etc/systemd/user/default.target.wants/*.service
+/etc/systemd/user/graphical-session.target.wants
+/etc/systemd/user/graphical-session.target.wants/*.service
+/etc/systemd/user/multi-user.target.wants
+/etc/systemd/user/multi-user.target.wants/*.service
 /etc/systemd/user/sockets.target.wants
 /etc/systemd/user/sockets.target.wants/*.socket
 /var/cache/private

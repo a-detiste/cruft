@@ -6,6 +6,8 @@
 /var/lib/apache2/conf/enabled_by_maint
 /var/lib/apache2/conf/enabled_by_maint/*
 /var/lib/apache2/module
+/var/lib/apache2/module/disabled_by_maint
+/var/lib/apache2/module/disabled_by_maint/*
 /var/lib/apache2/module/enabled_by_maint
 /var/lib/apache2/module/enabled_by_maint/*
 /var/lib/apache2/site
