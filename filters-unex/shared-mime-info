@@ -25,6 +25,7 @@
 /usr/share/mime/font/otf.xml
 /usr/share/mime/font/ttf.xml
 /usr/share/mime/font/woff.xml
+/usr/share/mime/font/woff2.xml
 /usr/share/mime/image
 /usr/share/mime/image/*.xml
 /usr/share/mime/inode
