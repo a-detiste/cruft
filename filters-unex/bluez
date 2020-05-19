@@ -1,3 +1,2 @@
 /var/lib/bluetooth
-/var/lib/bluetooth/*
-/var/lib/bluetooth/*/settings
+/var/lib/bluetooth/**
