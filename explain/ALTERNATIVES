@@ -1,64 +1,35 @@
-#!/usr/bin/perl
+#!/bin/bash
 
-open( NEED, ">&=3" ) || die( "Couldn't open output for needed files!?!" );
+ALTDIR="/etc/alternatives"
 
-while( defined($alternative_file = glob("/var/lib/dpkg/alternatives/*")) )
-{
-    $name = "$1" if $alternative_file =~ m{^.*/([^/]*)$};
+update-alternatives --get-selections | while read alternative y z
+do
+    echo "$ALTDIR/$alternative"
+    update-alternatives --query $alternative 2>/dev/null | while read line
+    do
+        case "$line" in
+            Name:*)
+                ;;
+            Link:*)
+                arr=($line)
+                echo ${arr[1]}
+                ;;
+            Slaves:*)
+                ;;
+            Status:*)
+                break
+                ;;
+            *)
+                arr=($line)
 
-    open( FILE, $alternative_file ) || die( "Couldn't open $alternative_file\n" );
-    
-    my $mode = <FILE>;
-    my $winner_name = readlink '/etc/alternatives/'.$name or die "Unable to read symlink $name";
-    
-    # 
-    # parse the first stanza: the names of the symlinks
-    #
-    # @link holds pairs: name of the file in alternatives dir; path of the alternative
-    # e.g.: editor, /usr/bin/editor
-    #       editor.1.gz, /usr/share/man/man1/editor.1.gz
-    #       ...
-    # entry number 0 is the master, the rest are slaves
-    my @link;
-    $link[0][0] = $name;
-    $_ = <FILE>; chomp($_);
-    $link[0][1] = $_;
+                alt="$ALTDIR/${arr[0]}"
+                test -f $alt && echo $alt
 
-    my $num_files = 1;
-    while (1) {
-	$_ = <FILE>; chomp($_);
-	last unless $_;
-	$link[$num_files][0] = $_;
+                link="${arr[1]}"
+                test -f $link && echo $link
+                ;;
+        esac
+    done
+done
 
-	$_ = <FILE>; chomp($_);
-	$link[$num_files][1] = $_;
-
-	$num_files++;
-    }
-    
-    # 
-    # parse the stanzas with files provided by packages
-    #
-    my %alternative;
-    my $winner = undef;
-    ALT: while( $master = <FILE> ) {
-	chomp($master);
-	last ALT if $master eq "";
-	die "internal error: duplicate master [$master] in alternatives file $name" if exists $alternative{$master};
-	my $pri = <FILE>; chomp($pri);
-	my $this = $alternative{$master} = { prio => $pri, files => [ $master ] };
-	$winner = $this if $master eq $winner_name;
-	
-	SLAVE: for ( $i = 1; $i < $num_files; $i++ ) {
-		$slave = <FILE>; chomp($slave);
-		$alternative{$master}->{files}->[$i] = $slave;
-	}
-    }
-    warn("Master link \"/etc/alternatives/$name\" points to alternative \"${winner_name}\", but no such alternative is registered, according to \"/var/lib/dpkg/alternatives/$name\". See \"update-alternatives --display $name\"\n"), next unless defined $winner;
-
-    # list the symlinks for files the winning alternative provides
-    for ($i = 0; $i < $num_files; $i++) {
-    	print '/etc/alternatives/', $link[$i][0], "\n", $link[$i][1], "\n" or die $! if $winner->{files}->[$i];
-    }
-}
-close STDOUT or die $!;
+exit 0
