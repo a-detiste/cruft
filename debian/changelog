@@ -5,6 +5,7 @@ cruft (0.9.39) UNRELEASED; urgency=medium
   * add mosquitto, wordpress, janus, motion, snapd
   * do not read dpkg internal database (Closes: #944926), W-I-P
   * switch to DebHelper 13
+  * bump Standards Version to 4.5.0, no change needed
 
  -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 24 Apr 2019 09:29:00 +0200
 
