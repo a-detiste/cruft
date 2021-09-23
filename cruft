@@ -183,7 +183,7 @@ if [ "$REPORT" = yes ]; then
 
 	debug "*** Generating report"
 	# generate report
-	TEMPFILE="`tempfile`"
+	TEMPFILE="`mktemp`"
 	( echo -n 'cruft report: '; date
 	  echo
 	  for a in miss_*; do
