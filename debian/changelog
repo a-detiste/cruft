@@ -1,3 +1,12 @@
+cruft (0.9.40) UNRELEASED; urgency=medium
+
+  * Remove constraints unnecessary since buster:
+    + cruft: Drop versioned constraint on cruft-common in Depends.
+    + cruft-common: Drop versioned constraint on cruft in Replaces.
+    + cruft-common: Drop versioned constraint on cruft in Breaks.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Thu, 16 Sep 2021 10:19:45 -0000
+
 cruft (0.9.39) unstable; urgency=medium
 
   * update plymouth, systemd, sddm, unattended-upgrades, cups, aptitude,
