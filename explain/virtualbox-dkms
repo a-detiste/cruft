@@ -1,5 +1,5 @@
 #!/bin/sh -e
-versions=$(/usr/sbin/dkms status -m virtualbox | cut -d\, -f 3 | tr -d ' ')
+versions=$(/usr/sbin/dkms status -m virtualbox | cut -d\, -f 2 | tr -d ' ')
 for ver in $versions
 do
     echo /lib/modules/${ver}/updates
