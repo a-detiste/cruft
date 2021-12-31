@@ -1,11 +1,11 @@
-cruft (0.9.40) UNRELEASED; urgency=medium
+cruft (0.9.40) unstable; urgency=low
 
-  * Remove constraints unnecessary since buster:
-    + cruft: Drop versioned constraint on cruft-common in Depends.
-    + cruft-common: Drop versioned constraint on cruft in Replaces.
-    + cruft-common: Drop versioned constraint on cruft in Breaks.
+  * Add support for UCF, as used by e.g. libreoffice (Closes: #499792)
+  * Debian Janitor: Remove constraints unnecessary since buster.
+  * Update filters for: google-chrome, systemd, smartmontools, jupyter,
+    nmap, grub, python3.10
 
- -- Debian Janitor <janitor@jelmer.uk>  Thu, 16 Sep 2021 10:19:45 -0000
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Fri, 31 Dec 2021 03:49:05 +0100
 
 cruft (0.9.39) unstable; urgency=medium
 
