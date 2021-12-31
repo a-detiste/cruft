@@ -25,7 +25,11 @@
 /var/lib/sddm/.cache/sddm-greeter/qmlcache/*.qmlc
 /var/lib/sddm/.cache/tracker
 /var/lib/sddm/.cache/tracker/*
+/var/lib/sddm/.cache/tracker3
+/var/lib/sddm/.cache/tracker3/**
 /var/lib/sddm/.config
+/var/lib/sddm/.config/pipewire-media-session
+/var/lib/sddm/.config/pipewire-media-session/*
 /var/lib/sddm/.config/pulse
 /var/lib/sddm/.config/pulse/*
 /var/lib/sddm/.dbus
@@ -44,6 +48,9 @@
 /var/lib/sddm/.local/share/tracker
 /var/lib/sddm/.local/share/tracker/data
 /var/lib/sddm/.local/share/tracker/data/*
+/var/lib/sddm/.local/state
+/var/lib/sddm/.local/state/wireplumber
+/var/lib/sddm/.local/state/wireplumber/default-profile
 /var/lib/sddm/.xsession-errors
 /var/lib/sddm/state.conf
 /var/log/sddm.log
