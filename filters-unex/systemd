@@ -17,6 +17,9 @@
 /etc/systemd/system/*.wants/*.socket
 /etc/systemd/system/*.wants/*.target
 /etc/systemd/system/*.wants/*.timer
+/etc/systemd/user/*.service
+/etc/systemd/user/*.socket
+/etc/systemd/user/*.timer
 /etc/systemd/user/default.target.wants
 /etc/systemd/user/default.target.wants/*.service
 /etc/systemd/user/graphical-session.target.wants
@@ -34,6 +37,7 @@
 /var/lib/systemd/catalog/database
 /var/lib/systemd/coredump
 /var/lib/systemd/deb-systemd-user-helper-enabled
+/var/lib/systemd/deb-systemd-user-helper-enabled/*.service
 /var/lib/systemd/deb-systemd-user-helper-enabled/*.service.dsh-also
 /var/lib/systemd/deb-systemd-user-helper-enabled/*.socket.dsh-also
 /var/lib/systemd/deb-systemd-user-helper-enabled/*.target.wants
