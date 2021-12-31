@@ -2,3 +2,4 @@
 /boot/grub/i386-pc/core.img
 /boot/grub/i386-pc/load.cfg
 /boot/grub/i386-pc/modinfo.sh
+/boot/grub/i386-pc/verify.mod
