@@ -40,9 +40,12 @@
 /var/lib/systemd/deb-systemd-user-helper-enabled/*.service
 /var/lib/systemd/deb-systemd-user-helper-enabled/*.service.dsh-also
 /var/lib/systemd/deb-systemd-user-helper-enabled/*.socket.dsh-also
+/var/lib/systemd/deb-systemd-user-helper-enabled/*.service.wants
+/var/lib/systemd/deb-systemd-user-helper-enabled/*.service.wants/*.service
 /var/lib/systemd/deb-systemd-user-helper-enabled/*.target.wants
 /var/lib/systemd/deb-systemd-user-helper-enabled/*.target.wants/*.service
 /var/lib/systemd/deb-systemd-user-helper-enabled/*.target.wants/*.socket
+/var/lib/systemd/deb-systemd-user-helper-masked/*.service
 /var/lib/systemd/linger
 /var/lib/systemd/linger/*
 /var/lib/systemd/random-seed
