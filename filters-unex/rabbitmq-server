@@ -1,0 +1,4 @@
+/etc/rabbitmq/rabbitmq-env.conf
+/var/lib/rabbitmq/.erlang.cookie
+/var/lib/rabbitmq/mnesia/**
+/var/log/rabbitmq/*.log
