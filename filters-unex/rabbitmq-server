@@ -2,3 +2,4 @@
 /var/lib/rabbitmq/.erlang.cookie
 /var/lib/rabbitmq/mnesia/**
 /var/log/rabbitmq/*.log
+/var/log/rabbitmq/*.log.*
