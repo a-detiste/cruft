@@ -11,7 +11,3 @@ override_dh_fixperms-arch:
 
 override_dh_perl:
 	dh_perl -d
-
-execute_after_dh_install:
-	mkdir -p debian/cruft/usr/lib/cruft/explain/
-	mv -v debian/cruft-common/usr/lib/cruft/explain/dpkg debian/cruft/usr/lib/cruft/explain/
