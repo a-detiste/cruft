@@ -1,3 +1,12 @@
+cruft (0.9.41) unstable; urgency=medium
+
+  * bump Standards Version to 4.5.0, no change needed
+  * Add new filters for: Gtk4, RabbitMQ
+  * Update filters for: sddm, systemd, ocaml, plymouth, virtualbox,
+    PHP, postgresql, AppStream, wine, debianutils
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 18 Apr 2022 20:59:15 +0200
+
 cruft (0.9.40) unstable; urgency=low
 
   * Add support for UCF, as used by e.g. libreoffice (Closes: #499792)
