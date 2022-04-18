@@ -1,3 +1,9 @@
+cruft (0.9.42) unstable; urgency=medium
+
+  * Revert attempt at lintian mitigation, as it fails on buildd.
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Mon, 18 Apr 2022 21:43:15 +0200
+
 cruft (0.9.41) unstable; urgency=medium
 
   * bump Standards Version to 4.5.0, no change needed
