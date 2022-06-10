@@ -24,3 +24,4 @@
 /var/log/apt-cacher-ng/apt-cacher.log.6.gz
 /var/log/apt-cacher-ng/apt-cacher.log.7.gz
 /var/log/apt-cacher-ng/maint_*.log.html
+/var/log/apt-cacher-ng/maint_*.log.html.xz
