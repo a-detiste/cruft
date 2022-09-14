@@ -16,7 +16,7 @@ cruft_debug()
 # print default list of all mounted filesystems to scan
 cruft_default_scan_fs()
 {
-	mount | egrep -v " type (proc|devpts|nfs[1234]?|ncp|coda|(a|smb|ci|ncp|usb|tmp|sys|devtmp|debug|config|auto|security|hugetlb|selinux|trace)fs|fusectl|cgroup|mqueue|pstore|binfmt_misc)" | cut -d\  -f3
+	mount | grep -v -e " type (proc|devpts|nfs[1234]?|ncp|coda|(a|smb|ci|ncp|usb|tmp|sys|devtmp|debug|config|auto|security|hugetlb|selinux|trace)fs|fusectl|cgroup|mqueue|pstore|binfmt_misc)" | cut -d\  -f3
 }
 
 # set list of fs to scan, for other programs

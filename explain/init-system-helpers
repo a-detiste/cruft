@@ -1,6 +1,6 @@
 #!/bin/dash
 set -e
-file /etc/rc?.d/[SK]???* | 
-    egrep ": *symbolic link to \`?../init.d/[-a-zA-Z0-9_.]*'?$" |
+file /etc/rc?.d/[SK]???* |
+    grep -e ": *symbolic link to \`?../init.d/[-a-zA-Z0-9_.]*'?$" |
     sed "s/: *symbolic.*$//"
 
