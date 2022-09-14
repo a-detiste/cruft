@@ -4,7 +4,7 @@ set -e
 . /usr/lib/cruft/common.sh
 cruft_debug
 
-mount | grep -e ".* on .* type ext[234]" | awk '{ print $3"/lost+found" }' | sed 's://*:/:g' |
+mount | grep -E ".* on .* type ext[234]" | awk '{ print $3"/lost+found" }' | sed 's://*:/:g' |
 while read dir; do
 	ignores="$(get_ignores)"
 	if [ -z "$ignores" ]; then
