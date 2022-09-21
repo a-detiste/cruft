@@ -1,3 +1,28 @@
+cruft (0.9.43) unstable; urgency=medium
+
+  "So Long, and Thanks for All the Fish"
+
+  UsrMerge #941998 breaks the legacy cruft engine and I don't have
+  enough Perl knoweledge or time to fix it.
+  Unless someones step in to help it will be it's last release
+  including the legacy engine bash+Perl+C engine.
+
+  cruft-common database lives on:
+  * add one lib64/ UsrMerge hint
+  * catch up with new lintian override format
+  * replace use of "egrep" with "grep -E"
+  * Gtk2 removal
+    * better split of Gtk 2/3/4 files detection
+    * remove build dependency on "dia", which is Gtk2 based.
+  * python2 removal: misc leaf packages removed from archive
+  * remove old java versions
+  * update: wine, system, apt-cacher-ng, RabbitMQ
+  * add: omnidb-server, cron-daemon-common
+  * /var/spool/cruft only belongs to legacy cruft engine
+  * bump Standards-Version: to 4.6.1.0
+
+ -- Alexandre Detiste <alexandre.detiste@gmail.com>  Wed, 21 Sep 2022 23:37:31 +0200
+
 cruft (0.9.42) unstable; urgency=medium
 
   * Revert attempt at lintian mitigation, as it fails on buildd.
