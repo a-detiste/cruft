@@ -12,7 +12,7 @@ PROGS1 = canonical filter_shell merge_diff readlinks
 PROGS2 = dash-search
 PROGS  = $(PROGS1) $(PROGS2)
 
-all: $(PROGS) design.png
+all: $(PROGS)
 
 install1: $(PROGS1) filter filters_list cruft_find filter_ignores check_type_symlink z_cruft
 	mkdir -p $(DESTDIR)/usr/lib/cruft/
@@ -59,8 +59,6 @@ merge_diff_funcs.o merge_diff_test.o merge_diff_common.o river.o fn_stream.o mer
 
 design.png: design.dia
 	unset DISPLAY ; dia --size 800x740 --export tmp-$@ $<
-	#pngcrush -q -c 0 tmp-$@ $@
-	#rm tmp-$@
 	optipng -o 7 tmp-$@
 	mv tmp-$@ $@
 

@@ -4,9 +4,6 @@ Priority: optional
 Maintainer: Alexandre Detiste <alexandre.detiste@gmail.com>
 Build-Depends:
   debhelper-compat (= 13),
-# pngcrush,
-  optipng,
-  dia,
 Standards-Version: 4.6.0
 Vcs-Git: https://github.com/a-detiste/cruft.git
 Vcs-Browser: https://github.com/a-detiste/cruft
